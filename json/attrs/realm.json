@@ -1,0 +1,4 @@
+{
+	"name":                 { "type": "string",       "initable":   true },
+	"owner_id":             { "type": "string" }
+}

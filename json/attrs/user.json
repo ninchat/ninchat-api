@@ -1,0 +1,9 @@
+{
+	"admin":                { "type": "bool" },
+	"connected":            { "type": "bool" },
+	"guest":                { "type": "bool",         "initable":   true, "unsettable": true },
+	"iconurl":              { "type": "string",       "writable":   true },
+	"idle":                 { "type": "int" },
+	"name":                 { "type": "string",       "writable":   true },
+	"realname":             { "type": "string",       "writable":   true }
+}

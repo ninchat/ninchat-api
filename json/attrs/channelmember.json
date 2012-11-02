@@ -1,0 +1,4 @@
+{
+	"operator":             { "type": "bool",         "writable":   true },
+	"since":                { "type": "int" }
+}

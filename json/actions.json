@@ -1,0 +1,218 @@
+{
+	"create_session": {
+		"user_id":              false,
+		"user_auth":            false,
+		"user_attrs":           false,
+		"user_settings":        false,
+		"identity_type":        false,
+		"identity_name":        false,
+		"identity_auth":        false,
+		"access_key":           false,
+		"message_types":        true
+	},
+
+	"resume_session": {
+	},
+
+	"update_session": {
+		"session_idle":         true
+	},
+
+	"close_session": {
+	},
+
+	"describe_user": {
+		"action_id":            true,
+		"user_id":              false
+	},
+
+	"update_user": {
+		"action_id":            true,
+		"user_id":              false,
+		"user_attrs":           false,
+		"user_settings":        false
+	},
+
+	"delete_user": {
+		"action_id":            true,
+		"user_auth":            true
+	},
+
+	"create_identity": {
+		"action_id":            true,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_attrs":       false,
+		"identity_auth_new":    false
+	},
+
+	"request_identity_verify_access": {
+		"action_id":            false,
+		"identity_type":        true,
+		"identity_name":        true
+	},
+
+	"verify_identity": {
+		"access_key":           true,
+		"identity_accept":      true
+	},
+
+	"describe_identity": {
+		"action_id":            true,
+		"identity_type":        true,
+		"identity_name":        true
+	},
+
+	"request_identity_auth_reset_access": {
+		"action_id":            false,
+		"identity_type":        true,
+		"identity_name":        true
+	},
+
+	"reset_identity_auth": {
+		"access_key":           true,
+		"identity_auth_new":    true
+	},
+
+	"update_identity": {
+		"action_id":            true,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_attrs":       true
+	},
+
+	"update_identity_auth": {
+		"action_id":            true,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_auth":        false,
+		"identity_auth_new":    true
+	},
+
+	"delete_identity": {
+		"action_id":            true,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_auth":        false
+	},
+
+	"create_channel": {
+		"action_id":            true,
+		"channel_attrs":        false,
+		"realm_id":             false
+	},
+
+	"describe_channel": {
+		"action_id":            true,
+		"channel_id":           true
+	},
+
+	"update_channel": {
+		"action_id":            true,
+		"channel_id":           true,
+		"channel_attrs":        true
+	},
+
+	"join_channel": {
+		"action_id":            true,
+		"channel_id":           false,
+		"access_key":           false
+	},
+
+	"part_channel": {
+		"action_id":            true,
+		"channel_id":           true
+	},
+
+	"create_realm": {
+		"action_id":            true,
+		"realm_attrs":          false,
+		"channel_attrs":        false
+	},
+
+	"describe_realm": {
+		"action_id":            true,
+		"realm_id":             true
+	},
+
+	"update_realm": {
+		"action_id":            true,
+		"realm_id":             true,
+		"realm_attrs":          true
+	},
+
+	"delete_realm": {
+		"action_id":            true,
+		"realm_id":             true
+	},
+
+	"create_access": {
+		"action_id":            true,
+		"access_type":          true,
+		"channel_id":           false,
+		"realm_member":         false,
+		"user_id":              false
+	},
+
+	"update_member": {
+		"action_id":            true,
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true,
+		"member_attrs":         true
+	},
+
+	"remove_member": {
+		"action_id":            true,
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true
+	},
+
+	"send_message": {
+		"action_id":            false,
+		"channel_id":           false,
+		"user_id":              false,
+		"identity_type":        false,
+		"identity_name":        false,
+		"access_key":           false,
+		"message_type":         true,
+		"message_ttl":          false,
+		"message_fold":         false
+	},
+
+	"load_history": {
+		"action_id":            true,
+		"channel_id":           false,
+		"user_id":              false,
+		"message_types":        false,
+		"message_id":           false,
+		"history_length":       false,
+		"history_order":        false,
+		"filter_property":      false,
+		"filter_substring":     false
+	},
+
+	"discard_history": {
+		"action_id":            true,
+		"user_id":              true,
+		"message_id":           true
+	},
+
+	"describe_access": {
+		"action_id":            false,
+		"access_key":           true
+	},
+
+	"send_access": {
+		"action_id":            true,
+		"access_key":           false,
+		"identity_type":        true,
+		"identity_name":        true
+	},
+
+	"search": {
+		"action_id":            true,
+		"search_term":          true
+	}
+}

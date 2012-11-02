@@ -1,0 +1,254 @@
+{
+	"error": {
+		"error_type":           true,
+		"error_reason":         false,
+		"action_id":            false,
+		"user_id":              false,
+		"identity_type":        false,
+		"identity_name":        false,
+		"channel_id":           false,
+		"realm_id":             false,
+		"message_type":         false
+	},
+
+	"session_created": {
+		"user_id":              true,
+		"user_auth":            false,
+		"user_attrs":           true,
+		"user_settings":        true,
+		"user_account":         true,
+		"user_identities":      true,
+		"user_dialogues":       true,
+		"user_channels":        true,
+		"user_realms":          true
+	},
+
+	"user_found": {
+		"action_id":            false,
+		"user_id":              true,
+		"user_attrs":           true,
+		"user_settings":        false,
+		"user_account":         false,
+		"user_identities":      true,
+		"user_dialogues":       false,
+		"user_channels":        false,
+		"user_realms":          false,
+		"dialogue_members":     false
+	},
+
+	"user_updated": {
+		"action_id":            false,
+		"user_id":              true,
+		"user_attrs":           true,
+		"user_settings":        false
+	},
+
+	"user_deleted": {
+		"action_id":            false,
+		"user_id":              true
+	},
+
+	"identity_found": {
+		"action_id":            false,
+		"user_id":              true,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_attrs":       false
+	},
+
+	"identity_created": {
+		"action_id":            false,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_attrs":       true
+	},
+
+	"identity_updated": {
+		"action_id":            false,
+		"identity_type":        true,
+		"identity_name":        true,
+		"identity_attrs":       true
+	},
+
+	"identity_deleted": {
+		"action_id":            false,
+		"identity_type":        true,
+		"identity_name":        true
+	},
+
+	"dialogue_updated": {
+		"action_id":            false,
+		"user_id":              true,
+		"dialogue_members":     true
+	},
+
+	"channel_found": {
+		"action_id":            false,
+		"channel_id":           true,
+		"channel_attrs":        true,
+		"channel_members":      false,
+		"realm_id":             false
+	},
+
+	"channel_joined": {
+		"action_id":            false,
+		"channel_id":           true,
+		"channel_attrs":        true,
+		"channel_members":      true,
+		"realm_id":             false
+	},
+
+	"channel_parted": {
+		"action_id":            false,
+		"channel_id":           true
+	},
+
+	"channel_updated": {
+		"action_id":            false,
+		"channel_id":           true,
+		"channel_attrs":        true,
+		"realm_id":             false
+	},
+
+	"channel_deleted": {
+		"action_id":            false,
+		"channel_id":           true
+	},
+
+	"channel_member_joined": {
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true,
+		"user_attrs":           true,
+		"member_attrs":         true
+	},
+
+	"channel_member_parted": {
+		"action_id":            false,
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true
+	},
+
+	"channel_member_updated": {
+		"action_id":            false,
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true,
+		"member_attrs":         true
+	},
+
+	"realm_found": {
+		"action_id":            false,
+		"realm_id":             true,
+		"realm_attrs":          true,
+		"realm_members":        false
+	},
+
+	"realm_joined": {
+		"action_id":            false,
+		"realm_id":             true,
+		"realm_attrs":          true,
+		"realm_members":        true
+	},
+
+	"realm_parted": {
+		"action_id":            false,
+		"realm_id":             true
+	},
+
+	"realm_updated": {
+		"action_id":            false,
+		"realm_id":             true,
+		"realm_attrs":          true
+	},
+
+	"realm_deleted": {
+		"action_id":            false,
+		"realm_id":             true
+	},
+
+	"realm_member_joined": {
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true,
+		"user_attrs":           true,
+		"member_attrs":         true
+	},
+
+	"realm_member_parted": {
+		"action_id":            false,
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true
+	},
+
+	"realm_member_updated": {
+		"action_id":            false,
+		"channel_id":           false,
+		"realm_id":             false,
+		"user_id":              true,
+		"member_attrs":         true
+	},
+
+	"message_received": {
+		"action_id":            false,
+		"channel_id":           false,
+		"user_id":              false,
+		"message_id":           true,
+		"message_time":         true,
+		"message_type":         true,
+		"message_user_id":      false,
+		"message_user_name":    false,
+		"message_ttl":          false,
+		"message_fold":         false,
+		"history_length":       false
+	},
+
+	"history_results": {
+		"action_id":            true,
+		"channel_id":           false,
+		"user_id":              false,
+		"history_length":       true
+	},
+
+	"history_discarded": {
+		"action_id":            true,
+		"channel_id":           false,
+		"user_id":              false,
+		"message_id":           true
+	},
+
+	"access_found": {
+		"action_id":            false,
+		"access_type":          true,
+		"user_id":              false,
+		"user_attrs":           false,
+		"identity_type":        false,
+		"identity_name":        false,
+		"channel_id":           false,
+		"channel_attrs":        false,
+		"realm_id":             false,
+		"realm_attrs":          false
+	},
+
+	"access_created": {
+		"action_id":            false,
+		"access_type":          true,
+		"access_key":           false,
+		"user_id":              false,
+		"user_attrs":           false,
+		"identity_type":        false,
+		"identity_name":        false,
+		"channel_id":           false,
+		"channel_attrs":        false,
+		"realm_id":             false,
+		"realm_attrs":          false
+	},
+
+	"search_results": {
+		"action_id":            true,
+		"users":                false,
+		"channels":             false
+	}
+}
