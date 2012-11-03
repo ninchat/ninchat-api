@@ -175,7 +175,6 @@
 		"user_id":              false,
 		"identity_type":        false,
 		"identity_name":        false,
-		"access_key":           false,
 		"message_type":         true,
 		"message_ttl":          false,
 		"message_fold":         false

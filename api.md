@@ -358,7 +358,6 @@ Kicks a user out of a channel or a realm.
 - `user_id` : string (optional)
 - `identity_type` : string (optional)
 - `identity_name` : string (optional)
-- `access_key` : string (optional)
 - `message_type` : string
 - `message_ttl` : float (optional)
 - `message_fold` : boolean (optional)
