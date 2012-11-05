@@ -2,6 +2,7 @@
 	"name":                 { "type": "string",       "initable":   true },
 	"owner_id":             { "type": "string" },
 	"private":              { "type": "bool",         "writable":   true },
+	"public":               { "type": "bool",         "writable":   true },
 	"suspended":            { "type": "bool",         "writable":   true },
 	"topic":                { "type": "string",       "writable":   true }
 }

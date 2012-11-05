@@ -1033,6 +1033,10 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Invite only.
 
+- `public` : boolean
+
+	Channel is open for everyone despite being in a realm.
+
 - `suspended` : boolean
 
 	Channel is in read-only state.
