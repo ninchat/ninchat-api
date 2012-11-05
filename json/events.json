@@ -40,7 +40,8 @@
 		"action_id":            false,
 		"user_id":              true,
 		"user_attrs":           true,
-		"user_settings":        false
+		"user_settings":        false,
+		"user_account":         false
 	},
 
 	"user_deleted": {

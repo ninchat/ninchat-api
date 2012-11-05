@@ -629,6 +629,7 @@ session user.
 - `user_id` : string
 - `user_attrs` : object
 - `user_settings` : object (if the user is the session user)
+- `user_account` : object (if the user is the session user)
 
 
 ### `user_deleted`
