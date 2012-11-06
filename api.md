@@ -76,9 +76,12 @@ Receive or acknowledge events of an existing session.  See
 
 ### `update_session`
 
-- `session_idle` : boolean
+- `session_idle` : boolean (optional)
+- `channel_id` : string (optional)
+- `user_id` : string (optional)
+- `message_id` : string (optional)
 
-Client-assisted idle user tracking.
+Client-assisted idle user and unread message tracking.
 
 
 ### `close_session`
@@ -531,7 +534,7 @@ Events
 - `user_settings` : object
 - `user_account` : object
 - `user_identities` : object
-- `user_dialogues` : string array
+- `user_dialogues` : object
 - `user_channels` : object
 - `user_realms` : object
 
@@ -570,21 +573,24 @@ containing identity names mapped to identity attributes:
 		...
 	}
 
-The `user_dialogues` array contains user identifiers with whom there are
-ongoing private conversations:
+The `user_dialogues` object consists of user identifiers (of users with whom
+there are ongoing private conversations) mapped to objects containing the
+optional `dialogue_status` string:
 
-	"user_dialogues": [
-		"12345",
+	"user_dialogues": {
+		"12345": "highlight",
 		...
-	]
+	}
 
 The `user_channels` object consists of channel identifiers mapped to objects
-containing the `channel_attrs` object and optionally the `realm_id` string:
+containing the `channel_attrs` object and the optional `channel_status` and
+`realm_id` strings:
 
 	"user_channels": {
 		"12345": {
-			"channel_attrs": { "attr": "value", ... },
-			"realm_id: "67890"
+			"channel_attrs":  { "attr": "value", ... },
+			"channel_status": "unread",
+			"realm_id:        "67890"
 		},
 		...
 	}
@@ -606,10 +612,12 @@ containing realm attributes:
 - `user_settings` : object (if the user is the session user)
 - `user_account` : object (if the user is the session user)
 - `user_identities` : object
-- `user_dialogues` : string array (if the user is the session user)
+- `user_dialogues` : object (if the user is the session user)
 - `user_channels` : object (if the user is the session user)
 - `user_realms` : object (if the user is the session user)
 - `dialogue_members` : object (if the session user has a dialogue with the user)
+- `dialogue_status` : string (if the session user has a dialogue with the user
+                              and there are unread messages)
 
 The `dialogue_members` object consists of two user identifiers mapped to
 dialogue membership attributes:
@@ -621,6 +629,8 @@ dialogue membership attributes:
 
 The dialogue membership attributes objects will be empty unless the user is the
 session user.
+
+If set, the value of `dialogue_status` will be "highlight".
 
 
 ### `user_updated`
@@ -682,6 +692,8 @@ session user.
 - `channel_id` : string
 - `channel_attrs` : object
 - `channel_members` : object (if the session user is a member)
+- `channel_status` : string (if the session user is a member and there are
+                             unread messages)
 - `realm_id` : string (if applicable)
 
 The `channel_members` object consists of user identifiers mapped to objects
@@ -695,6 +707,8 @@ channel-specific attributes of the user):
 		},
 		...
 	}
+
+If set, the value of `channel_status` will be "unread" or "highlight".
 
 
 ### `channel_joined`
@@ -1270,7 +1284,7 @@ Request #1:
 	  "user_attrs":      { "name": "Elite" },
 	  "user_settings":   {},
 	  "user_identities": { "email": { "elite@example.com": { "pending": true } } },
-	  "user_dialogues":  [],
+	  "user_dialogues":  {},
 	  "user_channels":   { "04jqf8db": { "channel_attrs": { "name": "Fibre" } } },
 	  "user_realms":     {},
 	  "event_id":        1
