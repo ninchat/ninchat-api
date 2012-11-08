@@ -1163,7 +1163,7 @@ WebSocket
 ---------
 
 - URL: `wss://api.ninchat.com/socket`
-- Subprotocol: `ninchat.com/1`
+- Protocol: `ninchat.com-1`
 
 Actions and events consist of one or more frames.  The first one is a text
 frame containing a JSON object with the `action` or `event` property (string),
