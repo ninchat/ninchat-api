@@ -253,5 +253,9 @@
 		"action_id":            true,
 		"users":                false,
 		"channels":             false
+	},
+
+	"pong": {
+		"action_id":            false
 	}
 }

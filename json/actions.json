@@ -216,5 +216,9 @@
 	"search": {
 		"action_id":            true,
 		"search_term":          true
+	},
+
+	"ping": {
+		"action_id":            false
 	}
 }

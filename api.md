@@ -507,6 +507,13 @@ Reply events: [`search_results`](#search_results) multiple times
 Searches users and channels by name or realname prefixes.
 
 
+### `ping`
+
+- `action_id` : integer (optional)
+
+Reply events: [`pong`](#pong)
+
+
 Events
 ------
 
@@ -927,6 +934,11 @@ The `users` object consists of user identifiers mapped to user attributes:
 	}
 
 `channels` is similar to [`user_channels`](#session_created) described above.
+
+
+### `pong`
+
+- `action_id` : integer (if specified in [`ping`](#ping))
 
 
 Attributes
