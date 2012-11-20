@@ -973,6 +973,15 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	None of the connected devices are actively used.
 
+- `info` : object (writable by self)
+
+	Includes contact information:
+
+		"info": {
+			"company": "Oy Inichat Ab",
+			"url":     "https://blog.example.org"
+		}
+
 - `name` : string (writable by self)
 
 	Short nickname.

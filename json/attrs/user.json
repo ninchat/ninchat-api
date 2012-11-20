@@ -4,6 +4,7 @@
 	"guest":                { "type": "bool",         "initable":   true, "unsettable": true },
 	"iconurl":              { "type": "string",       "writable":   true },
 	"idle":                 { "type": "int" },
+	"info":                 { "type": "object",       "writable":   true },
 	"name":                 { "type": "string",       "writable":   true },
 	"realname":             { "type": "string",       "writable":   true }
 }
