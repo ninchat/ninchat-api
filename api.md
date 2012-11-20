@@ -1194,8 +1194,8 @@ The initial action on a connection must be `create_session`, `resume_session`,
 can't be used to open a new session after the `close_session` action and the
 session can't be changed during a connection.
 
-The server may sometimes send empty keep-alive frames between events.  They
-should be ignored by the client.
+The client and the server may send empty (keep-alive) frames between
+actions/events.  They should be ignored by the peer.
 
 
 ### Examples
