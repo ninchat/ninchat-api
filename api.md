@@ -1058,6 +1058,14 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Realm is in read-only state.
 
+- `theme` : object (writable by operators)
+
+	Customizes the color of the realm label:
+
+		"theme": {
+			"color": "#010b9b"
+		}
+
 
 ### Realm Membership
 
