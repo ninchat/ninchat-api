@@ -1,5 +1,6 @@
 {
 	"name":                 { "type": "string",       "initable":   true },
 	"owner_id":             { "type": "string" },
+	"suspended":            { "type": "bool" },
 	"theme":                { "type": "object",       "writable":   true }
 }
