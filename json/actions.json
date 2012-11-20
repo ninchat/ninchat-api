@@ -15,7 +15,10 @@
 	},
 
 	"update_session": {
-		"session_idle":         true
+		"session_idle":         false,
+		"channel_id":           false,
+		"user_id":              false,
+		"message_id":           false
 	},
 
 	"close_session": {

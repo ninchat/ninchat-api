@@ -33,7 +33,8 @@
 		"user_dialogues":       false,
 		"user_channels":        false,
 		"user_realms":          false,
-		"dialogue_members":     false
+		"dialogue_members":     false,
+		"dialogue_status":      false
 	},
 
 	"user_updated": {
@@ -88,6 +89,7 @@
 		"channel_id":           true,
 		"channel_attrs":        true,
 		"channel_members":      false,
+		"channel_status":       false,
 		"realm_id":             false
 	},
 
