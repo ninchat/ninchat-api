@@ -1088,13 +1088,18 @@ Settings
 
 - `notifications` : object
 
-	Enables email notifications for channel, private and/or invitation
-	messages:
+	Enables audio, email and desktop notifications for channel, hightlight
+	and/or private messages:
 
 		"notifications": {
-			"channel": false,
-			"private": false,
-			"invite":  true
+			"channel_audio":   false,
+			"highlight_audio": false,
+			"private_audio":   false,
+			"highlight_email": false,
+			"private_email":   false,
+			"channel":         false,
+			"highlight":       false,
+			"private":         false
 		}
 
 - `proto` : boolean
