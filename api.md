@@ -886,35 +886,37 @@ Message content is provided in the payload (see [Transports](#transports)).
 
 - `action_id` : integer (if applicable)
 - `access_type` : string
-- `user_id` : string (if applicable)
-- `user_attrs` : object (if applicable)
+- `user_id` : string
+- `user_attrs` : object
 - `identity_type` : string (if applicable)
 - `identity_name` : string (if applicable)
 - `channel_id` : string (if applicable)
 - `channel_attrs` : object (if applicable)
 - `realm_id` : string (if applicable)
 - `realm_attrs` : object (if applicable)
-
-The user, identity, channel and/or realm properties for which this key grants
-access to, modifies or is restricted to are set.
+- `realm_member` : boolean (if applicable)
 
 The value of `access_type` is "session", "channel", "identity\_verify" or
-"identity\_auth\_reset".
+"identity\_auth\_reset".  The relevant user, identity, channel and/or realm
+properties are set:
+
+- "session" access: `user_id` and `user_attrs` (the session user)
+- "channel" access: `user_id`, `user_attrs` (the invitor), `channel_id`,
+  `channel_attrs` (the target channel), `realm_id`, `realm_attrs` (if the
+  target channel is in a realm) and `realm_member` (if the access key grants
+  membership to the target channel's realm).
+- "identity\_verify" and "identity\_auth\_reset" access: `user_id`,
+  `user_attrs` (the identified user), `identity_type` and `identity_name` (the
+  target identity)
+
+(Generally speaking, the user properties describe the access key creator.)
 
 
 ### `access_created`
 
 - `action_id` : integer (if applicable)
 - `access_type` : string
-- `access_key` : string
-- `user_id` : string (if applicable)
-- `user_attrs` : object (if applicable)
-- `identity_type` : string (if applicable)
-- `identity_name` : string (if applicable)
-- `channel_id` : string (if applicable)
-- `channel_attrs` : object (if applicable)
-- `realm_id` : string (if applicable)
-- `realm_attrs` : object (if applicable)
+- `access_key` : string (if applicable)
 
 
 ### `search_results`
@@ -1194,6 +1196,7 @@ consists of a single part with a JSON object containing an `info` property
 	- `channel_attrs` : object
 	- `realm_id` : string (optional)
 	- `realm_attrs` : object (optional)
+	- `realm_member` : boolean (optional)
 
 	You were invited to a channel and optionally to its realm.  `user_id` is
 	the invitor.

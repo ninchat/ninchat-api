@@ -225,28 +225,21 @@
 	"access_found": {
 		"action_id":            false,
 		"access_type":          true,
-		"user_id":              false,
-		"user_attrs":           false,
+		"user_id":              true,
+		"user_attrs":           true,
 		"identity_type":        false,
 		"identity_name":        false,
 		"channel_id":           false,
 		"channel_attrs":        false,
 		"realm_id":             false,
-		"realm_attrs":          false
+		"realm_attrs":          false,
+		"realm_member":         false
 	},
 
 	"access_created": {
 		"action_id":            false,
 		"access_type":          true,
-		"access_key":           false,
-		"user_id":              false,
-		"user_attrs":           false,
-		"identity_type":        false,
-		"identity_name":        false,
-		"channel_id":           false,
-		"channel_attrs":        false,
-		"realm_id":             false,
-		"realm_attrs":          false
+		"access_key":           false
 	},
 
 	"search_results": {
