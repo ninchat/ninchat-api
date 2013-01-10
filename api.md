@@ -1202,6 +1202,18 @@ consists of a single part with a JSON object containing an `info` property
 	the invitor.
 
 
+### `ninchat.com/link`
+
+Link messages are used to send file share links.  The payload consists of a
+single part with a JSON object containing properties described below.
+
+- `name` : string
+- `size` : integer
+- `icon` : string
+- `url` : string
+- `thumbnail` : string (optional)
+	
+	
 ### `ninchat.com/text`
 
 Text messages are the basic message type, sent by clients.  The payload
