@@ -1,7 +1,7 @@
 Model
 =====
 
-![Diagram](../../raw/master/model.png)
+![Diagram](model.png)
 
 The logical data model which is accessed through the interface
 
