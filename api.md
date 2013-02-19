@@ -1023,7 +1023,7 @@ integers, counting seconds since 1970-01-01 UTC.
 
 ### Channel
 
-- `name` : string
+- `name` : string (writable by operators)
 
 	Short subject name.
 

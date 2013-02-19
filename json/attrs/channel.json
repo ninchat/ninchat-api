@@ -1,5 +1,5 @@
 {
-	"name":                 { "type": "string",       "initable":   true },
+	"name":                 { "type": "string",       "writable":   true },
 	"owner_id":             { "type": "string" },
 	"private":              { "type": "bool",         "writable":   true },
 	"public":               { "type": "bool",         "writable":   true },
