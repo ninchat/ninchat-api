@@ -366,7 +366,7 @@ Kicks a user out of a channel or a realm.
 - `message_fold` : boolean (optional)
 
 Reply event: [`message_received`](#message_received) or none (if `action_id` is
-             specified)
+             not specified)
 
 Message content is provided in the payload (see [Transports](#transports)).
 
@@ -442,7 +442,7 @@ specifies the number of returned messages, not the number of filtered messages.
 - `message_id` : string
 
 Reply event: [`history_discarded`](#history_discarded) (without
-             `history_length` set) or none (if `action_id` is specified)
+             `history_length` set) or none (if `action_id` is not specified)
 
 `user_id` specifies a private conversation party.  `message_id` specifies the
 latest message to be discarded.
@@ -1082,7 +1082,7 @@ integers, counting seconds since 1970-01-01 UTC.
 		}
 
 
-### Realm Membership
+### Realm membership
 
 - `operator` : boolean
 
