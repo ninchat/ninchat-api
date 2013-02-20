@@ -37,6 +37,7 @@
 	"realm_attrs":          "object",
 	"realm_id":             "string",
 	"realm_member":         "bool",
+	"realm_members":        "object",
 	"search_term":          "string",
 	"session_host":         "string",
 	"session_id":           "string",
