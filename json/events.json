@@ -12,6 +12,8 @@
 	},
 
 	"session_created": {
+		"session_id":           true,
+		"session_host":         true,
 		"user_id":              true,
 		"user_auth":            false,
 		"user_attrs":           true,
