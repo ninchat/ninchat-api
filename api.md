@@ -560,17 +560,32 @@ and service subscription (optional):
 
 	"user_account": {
 		"channels": {
-			"quota":     10,
-			"available": 7
+			"quota":             10,
+			"available":         3
 		},
 		"realms": {
-			"quota":     3,
-			"available": 2
+			"quota":             3,
+			"available":         2
 		},
-		"subscription": {
-			"plan":      "small",
-			"renewal":   1351776933
-		}
+		"subscriptions": [
+			{
+				"active":        true,
+				"plan":          "medium_free",
+				"expiration":    1351776933
+			},
+			{
+				"plan":          "small",
+				"renewal":       1362888044,
+				"channels": {
+					"quota":     5,
+					"suspended": 2
+				},
+				"realms": {
+					"quota":     1,
+					"suspended": 0
+				}
+			}
+		]
 	}
 
 The `user_identities` object consists of identity types mapped to objects
