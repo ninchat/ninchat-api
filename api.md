@@ -32,7 +32,10 @@ Instead of the reply events listed below, any action may cause an `error`
 event.
 
 Undefined action, event and parameter names must not be used in communication
-and you should not rely on their nonexistence.
+and you should not rely on their nonexistence.  Enumerations
+(e.g. `access_type`, `error_type` and `identity_type`) may gain new options, so
+clients should be able to cope with events with unknown values for such
+parameters.
 
 
 Actions
