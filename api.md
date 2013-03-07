@@ -889,8 +889,8 @@ Message content is provided in the payload (see [Transports](#transports)).
 
 - `action_id` : integer (if applicable)
 - `access_type` : string
-- `user_id` : string
-- `user_attrs` : object
+- `user_id` : string (if applicable)
+- `user_attrs` : object (if applicable)
 - `identity_type` : string (if applicable)
 - `identity_name` : string (if applicable)
 - `channel_id` : string (if applicable)

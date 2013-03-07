@@ -226,8 +226,8 @@
 	"access_found": {
 		"action_id":            false,
 		"access_type":          true,
-		"user_id":              true,
-		"user_attrs":           true,
+		"user_id":              false,
+		"user_attrs":           false,
 		"identity_type":        false,
 		"identity_name":        false,
 		"channel_id":           false,
