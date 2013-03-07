@@ -12,6 +12,13 @@ Interface
 Clients send actions to the server, which sends events to clients.  Action and
 event parameter values are represented as JSON types.
 
+Most actions support or require the `action_id` parameter, which may be used to
+detect success or failure of the action.  When the client receives (at least)
+one event with the corresponding `action_id`, the action has succeeded, unless
+the event was `error`.  The values should be a positive, ascending integers.
+If no response event is received, the client may retry the action (e.g. after
+reconnecting) with the same `action_id` value.
+
 In addition to the parameters listed below, most events contain the
 monotonically ascending `event_id` integer parameter (starting at 1).  Such
 events are buffered by the server until they are acknowledged by the client, so
@@ -1114,7 +1121,6 @@ Error types
 -----------
 
 - `access_denied`
-- `action_is_futile`
 - `action_not_supported`
 - `channel_not_found`
 - `channel_quota_exceeded`
