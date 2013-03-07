@@ -26,7 +26,6 @@
 	"identity_name":        "string",
 	"identity_type":        "string",
 	"member_attrs":         "object",
-	"message_fold":         "bool",
 	"message_id":           "string",
 	"message_time":         "int",
 	"message_ttl":          "float",

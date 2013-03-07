@@ -206,7 +206,6 @@
 		"message_user_id":      false,
 		"message_user_name":    false,
 		"message_ttl":          false,
-		"message_fold":         false,
 		"history_length":       false
 	},
 

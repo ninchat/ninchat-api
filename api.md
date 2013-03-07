@@ -363,7 +363,6 @@ Kicks a user out of a channel or a realm.
 - `identity_name` : string (optional)
 - `message_type` : string
 - `message_ttl` : float (optional)
-- `message_fold` : boolean (optional)
 
 Reply event: [`message_received`](#message_received) or none (if `action_id` is
              not specified)
@@ -375,14 +374,12 @@ Exactly one of `channel_id`, `user_id` and `identity_name` must be specified.
 `identity_name` specify a private conversation party without an established
 user account.
 
-If `message_ttl` or `message_fold` is specified, restrictions are placed on
-message delivery; the message is not stored in the channel history and messages
-may be dropped by unresponsive sessions.  `message_ttl` specifies the minimum
-time in seconds to buffer the message (which should be the upper limit for the
-usefulness of the content).  `message_fold` requests older messages of the same
-`message_type` from the same author to be dropped if they are not delivered
-when a new message is sent (as they are no longer relevant).  Sending a
-realtime message to an identity doesn't make sense.
+If `message_ttl` is specified, restrictions are placed on message delivery: the
+message may not be stored in the channel/dialogue history and messages may be
+dropped by unresponsive sessions.  `message_ttl` specifies the minimum time in
+seconds to buffer the message (which should be the upper limit for the
+usefulness of the content).  Sending such a message to an identity doesn't make
+sense.
 
 
 ### `load_history`
@@ -858,7 +855,6 @@ Someone else left or was removed from a realm.
 - `message_user_id` : string (if applicable)
 - `message_user_name` : string (if applicable)
 - `message_ttl` : float (if applicable)
-- `message_fold` : boolean (if applicable)
 - `history_length` : integer (if succeeding a `history_results` event)
 
 Message content is provided in the payload (see [Transports](#transports)).
