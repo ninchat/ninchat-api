@@ -2,7 +2,7 @@
 	"admin":                { "type": "bool" },
 	"connected":            { "type": "bool" },
 	"guest":                { "type": "bool",         "initable":   true, "unsettable": true },
-	"iconurl":              { "type": "string",       "writable":   true },
+	"iconurl":              { "type": "string" },
 	"idle":                 { "type": "int" },
 	"info":                 { "type": "object",       "writable":   true },
 	"name":                 { "type": "string",       "writable":   true },

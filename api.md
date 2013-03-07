@@ -963,7 +963,7 @@ integers, counting seconds since 1970-01-01 UTC.
 	Transient user account.  It will be deleted after the last session is
 	closed (unless this attribute is unset before that).
 
-- `iconurl` : string (writable by self)
+- `iconurl` : string
 
 	URL pointing to a small square profile picture.
 
