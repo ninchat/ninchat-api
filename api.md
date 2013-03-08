@@ -553,8 +553,9 @@ Events
 `session_host` contains a hostname which should be used in subsequent
 connections for this session.
 
-If a new user was created, then `user_auth` contains a generated password
-needed in future [`create_session`](#create_session) actions.
+If a new user was created, then `user_auth` contains a generated password which
+may be used in future [`create_session`](#create_session) actions by the
+client.
 
 The `user_account` object contains information about channel and realm quota
 and service subscription (optional):
