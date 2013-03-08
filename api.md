@@ -434,9 +434,10 @@ fetching older or newer messages:
 
 If `filter_property` and `filter_substring` are specified, only messages which
 contain the `filter_substring` in the value of their `filter_property` are
-returned.  `message_types` should contain only supported message types (see
-[Message Types](#message-types)); other messages are ignored.  `history_length`
-specifies the number of returned messages, not the number of filtered messages.
+returned (if supported for the message type).  `message_types` should contain
+only supported message types (see [Message Types](#message-types)); other
+messages are ignored.  `history_length` specifies the number of returned
+messages.
 
 
 ### `discard_history`
