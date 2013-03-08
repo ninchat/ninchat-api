@@ -247,8 +247,8 @@ Reply event: [`identity_deleted`](#identity_deleted)
 
 Reply event: [`channel_created`](#channel_created)
 
-If `realm_id` is specified, the realm owner will be come the channel owner.
-Otherwise the session user become the channel owner.
+If `realm_id` is specified, the realm owner will become the channel owner.
+Otherwise the session user will become the owner.
 
 
 ### `describe_channel`
