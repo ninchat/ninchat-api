@@ -943,8 +943,8 @@ properties are set:
 - `users` : object (optional)
 - `channels` : object (optional)
 
-If neither of `users` and `channels` is set, this is the final response event
-for the `search` action.
+Following a `search` action, if neither of `users` and `channels` is defined,
+this is the final response event.
 
 The `users` object consists of user identifiers mapped to user attributes:
 
