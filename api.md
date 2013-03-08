@@ -462,8 +462,8 @@ latest message to be discarded.
 
 Reply event: [`access_created`](#access_created)
 
-Creates an access key for use with [`create_session`](#create_session),
-[`join_channel`](#join_channel) or [`send_message`](#send_message).
+Creates an access key for use with [`create_session`](#create_session) or
+[`join_channel`](#join_channel).
 
 Access types:
 
