@@ -467,7 +467,7 @@ Creates an access key for use with [`create_session`](#create_session) or
 
 Access types:
 
-- "session" keys may be used in `create_session` actions for 5 days.
+- "session" keys may be used in `create_session` actions.
 - "channel" keys may be used in a single `join_channel` action.  If
   `realm_member` is true, the invited user will also join the realm of the
   channel (if any).  If `user_id` is specified, the invite can only be used by
