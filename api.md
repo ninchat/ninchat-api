@@ -1149,6 +1149,7 @@ Error types
 -----------
 
 - `access_denied`
+- `access_expired`
 - `action_not_supported`
 - `channel_not_found`
 - `channel_quota_exceeded`
