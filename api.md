@@ -175,6 +175,7 @@ verification.  (In other words, `identity_type` must be "email" for now.)
 
 _`session_id` not required_
 
+- `action_id` : integer (optional)
 - `access_key` : string
 - `identity_accept` : boolean
 
