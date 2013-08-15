@@ -118,7 +118,6 @@ Reply event: [`user_found`](#user_found)
 ### `update_user`
 
 - `action_id` : integer
-- `user_id` : string (optional)
 - `user_attrs` : object (optional)
 - `user_settings` : object (optional)
 
