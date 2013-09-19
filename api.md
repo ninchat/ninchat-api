@@ -993,6 +993,10 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	One or more devices are connected to the service.
 
+- `deleted` : boolean
+
+	User account has been deleted.
+
 - `guest` : boolean (writable by self)
 
 	Transient user account.  It will be deleted after the last session is
@@ -1193,10 +1197,12 @@ consists of a single part with a JSON object containing an `info` property
 - `user`
 
 	- `user_id` : string
-	- `user_name` : string
-	- `user_name_old` : string
+	- `user_name` : string (optional)
+	- `user_name_old` : string (optional)
+	- `user_deleted` : boolean (optional)
 
-	A dialogue peer's or a channel member's `name` attribute changed.
+	A dialogue peer's or a channel member's `name` attribute changed, or a
+	dialogue peer was deleted.
 
 - `channel`
 

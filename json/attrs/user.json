@@ -1,6 +1,7 @@
 {
 	"admin":                { "type": "bool" },
 	"connected":            { "type": "bool" },
+	"deleted":              { "type": "bool" },
 	"guest":                { "type": "bool",         "initable":   true, "unsettable": true },
 	"iconurl":              { "type": "string" },
 	"idle":                 { "type": "int" },
