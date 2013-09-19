@@ -1058,6 +1058,10 @@ integers, counting seconds since 1970-01-01 UTC.
 
 ### Channel
 
+- `autosilence` : boolean (writable by operators)
+
+	Set the `silenced` channel member attribute for users who join the channel.
+
 - `name` : string (writable by operators)
 
 	Short subject name.
