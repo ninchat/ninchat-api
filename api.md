@@ -1089,6 +1089,10 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	The user is a channel operator.
 
+- `silenced` : boolean (writable by operators)
+
+	The user may not send messages to the channel.
+
 - `since` : time
 
 	Join time.
@@ -1200,9 +1204,11 @@ consists of a single part with a JSON object containing an `info` property
 	- `user_name` : string (optional)
 	- `user_name_old` : string (optional)
 	- `user_deleted` : boolean (optional)
+	- `member_silenced` : boolean (optional)
 
-	A dialogue peer's or a channel member's `name` attribute changed, or a
-	dialogue peer was deleted.
+	A dialogue peer's or a channel member's `name` attribute changed, a
+	dialogue peer was deleted, or a channel member's `silenced` attribute
+	changed.
 
 - `channel`
 
@@ -1214,14 +1220,15 @@ consists of a single part with a JSON object containing an `info` property
 - `join`
 
 	- `user_id` : string
-	- `user_name` : string
+	- `user_name` : string (optional)
+	- `member_silenced` : boolean (optional)
 
 	A user joined the channel.
 
 - `part`
 
 	- `user_id` : string
-	- `user_name` : string
+	- `user_name` : string (optional)
 
 	A user left the channel.
 
