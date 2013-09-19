@@ -22,7 +22,8 @@
 		"user_identities":      true,
 		"user_dialogues":       true,
 		"user_channels":        true,
-		"user_realms":          true
+		"user_realms":          true,
+		"user_realms_member":   false
 	},
 
 	"user_found": {
@@ -35,6 +36,7 @@
 		"user_dialogues":       false,
 		"user_channels":        false,
 		"user_realms":          false,
+		"user_realms_member":   false,
 		"dialogue_members":     false,
 		"dialogue_status":      false
 	},

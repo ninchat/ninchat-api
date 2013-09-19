@@ -560,6 +560,7 @@ Events
 - `user_dialogues` : object
 - `user_channels` : object
 - `user_realms` : object
+- `user_realms_member` : object (optional)
 
 `session_host` contains a hostname which should be used in subsequent
 connections for this session.
@@ -642,6 +643,14 @@ containing realm attributes:
 		...
 	}
 
+The `user_realms_member` object consists of realm identifiers mapped to
+objects containing the session user's realm membership attributes (if any):
+
+	"user_realms_member": {
+		"12345": { "operator": true, ... },
+		...
+	}
+
 
 ### `user_found`
 
@@ -654,6 +663,7 @@ containing realm attributes:
 - `user_dialogues` : object (if the user is the session user)
 - `user_channels` : object (if the user is the session user)
 - `user_realms` : object (if the user is the session user)
+- `user_realms_member` : object (optional)
 - `dialogue_members` : object (if the session user has a dialogue with the user)
 - `dialogue_status` : string (if the session user has a dialogue with the user
                               and there are unread messages)

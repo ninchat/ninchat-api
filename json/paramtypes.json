@@ -49,6 +49,7 @@
 	"user_id":              "string",
 	"user_identities":      "object",
 	"user_realms":          "object",
+	"user_realms_member":   "object",
 	"user_settings":        "object",
 	"users":                "object"
 }
