@@ -1208,11 +1208,9 @@ consists of a single part with a JSON object containing an `info` property
 	- `user_name` : string (optional)
 	- `user_name_old` : string (optional)
 	- `user_deleted` : boolean (optional)
-	- `member_silenced` : boolean (optional)
 
-	A dialogue peer's or a channel member's `name` attribute changed, a
-	dialogue peer was deleted, or a channel member's `silenced` attribute
-	changed.
+	A dialogue peer's or a channel member's `name` attribute changed, or a
+	dialogue peer was deleted.
 
 - `channel`
 
@@ -1235,6 +1233,13 @@ consists of a single part with a JSON object containing an `info` property
 	- `user_name` : string (optional)
 
 	A user left the channel.
+
+- `member`
+
+	- `user_id` : string
+	- `member_silenced` : boolean (optional)
+
+	A channel member's `silenced` attribute changed.
 
 - `access`
 
