@@ -1247,6 +1247,7 @@ consists of a single part with a JSON object containing an `info` property
 - `member`
 
 	- `user_id` : string
+	- `user_name` : string (optional)
 	- `member_silenced` : boolean (optional)
 
 	A channel member's `silenced` attribute changed.
