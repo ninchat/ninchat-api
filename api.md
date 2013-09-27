@@ -1276,7 +1276,13 @@ single part with a JSON object containing properties described below.
 - `icon` : string
 - `url` : string
 - `thumbnail` : string (optional)
-	
+
+
+### `ninchat.com/notice`
+
+Similar to `ninchat.com/text` (described below), but may only be sent to
+channels, and only by channel operators.
+
 	
 ### `ninchat.com/text`
 
