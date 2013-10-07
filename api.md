@@ -491,16 +491,22 @@ Access types:
 
 - `action_id` : integer
 - `access_key` : string (optional)
-- `identity_type` : string
-- `identity_name` : string
+- `user_id` : string (optional)
+- `identity_type` : string (optional)
+- `identity_name` : string (optional)
 
 Reply event: [`access_found`](#access_found)
 
-Send a pre-created access key via email (so `identity_type` must be "email" for
-now).
+Send a pre-created channel access key to a user (= invite).  There are three
+modes of operation:
 
-If `access_key` is not specified, the (undisclosed) access key associated with
-the user's email identity is used (if any).
+1. If `access_key` and `user_id` are specified, a `ninchat.com/info` message is
+   sent to the user in a dialogue.
+2. If `access_key`, `identity_type` and `identity_name` are specified, an email
+   is sent.  (In other words, `identity_type` must be "email" for now.)
+3. If `identity_type` and `identity_name` are specified without `access_key`,
+   the (undisclosed) access key associated with the user's identity is used, if
+   any.  (This is the verification-link-resend feature.)
 
 
 ### `describe_access`

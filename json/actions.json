@@ -208,8 +208,9 @@
 	"send_access": {
 		"action_id":            true,
 		"access_key":           false,
-		"identity_type":        true,
-		"identity_name":        true
+		"user_id":              false,
+		"identity_type":        false,
+		"identity_name":        false
 	},
 
 	"search": {
