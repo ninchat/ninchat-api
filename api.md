@@ -1352,11 +1352,27 @@ consists of a single part with a JSON object containing a `text` property
 Transports
 ==========
 
+Both supported transport types support an initial service discovery step:
+
+Before making a WebSocket connection or initiating HTTP long polling, the
+client may discover a direct address by making a HTTP GET request to
+`https://api.ninchat.com/v2/endpoint`.  The response contains a JSON object, or
+a JavaScript statement (JSONP) if the `callback` query parameter is specified.
+The object contains the `hosts` property (string array).  The client should try
+the hosts in order until a transport connection succeeds.  The hosts array
+shouldn't be used permanently; a fresh array must be requested when a new
+session is to be created, or after looping through the array unsuccessfully for
+a time.
+
+A client implementation may choose to omit the service discovery step (e.g. for
+simplicity) and use the `api.ninchat.com` hostname for transport connections.
+
+
 WebSocket
 ---------
 
-- URL: `wss://api.ninchat.com/socket`
-- Protocol: `ninchat.com-1`
+The URL format is `wss://HOST/v2/socket`, where `HOST` is an address aquired
+during the service discovery step.  The WebSocket subprotocol is `ninchat.com`.
 
 Actions and events consist of one or more frames.  The first one is a text
 frame containing a JSON object with the `action` or `event` property (string),
@@ -1383,7 +1399,21 @@ framing.
 
 ### Examples
 
-Sent frame #1:
+Service discovery:
+
+	GET /v2/endpoint HTTP/1.1
+	Host: api.ninchat.com
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json
+
+	{
+	  "hosts": ["192-0-43-10.ninchat.com", "192-0-43-11.ninchat.com"]
+	}
+
+...
+
+Sent WebSocket frame:
 
 	{
 	  "action":       "send_message",
@@ -1394,11 +1424,11 @@ Sent frame #1:
 	  "frames":       1
 	}
 
-Sent frame #2:
+Sent WebSocket frame:
 
 	{"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 
-Received frame #1:
+Received WebSocket frame:
 
 	{
 	  "event":             "message_received",
@@ -1413,7 +1443,7 @@ Received frame #1:
 	  "frames":            1
 	}
 
-Received frame #2:
+Received WebSocket frame:
 
 	{"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 
@@ -1421,7 +1451,8 @@ Received frame #2:
 HTTP Long Poll
 --------------
 
-- URL: `https://api.ninchat.com/poll/1`
+The URL format is `https://HOST/v2/poll` (excluding query parameters), where
+`HOST` is an address aquired during the service discovery step.
 
 Actions and events consist of a single object containing an `action` or `event`
 property (string), the optional `payload` property and the parameter properties
@@ -1448,15 +1479,26 @@ any reply events are delivered by way of `resume_session`.
 
 ### Examples
 
-Request #1:
+Service discovery:
 
-	GET /poll/1?data=%7B%22action%22%3A%22create_session%22%2C%22message_types%22%3A
-	%5B%22ninchat.com%2Ftext%22%5D%7D&callback=func HTTP/1.1
+	GET /v2/endpoint?callback=connect HTTP/1.1
 	Host: api.ninchat.com
 
 	HTTP/1.1 200 OK
-	Host: api.ninchat.com
-	Content-Length: N
+	Content-Type: application/javascript; charset=utf-8
+
+	connect({
+	  "hosts": ["192-0-43-10.ninchat.com", "192-0-43-11.ninchat.com"]
+	});
+
+Action:
+
+	GET /v2/poll?data=%7B%22action%22%3A%22create_session%22%2C%22message_types%22%3A
+	%5B%22ninchat.com%2Ftext%22%5D%7D&callback=func HTTP/1.1
+	Host: 192-0-43-10.ninchat.com
+
+	HTTP/1.1 200 OK
+	Content-Type: application/javascript; charset=utf-8
 
 	func([{
 	  "event":           "session_created",
@@ -1472,15 +1514,14 @@ Request #1:
 	  "event_id":        1
 	}]);
 
-Request #2:
+Polling:
 
-	GET /poll/1?data=%7B%22action%22%3A%22resume_session%22%2C%22session_id%22%3A%22
+	GET /v2/poll?data=%7B%22action%22%3A%22resume_session%22%2C%22session_id%22%3A%22
 	4pfi0asg4pt56_0%22%2C%22event_id%22%3A1%7D&callback=func HTTP/1.1
 	Host: 192-0-43-10.ninchat.com
 
 	HTTP/1.1 200 OK
-	Host: 192-0-43-10.ninchat.com
-	Content-Length: N
+	Content-Type: application/javascript; charset=utf-8
 
 	func([{
 	  "event":             "message_received",
