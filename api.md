@@ -1330,6 +1330,10 @@ session can't be changed during a connection.
 The client and the server may send empty (keep-alive) frames between
 actions/events.  They should be ignored by the peer.
 
+The frames may be text or binary.  Even if the client expects a frame
+containing JSON or other text-based data, it must be able to handle binary
+framing.
+
 
 ### Examples
 
