@@ -15,8 +15,9 @@ event parameter values are represented as JSON types.
 Most actions support or require the `action_id` parameter, which may be used to
 detect success or failure of the action.  When the client receives (at least)
 one event with the corresponding `action_id`, the action has succeeded, unless
-the event was `error`.  The values should be a positive, ascending integers.
-If no response event is received, the client may retry the action (e.g. after
+the event was `error`.  The values should be ascending integers, starting at 1,
+over the lifetime of the client instance's state (even across sessions).  If no
+response event is received, the client may retry the action (e.g. after
 reconnecting) with the same `action_id` value.
 
 In addition to the parameters listed below, most events contain the
