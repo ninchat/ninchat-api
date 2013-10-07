@@ -1104,6 +1104,13 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Set the `silenced` channel member attribute for users who join the channel.
 
+- `blacklisted_message_types` : string array (writable by operators)
+
+	Message types matching one of these patterns can't (currently) be sent to
+	the channel.  This works in reverse compared to the `message_types`
+	parameter of the [`create_session`](#create_session) action.  This also
+	applies to the automatically generated `ninchat.com/info/*` messages.
+
 - `name` : string (writable by operators)
 
 	Short subject name.
