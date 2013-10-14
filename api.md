@@ -45,6 +45,11 @@ and you should not rely on their nonexistence.  Enumerations
 clients should be able to cope with events with unknown values for such
 parameters.
 
+When a newer API version is available, a client accessing an old API endpoint
+may receive an unsolicited `error` event with error_type set to `deprecated`.
+(It's purely informational, and doesn't necessarily imply immediate service
+degradation.)
+
 
 Actions
 -------
@@ -1182,6 +1187,7 @@ Error types
 - `channel_not_found`
 - `channel_quota_exceeded`
 - `connection_superseded`
+- `deprecated`
 - `identity_already_exists`
 - `identity_not_found`
 - `internal`
