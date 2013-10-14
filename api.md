@@ -404,6 +404,8 @@ Reply event: [`message_received`](#message_received) or none (if `action_id` is
              not specified)
 
 Message content is provided in the payload (see [Transports](#transports)).
+The content may not be empty: it must contain one or more parts (but the
+individual parts may be zero-length).
 
 Exactly one of `channel_id`, `user_id` and `identity_name` must be specified.
 `user_id` specifies a private conversation party.  `identity_type` and
@@ -932,7 +934,11 @@ Someone else left or was removed from a realm.
 - `message_ttl` : float (if applicable)
 - `history_length` : integer (if succeeding a `history_results` event)
 
-Message content is provided in the payload (see [Transports](#transports)).
+Message content is optionally provided in the payload (see
+[Transports](#transports)).  The content may be omitted in some cases,
+including but not limited to the situation when the sender session hasn't
+subscribed to the sent message type, but expects a reply event.
+
 `message_user_id` and `message_user_name` are not set for system messages (see
 [Message types](#message-types)).
 
