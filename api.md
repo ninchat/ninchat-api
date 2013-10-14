@@ -117,8 +117,28 @@ Reply event: [`user_found`](#user_found)
 - `action_id` : integer
 - `user_attrs` : object (optional)
 - `user_settings` : object (optional)
+- `payload_attrs` : string array (optional)
 
 Reply event: [`user_updated`](#user_updated)
+
+The `iconurl` attribute may be set by uploading image data in the payload: the
+index of the payload frame is determined by the index of the "icon" string in
+the `payload_attrs` array.  WebSocket example:
+
+First frame:
+
+	{
+	  "action":        "update_user",
+	  "action_id":     3,
+	  "payload_attrs": ["icon"],
+	  "frames":        1
+	}
+
+Second frame:
+
+	\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x01\x03
+	\x00\x00\x00%\xdbV\xca\x00\x00\x00\x03PLTE\x93c+\xbaC\xfaW\x00\x00\x00\nIDA
+	T\x08\xd7c`\x00\x00\x00\x02\x00\x01\xe2!\xbc3\x00\x00\x00\x00IEND\xaeB`\x82
 
 
 ### `delete_user`
@@ -1021,9 +1041,11 @@ integers, counting seconds since 1970-01-01 UTC.
 	Transient user account.  It will be deleted after the last session is
 	closed (unless this attribute is unset before that).
 
-- `iconurl` : string
+- `iconurl` : string (unsettable by self)
 
-	URL pointing to a small square profile picture.
+	URL pointing to a small square profile picture.  This may be set indirectly
+	by uploading icon image data; see the [`update_user`](#update_user) action
+	for details.
 
 - `idle` : time
 

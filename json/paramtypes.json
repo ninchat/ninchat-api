@@ -33,6 +33,7 @@
 	"message_types":        "string array",
 	"message_user_id":      "string",
 	"message_user_name":    "string",
+	"payload_attrs":        "string array",
 	"realm_attrs":          "object",
 	"realm_id":             "string",
 	"realm_member":         "bool",
