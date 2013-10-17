@@ -927,7 +927,7 @@ Someone else left or was removed from a realm.
 - `channel_id` : string (if applicable)
 - `user_id` : string (if applicable)
 - `message_id` : string
-- `message_time` : integer
+- `message_time` : float
 - `message_type` : string
 - `message_user_id` : string (if applicable)
 - `message_user_name` : string (if applicable)

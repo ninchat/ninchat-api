@@ -27,7 +27,7 @@
 	"identity_type":        "string",
 	"member_attrs":         "object",
 	"message_id":           "string",
-	"message_time":         "int",
+	"message_time":         "float",
 	"message_ttl":          "float",
 	"message_type":         "string",
 	"message_types":        "string array",
