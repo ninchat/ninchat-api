@@ -641,7 +641,7 @@ containing the `channel_attrs` object and the optional `channel_status` and
 		"12345": {
 			"channel_attrs":  { "attr": "value", ... },
 			"channel_status": "unread",
-			"realm_id:        "67890"
+			"realm_id":       "67890"
 		},
 		...
 	}
