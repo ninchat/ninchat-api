@@ -1005,14 +1005,24 @@ properties are set:
 Following a `search` action, if neither of `users` and `channels` is defined,
 this is the final response event.
 
-The `users` object consists of user identifiers mapped to user attributes:
+The `users` and `channels` objects look like this:
 
 	"users": {
-		"12345": { "attr": "value", ... },
+		"12345": {
+			"user_attrs": { "attr": "value", ... },
+			"weight":     17.3
+		},
 		...
 	}
 
-`channels` is similar to [`user_channels`](#session_created) described above.
+	"channels": {
+		"23456": {
+			"channel_attrs": { "attr": "value", ... },
+			"realm_id":      "34567",
+			"weight":        0.1
+		},
+		...
+	}
 
 
 ### `pong`
