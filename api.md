@@ -626,10 +626,14 @@ containing identity names mapped to identity attributes:
 
 The `user_dialogues` object consists of user identifiers (of users with whom
 there are ongoing private conversations) mapped to objects containing the
-optional `dialogue_status` string:
+optional `dialogue_members` object and the optional `dialogue_status` string:
 
 	"user_dialogues": {
 		"12345": {
+			"dialogue_members": {
+				"23456": { "attr": "value", ... },
+				"65432": { "attr": "value", ... }
+			},
 			"dialogue_status": "highlight"
 		},
 		...
