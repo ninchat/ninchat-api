@@ -629,7 +629,9 @@ there are ongoing private conversations) mapped to objects containing the
 optional `dialogue_status` string:
 
 	"user_dialogues": {
-		"12345": "highlight",
+		"12345": {
+			"dialogue_status": "highlight"
+		},
 		...
 	}
 
