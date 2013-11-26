@@ -1,17 +1,9 @@
-This document describes version 1 of the open [Ninchat](https://ninchat.com)
+This document describes version 2 of the open [Ninchat](https://ninchat.com)
 API.  It will be extended over time, without causing regressions to conforming
 client applications.  (If a new, backward-incompatible API version is released,
 it will be accessible using a new endpoint address or protocol identifier.)
 
 Copyright &copy; 2012-2013 Somia Reality Oy.  All rights reserved.
-
-
-Model
-=====
-
-![Diagram](model.png)
-
-The logical data model which is accessed through the interface
 
 
 Interface
@@ -23,8 +15,9 @@ event parameter values are represented as JSON types.
 Most actions support or require the `action_id` parameter, which may be used to
 detect success or failure of the action.  When the client receives (at least)
 one event with the corresponding `action_id`, the action has succeeded, unless
-the event was `error`.  The values should be a positive, ascending integers.
-If no response event is received, the client may retry the action (e.g. after
+the event was `error`.  The values should be ascending integers, starting at 1,
+over the lifetime of the client instance's state (even across sessions).  If no
+response event is received, the client may retry the action (e.g. after
 reconnecting) with the same `action_id` value.
 
 In addition to the parameters listed below, most events contain the
@@ -125,8 +118,28 @@ Reply event: [`user_found`](#user_found)
 - `action_id` : integer
 - `user_attrs` : object (optional)
 - `user_settings` : object (optional)
+- `payload_attrs` : string array (optional)
 
 Reply event: [`user_updated`](#user_updated)
+
+The `iconurl` attribute may be set by uploading image data in the payload: the
+index of the payload frame is determined by the index of the "icon" string in
+the `payload_attrs` array.  WebSocket example:
+
+First frame:
+
+	{
+	  "action":        "update_user",
+	  "action_id":     3,
+	  "payload_attrs": ["icon"],
+	  "frames":        1
+	}
+
+Second frame:
+
+	\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x01\x03
+	\x00\x00\x00%\xdbV\xca\x00\x00\x00\x03PLTE\x93c+\xbaC\xfaW\x00\x00\x00\nIDA
+	T\x08\xd7c`\x00\x00\x00\x02\x00\x01\xe2!\xbc3\x00\x00\x00\x00IEND\xaeB`\x82
 
 
 ### `delete_user`
@@ -391,6 +404,8 @@ Reply event: [`message_received`](#message_received) or none (if `action_id` is
              not specified)
 
 Message content is provided in the payload (see [Transports](#transports)).
+The content may not be empty: it must contain one or more parts (but the
+individual parts may be zero-length).
 
 Exactly one of `channel_id`, `user_id` and `identity_name` must be specified.
 `user_id` specifies a private conversation party.  `identity_type` and
@@ -505,8 +520,8 @@ Reply event: [`access_found`](#access_found)
 Send a pre-created channel access key to a user (= invite).  There are three
 modes of operation:
 
-1. If `access_key` and `user_id` are specified, a `ninchat.com/info` message is
-   sent to the user in a dialogue.
+1. If `access_key` and `user_id` are specified, a `ninchat.com/info/*` message
+   is sent to the user in a dialogue.
 2. If `access_key`, `identity_type` and `identity_name` are specified, an email
    is sent.  (In other words, `identity_type` must be "email" for now.)
 3. If `identity_type` and `identity_name` are specified without `access_key`,
@@ -561,7 +576,7 @@ Events
 ### `session_created`
 
 - `session_id` : string
-- `session_host` : string
+- `session_host` : string (optional)
 - `user_id` : string
 - `user_auth` : string (if a new authentication token was created)
 - `user_attrs` : object
@@ -573,8 +588,8 @@ Events
 - `user_realms` : object
 - `user_realms_member` : object (optional)
 
-`session_host` contains a hostname which should be used in subsequent
-connections for this session.
+If specified, `session_host` contains a hostname which should be used in
+subsequent connections for this session.
 
 If a new user was created, then `user_auth` contains a generated password which
 may be used in future [`create_session`](#create_session) actions by the
@@ -912,14 +927,18 @@ Someone else left or was removed from a realm.
 - `channel_id` : string (if applicable)
 - `user_id` : string (if applicable)
 - `message_id` : string
-- `message_time` : integer
+- `message_time` : float
 - `message_type` : string
 - `message_user_id` : string (if applicable)
 - `message_user_name` : string (if applicable)
 - `message_ttl` : float (if applicable)
 - `history_length` : integer (if succeeding a `history_results` event)
 
-Message content is provided in the payload (see [Transports](#transports)).
+Message content is optionally provided in the payload (see
+[Transports](#transports)).  The content may be omitted in some cases,
+including but not limited to the situation when the sender session hasn't
+subscribed to the sent message type, but expects a reply event.
+
 `message_user_id` and `message_user_name` are not set for system messages (see
 [Message types](#message-types)).
 
@@ -986,14 +1005,24 @@ properties are set:
 Following a `search` action, if neither of `users` and `channels` is defined,
 this is the final response event.
 
-The `users` object consists of user identifiers mapped to user attributes:
+The `users` and `channels` objects look like this:
 
 	"users": {
-		"12345": { "attr": "value", ... },
+		"12345": {
+			"user_attrs": { "attr": "value", ... },
+			"weight":     17.3
+		},
 		...
 	}
 
-`channels` is similar to [`user_channels`](#session_created) described above.
+	"channels": {
+		"23456": {
+			"channel_attrs": { "attr": "value", ... },
+			"realm_id":      "34567",
+			"weight":        0.1
+		},
+		...
+	}
 
 
 ### `pong`
@@ -1029,9 +1058,11 @@ integers, counting seconds since 1970-01-01 UTC.
 	Transient user account.  It will be deleted after the last session is
 	closed (unless this attribute is unset before that).
 
-- `iconurl` : string
+- `iconurl` : string (unsettable by self)
 
-	URL pointing to a small square profile picture.
+	URL pointing to a small square profile picture.  This may be set indirectly
+	by uploading icon image data; see the [`update_user`](#update_user) action
+	for details.
 
 - `idle` : time
 
@@ -1088,6 +1119,13 @@ integers, counting seconds since 1970-01-01 UTC.
 - `autosilence` : boolean (writable by operators)
 
 	Set the `silenced` channel member attribute for users who join the channel.
+
+- `blacklisted_message_types` : string array (writable by operators)
+
+	Message types matching one of these patterns can't (currently) be sent to
+	the channel.  This works in reverse compared to the `message_types`
+	parameter of the [`create_session`](#create_session) action.  This also
+	applies to the automatically generated `ninchat.com/info/*` messages.
 
 - `name` : string (writable by operators)
 
@@ -1223,14 +1261,14 @@ with other kind of message types are passed through without any additional
 processing.
 
 
-### `ninchat.com/info`
+### `ninchat.com/info/*`
 
 Info messages record relevant events in dialogue or channel history.  They are
 generated by the server; ones sent by the client are rejected.  The payload
-consists of a single part with a JSON object containing an `info` property
-(string) and additional details described below.
+consists of a single part with a JSON object.  The contents depend on the
+specific message type.
 
-- `user`
+#### `ninchat.com/info/user`
 
 	- `user_id` : string
 	- `user_name` : string (optional)
@@ -1240,14 +1278,14 @@ consists of a single part with a JSON object containing an `info` property
 	A dialogue peer's or a channel member's `name` attribute changed, or a
 	dialogue peer was deleted.
 
-- `channel`
+#### `ninchat.com/info/channel`
 
 	- `channel_attrs_old` : object
 	- `channel_attrs_new` : object
 
 	Channel attributes changed.
 
-- `join`
+#### `ninchat.com/info/join`
 
 	- `user_id` : string
 	- `user_name` : string (optional)
@@ -1255,14 +1293,14 @@ consists of a single part with a JSON object containing an `info` property
 
 	A user joined the channel.
 
-- `part`
+#### `ninchat.com/info/part`
 
 	- `user_id` : string
 	- `user_name` : string (optional)
 
 	A user left the channel.
 
-- `member`
+#### `ninchat.com/info/member`
 
 	- `user_id` : string
 	- `user_name` : string (optional)
@@ -1270,7 +1308,7 @@ consists of a single part with a JSON object containing an `info` property
 
 	A channel member's `silenced` attribute changed.
 
-- `access`
+#### `ninchat.com/info/access`
 
 	- `user_id` : string
 	- `access_key` : string
@@ -1314,11 +1352,27 @@ consists of a single part with a JSON object containing a `text` property
 Transports
 ==========
 
+Both supported transport types support an initial service discovery step:
+
+Before making a WebSocket connection or initiating HTTP long polling, the
+client may discover a direct address by making a HTTP GET request to
+`https://api.ninchat.com/v2/endpoint`.  The response contains a JSON object, or
+a JavaScript statement (JSONP) if the `callback` query parameter is specified.
+The object contains the `hosts` property (string array).  The client should try
+the hosts in order until a transport connection succeeds.  The hosts array
+shouldn't be used permanently; a fresh array must be requested when a new
+session is to be created, or after looping through the array unsuccessfully for
+a time.
+
+A client implementation may choose to omit the service discovery step (e.g. for
+simplicity) and use the `api.ninchat.com` hostname for transport connections.
+
+
 WebSocket
 ---------
 
-- URL: `wss://api.ninchat.com/socket`
-- Protocol: `ninchat.com-1`
+The URL format is `wss://HOST/v2/socket`, where `HOST` is an address aquired
+during the service discovery step.  The WebSocket subprotocol is `ninchat.com`.
 
 Actions and events consist of one or more frames.  The first one is a text
 frame containing a JSON object with the `action` or `event` property (string),
@@ -1338,10 +1392,28 @@ session can't be changed during a connection.
 The client and the server may send empty (keep-alive) frames between
 actions/events.  They should be ignored by the peer.
 
+The frames may be text or binary.  Even if the client expects a frame
+containing JSON or other text-based data, it must be able to handle binary
+framing.
+
 
 ### Examples
 
-Sent frame #1:
+Service discovery:
+
+	GET /v2/endpoint HTTP/1.1
+	Host: api.ninchat.com
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json
+
+	{
+	  "hosts": ["192-0-43-10.ninchat.com", "192-0-43-11.ninchat.com"]
+	}
+
+...
+
+Sent WebSocket frame:
 
 	{
 	  "action":       "send_message",
@@ -1352,11 +1424,11 @@ Sent frame #1:
 	  "frames":       1
 	}
 
-Sent frame #2:
+Sent WebSocket frame:
 
 	{"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 
-Received frame #1:
+Received WebSocket frame:
 
 	{
 	  "event":             "message_received",
@@ -1371,7 +1443,7 @@ Received frame #1:
 	  "frames":            1
 	}
 
-Received frame #2:
+Received WebSocket frame:
 
 	{"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 
@@ -1379,7 +1451,8 @@ Received frame #2:
 HTTP Long Poll
 --------------
 
-- URL: `https://api.ninchat.com/poll/1`
+The URL format is `https://HOST/v2/poll` (excluding query parameters), where
+`HOST` is an address aquired during the service discovery step.
 
 Actions and events consist of a single object containing an `action` or `event`
 property (string), the optional `payload` property and the parameter properties
@@ -1406,20 +1479,30 @@ any reply events are delivered by way of `resume_session`.
 
 ### Examples
 
-Request #1:
+Service discovery:
 
-	GET /poll/1?data=%7B%22action%22%3A%22create_session%22%2C%22message_types%22%3A
-	%5B%22ninchat.com%2Ftext%22%5D%7D&callback=func HTTP/1.1
+	GET /v2/endpoint?callback=connect HTTP/1.1
 	Host: api.ninchat.com
 
 	HTTP/1.1 200 OK
-	Host: api.ninchat.com
-	Content-Length: N
+	Content-Type: application/javascript; charset=utf-8
+
+	connect({
+	  "hosts": ["192-0-43-10.ninchat.com", "192-0-43-11.ninchat.com"]
+	});
+
+Action:
+
+	GET /v2/poll?data=%7B%22action%22%3A%22create_session%22%2C%22message_types%22%3A
+	%5B%22ninchat.com%2Ftext%22%5D%7D&callback=func HTTP/1.1
+	Host: 192-0-43-10.ninchat.com
+
+	HTTP/1.1 200 OK
+	Content-Type: application/javascript; charset=utf-8
 
 	func([{
 	  "event":           "session_created",
 	  "session_id":      "4pfi0asg4pt56_0",
-	  "session_host":    "192-0-43-10.ninchat.com",
 	  "user_id":         "0ebbjg1g",
 	  "user_auth":       "2634d03q1tkt0",
 	  "user_attrs":      { "name": "Elite" },
@@ -1431,15 +1514,14 @@ Request #1:
 	  "event_id":        1
 	}]);
 
-Request #2:
+Polling:
 
-	GET /poll/1?data=%7B%22action%22%3A%22resume_session%22%2C%22session_id%22%3A%22
+	GET /v2/poll?data=%7B%22action%22%3A%22resume_session%22%2C%22session_id%22%3A%22
 	4pfi0asg4pt56_0%22%2C%22event_id%22%3A1%7D&callback=func HTTP/1.1
 	Host: 192-0-43-10.ninchat.com
 
 	HTTP/1.1 200 OK
-	Host: 192-0-43-10.ninchat.com
-	Content-Length: N
+	Content-Type: application/javascript; charset=utf-8
 
 	func([{
 	  "event":             "message_received",

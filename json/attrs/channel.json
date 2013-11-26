@@ -1,5 +1,7 @@
 {
 	"autosilence":          { "type": "bool",         "writable":   true },
+	"blacklisted_message_types":
+	                        { "type": "string array", "writable":   true },
 	"name":                 { "type": "string",       "writable":   true },
 	"owner_id":             { "type": "string" },
 	"private":              { "type": "bool",         "writable":   true },

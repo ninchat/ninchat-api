@@ -13,7 +13,7 @@
 
 	"session_created": {
 		"session_id":           true,
-		"session_host":         true,
+		"session_host":         false,
 		"user_id":              true,
 		"user_auth":            false,
 		"user_attrs":           true,
