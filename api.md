@@ -6,14 +6,6 @@ it will be accessible using a new endpoint address or protocol identifier.)
 Copyright &copy; 2012-2013 Somia Reality Oy.  All rights reserved.
 
 
-Model
-=====
-
-![Diagram](model.png)
-
-The logical data model which is accessed through the interface
-
-
 Interface
 =========
 
