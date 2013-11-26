@@ -576,7 +576,7 @@ Events
 ### `session_created`
 
 - `session_id` : string
-- `session_host` : string
+- `session_host` : string (optional)
 - `user_id` : string
 - `user_auth` : string (if a new authentication token was created)
 - `user_attrs` : object
@@ -588,8 +588,8 @@ Events
 - `user_realms` : object
 - `user_realms_member` : object (optional)
 
-`session_host` contains a hostname which should be used in subsequent
-connections for this session.
+If specified, `session_host` contains a hostname which should be used in
+subsequent connections for this session.
 
 If a new user was created, then `user_auth` contains a generated password which
 may be used in future [`create_session`](#create_session) actions by the
@@ -1461,7 +1461,6 @@ Request #1:
 	func([{
 	  "event":           "session_created",
 	  "session_id":      "4pfi0asg4pt56_0",
-	  "session_host":    "192-0-43-10.ninchat.com",
 	  "user_id":         "0ebbjg1g",
 	  "user_auth":       "2634d03q1tkt0",
 	  "user_attrs":      { "name": "Elite" },
