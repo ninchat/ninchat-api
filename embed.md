@@ -24,10 +24,10 @@ Load the JavaScript and asynchronously initialize a chat bar to bottom right:
 	        	});
         	};
 
-	        (function(doc) {
-		        if (doc.getElementById('ninchat-js')) {
-			        return;
-	        	}
+		(function(doc) {
+			if (doc.getElementById('ninchat-js')) {
+				return;
+			}
 
 			var js, first = doc.getElementsByTagName('script')[0], date = new Date();
 
