@@ -1,4 +1,4 @@
-Examples on how to embed Ninchat to a web page. There are two different use cases for embedding:
+Examples on how to embed Ninchat to a web page.  There are two different use cases for embedding:
 
 1. Queued 1-on-1 customer service chat
 2. Multiple user chat room(s)
@@ -99,7 +99,7 @@ Show two different chat rooms, e.g. one where only experts are allowed to talk a
 	        var js, first = doc.getElementsByTagName('script')[0];
 
             js     = doc.createElement('script');
-	        js.id  = 'ninchat-js';
+			js.id  = 'ninchat-js';
             js.src = 'https://ninchat.com/ng/js/embed.js';
             first.parentNode.insertBefore(js, first);
         }(document));
@@ -107,11 +107,48 @@ Show two different chat rooms, e.g. one where only experts are allowed to talk a
 
 
 
-Initialization parameters
--------------------------
+Initialization options
+----------------------
 
 
 Public API
 ----------
 
+### `Ninchat.channel`
 
+- `channelId` : string
+- `containerId` : string (optional)
+
+Change to another channel, will join/follow if necessary.
+
+
+### `Ninchat.embedInit`
+
+- `_options` : object
+
+Initialize embedded chat, see available options in [Initialization options](#initialization-options).
+
+
+### `Ninchat.iframeInit`
+
+- `_options` : object
+
+Re-initialize the iframe, see available options in [Initialization options](#initialization-options). Can be used for example to login with another user.
+
+
+### `Ninchat.rename`
+
+- `name` : string
+- `containerId` : string (optional)
+
+Rename current user in container.
+
+
+### `Ninchat.start`
+
+- `containerId` : string (optional)
+
+Start chat if `autoStart` is set to `false`.
+
+
+This document is subject to changes.
