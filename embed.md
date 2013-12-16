@@ -220,6 +220,10 @@ Default value is `false` or `null` unless otherwise spesified.
 - `motd` : string
 
 	Message of the day text displayed below the customer service queues. May contain HTML.
+	
+- `noQueuesText` : string
+
+	Text displayed when no open customer service queues are available.
 
 
 Public API
