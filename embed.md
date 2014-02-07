@@ -33,7 +33,7 @@ Load the JavaScript and asynchronously initialize a chat bar to bottom right:
 
 			js     = doc.createElement('script');
 			js.id  = 'ninchat-js';
-			js.src = 'https://ninchat.com/ng/js/embed.js?_=' + (date.getMonth() * 100 + date.getDate());
+			js.src = 'https://ninchat.com/js/embed.js?_=' + (date.getMonth() * 100 + date.getDate());
 			first.parentNode.insertBefore(js, first);
 		}(document));
 	</script>
@@ -63,7 +63,7 @@ Load the JavaScript and add the chat room to pre-defined element on page:
 
 			js     = doc.createElement('script');
 			js.id  = 'ninchat-js';
-			js.src = 'https://ninchat.com/ng/js/embed.js?_=' + (date.getMonth() * 100 + date.getDate());
+			js.src = 'https://ninchat.com/js/embed.js?_=' + (date.getMonth() * 100 + date.getDate());
 			first.parentNode.insertBefore(js, first);
 		}(document));
 	</script>
@@ -100,7 +100,7 @@ Show two different chat rooms, e.g. one where only experts are allowed to talk a
 
 			js     = doc.createElement('script');
 			js.id  = 'ninchat-js';
-			js.src = 'https://ninchat.com/ng/js/embed.js?_=' + (date.getMonth() * 100 + date.getDate());
+			js.src = 'https://ninchat.com/js/embed.js?_=' + (date.getMonth() * 100 + date.getDate());
 			first.parentNode.insertBefore(js, first);
 		}(document));
 	</script>
