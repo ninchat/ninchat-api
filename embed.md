@@ -163,6 +163,10 @@ Default value is `false` or `null` unless otherwise spesified.
 - `remember` : boolean, default: `true`
 
 	Remember the user after page reload.
+	
+- `reverseBacklog` : boolean
+
+	Backlog in reverse order with the input field at top.
 
 - `translations` : object
 
