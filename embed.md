@@ -200,11 +200,7 @@ Default value is `false` or `null` unless otherwise spesified.
 - `titleBackground` : string, default: `black`
 
 	Background color for the title bar when using customer service mode.
-	
-- `titleBorder` : string, default: `black`
 
-	Border color for the said title bar.
-	
 - `titleText` : string, default: `Audience`
 
 	Text for the title bar.
