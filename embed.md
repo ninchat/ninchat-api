@@ -132,6 +132,10 @@ Default value is `false` or `null` unless otherwise spesified.
 
 	Comma separated list of visible customer service queues, list all if not set.
 	
+- `audienceRating` : boolean
+
+	Enable customer service satisfaction rateing.
+	
 - `channelId` : string
 
 	The channel id where we land after loading chat.
