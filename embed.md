@@ -112,17 +112,12 @@ Initialization options
 
 Default value is `false` or `null` unless otherwise spesified.
 
+
+### Generic options
+
 - `autoStart` : boolean, default: `true`
 
 	Start chat automatically. If set to `false` you must use [`Ninchat.start()`](#ninchat-start) to start chat, can be used to start customer service chat on demand.
-	
-- `cookiePrefix` : string, default: `ninchat_`
-
-	Prefix used when storing chat state on client browser. Mainly for customer service, saves to chat popup horizontal position and open/close state.
-	
-- `open` : boolean
-
-	Open chat automatically after loading. Used with customer service chat.
 	
 - `audienceRealmId` : string
 
@@ -140,6 +135,10 @@ Default value is `false` or `null` unless otherwise spesified.
 
 	The channel id where we land after loading chat.
 
+- `cookiePrefix` : string, default: `ninchat_`
+
+	Prefix used when storing chat state on client browser. Mainly for customer service, saves to chat popup horizontal position and open/close state.
+	
 - `debug` : boolean
 
 	Show debug data in console.
@@ -164,6 +163,18 @@ Default value is `false` or `null` unless otherwise spesified.
 
 	Force long poll connection instead of websocket.
 
+- `motd` : string
+
+	Message of the day text displayed below the customer service queues. May contain HTML.
+	
+- `noQueuesText` : string
+
+	Text displayed when no open customer service queues are available.
+
+- `open` : boolean
+
+	Open chat automatically after loading. Used with customer service chat.
+	
 - `remember` : boolean, default: `true`
 
 	Remember the user after page reload.
@@ -193,14 +204,29 @@ Default value is `false` or `null` unless otherwise spesified.
 
 	Name to be used in chat. The name will be prompted when trying to send first message if not given.
 
+
+### UI options
+	
 - `containerId` : string, default: `ninchat-iframe`
 
 	DOM element id for the chat container. If using the default value you don't need to give `containerId` in the public API calls.
-	
+
 - `css` : string
 
 	URL for custom CSS file included in the chat.
 	
+- `dock` : string, default: `bottom`
+
+	Dock floating chat window to (only bottom supported atm).
+	
+- `height` : string, default: `400px`
+
+	Customer service chat window height.
+
+- `responsive` : boolean|number
+
+	If true (or custom breakpoint pixel value), container will take max width (or height) if screen width below 800 pixels.
+
 - `titleBackground` : string, default: `black`
 
 	Background color for the title bar when using customer service mode.
@@ -217,17 +243,6 @@ Default value is `false` or `null` unless otherwise spesified.
 
 	Customer service chat window width.
 	
-- `height` : string, default: `400px`
-
-	Customer service chat window height.
-
-- `motd` : string
-
-	Message of the day text displayed below the customer service queues. May contain HTML.
-	
-- `noQueuesText` : string
-
-	Text displayed when no open customer service queues are available.
 
 
 Public API
