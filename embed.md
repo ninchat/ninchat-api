@@ -241,6 +241,13 @@ Public API
 Change to another channel, will join/follow if necessary.
 
 
+### `Ninchat.close`
+
+- `containerId` : string (optional)
+
+Close floating chat window and send delete_user, same as clicking &times;.
+
+
 ### `Ninchat.embedInit`
 
 - `_options` : object
@@ -268,6 +275,14 @@ Rename current user in container.
 - `containerId` : string (optional)
 
 Start chat if `autoStart` is set to `false`.
+
+
+### `Ninchat.toggle`
+
+- `open` : boolean (optional)
+- `containerId` : string (optional)
+
+Toggle floating window open state.
 
 
 This document is subject to changes.
