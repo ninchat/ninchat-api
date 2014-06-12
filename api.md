@@ -228,6 +228,8 @@ Identity types:
   the email address.
 - "facebook" creates an identity to be used for authentication with the help of
   the Facebook SDK.  See `create_session`.
+- "gcm" registers a GCM id.  `identity_name` specifies the GCM registration id.
+- "apns" registers an APNs id.  `identity_name` specifies the APNs device id.
 
 A secret authentication token (password) is associated with the identity if
 `identity_auth_new` is specified.
@@ -1351,18 +1353,20 @@ Settings
 
 - `notifications` : object
 
-	Enables audio, email and desktop notifications for channel, hightlight
-	and/or private messages:
+	Enables audio, email, desktop and GCM/APNs notifications for channel,
+	hightlight and/or private messages:
 
 		"notifications": {
-			"channel_audio":   false,
-			"highlight_audio": false,
-			"private_audio":   false,
-			"highlight_email": false,
-			"private_email":   false,
-			"channel":         false,
-			"highlight":       false,
-			"private":         false
+			"highlight":        false,
+			"highlight_audio":  false,
+			"highlight_email":  false,
+			"highlight_mobile": false,
+			"private":          false,
+			"private_audio":    false,
+			"private_email":    false,
+			"private_mobile":   false,
+			"channel":          false,
+			"channel_audio":    false
 		}
 
 - `proto` : boolean
