@@ -114,12 +114,22 @@ There are four modes of operation:
    session for an existing user is created.  The identity type and name must be
    verified for a user.
 
+   If `identity_type` is set to "facebook", `identity_name` is set to a
+   Facebook user id and `identity_auth` contains a mathing signed request, a
+   session is created for the existing Ninchat user with the associated
+   Facebook identity.
+
 3. If `access_key` is specified, a new session for an existing user is created.
    The access key configuration determines the user.
 
 4. Otherwise a new user is created.  `identity_type_new`, `identity_name_new`,
    `identity_auth_new` and/or `identity_attrs` may be used to create an
    identity for the user.
+
+   If `identity_type_new` is set to "facebook", `identity_name_new` is set to a
+   Facebook user id and `identity_auth_new` contains a matching signed request
+   from the Facebook SDK, the Facebook identity is associated with the created
+   Ninchat user.
 
 Accepted message types are specified as a list of strings to compare against
 incoming message types.  If a string ends with an asterisk (\*), the substring
@@ -216,6 +226,8 @@ Identity types:
 
 - "email" sends an email with a verification link.  `identity_name` specifies
   the email address.
+- "facebook" creates an identity to be used for authentication with the help of
+  the Facebook SDK.  See `create_session`.
 
 A secret authentication token (password) is associated with the identity if
 `identity_auth_new` is specified.
