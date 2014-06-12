@@ -512,6 +512,18 @@ usefulness of the content).  Sending such a message to an identity doesn't make
 sense.
 
 
+### `update_message`
+
+- `action_id` : integer
+- `channel_id` : string
+- `message_id` : string
+- `message_hidden` : boolean
+
+Reply event: [`message_updated`](#message_updated)
+
+Available for the message author and channel operators.
+
+
 ### `load_history`
 
 - `action_id` : integer
@@ -1025,6 +1037,7 @@ Someone else left or was removed from a realm.
 - `message_user_id` : string (if applicable)
 - `message_user_name` : string (if applicable)
 - `message_ttl` : float (if applicable)
+- `message_hidden` : boolean (if applicable)
 - `history_length` : integer (if succeeding a `history_results` event)
 
 Message content is optionally provided in the payload (see
@@ -1034,6 +1047,14 @@ subscribed to the sent message type, but expects a reply event.
 
 `message_user_id` and `message_user_name` are not set for system messages (see
 [Message types](#message-types)).
+
+
+### `message_updated`
+
+- `action_id` : integer (if applicable)
+- `channel_id` : string (if applicable)
+- `message_id` : string
+- `message_hidden` : boolean (if applicable)
 
 
 ### `history_results`
