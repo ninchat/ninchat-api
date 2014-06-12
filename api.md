@@ -1690,3 +1690,151 @@ Polling:
 	  "payload":           {"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 	}]);
 
+
+Call API
+========
+
+The sessionless call API supports a subset of the [`Interface`](#interface):
+the actions which are practical without a connection-oriented transport may be
+invoked with a HTTP request (without setting up long polling).  The
+`https://api.ninchat.com/v2/call` URL may be accessed using GET and POST
+methods, with `application/json` and `application/octet-stream` content types.
+
+Actions and events use a JSON-encoded header (object) containing at least an
+`action` or `event` property (string) and the parameter properties (see
+[Interface](#interface)).  The `action_id` parameter may be omitted.
+
+
+Requests
+--------
+
+Actions which require authentication (due to the lack of sessions) must also
+contain the `caller_id` and `caller_auth` properties (strings), which specify
+user login credentials.
+
+When the GET method or the POST method with `application/json` content type is
+used, actions may also contain the `payload` property.  If specified, its value
+represents a single-part payload.  Multi-part and JSON-incompatible payloads
+are supported when using the POST method with `application/octet-stream`
+content type.
+
+POST content may be compressed with `deflate` (zlib) or `gzip` as the
+`Content-Encoding`.
+
+
+### GET
+
+The `data` query parameter contains the action header with optional payload.
+
+Example:
+
+	GET /v2/call?data=%7B%22caller_id%22%3A%220ebbjg1g%22%2C%22caller_auth%
+	22%3A%222634d03q1tkt0%22%2C%22action%22%3A%22join_channel%22%2C%22chann
+	el_id%22%3A%2204jqf8db%22%7D HTTP/1.1
+	Host: api.ninchat.com
+
+
+### POST application/json
+
+The request body contains the action header with optional payload.
+
+Example:
+
+	POST /v2/call HTTP/1.1
+	Host: api.ninchat.com
+	Content-Type: application/json
+
+	{
+	  "caller_id":   "0ebbjg1g",
+	  "caller_auth": "2634d03q1tkt0",
+	  "action":      "send_message",
+	  "payload":     {"text":"hello world"},
+	  ...
+	}
+
+
+### POST application/octet-stream
+
+The request body contains the action header and payload parts using a binary
+frame encoding similar to
+[WebSocket](http://tools.ietf.org/html/rfc6455#section-5.2): each frame is
+preceded by encoded frame size consisting of 1, 3 or 9 bytes:
+
+- Sizes up to and including 125 are encoded as a single byte.
+
+- Sizes 126-65535 are encoded as a byte with value 126, followed by two bytes
+  with the size in network byte order (big endian).
+
+- Sizes 65536 and up are encoded as a byte with value 127, followed by eight
+  bytes with the size in network byte order (big endian).  The most significant
+  bit of the eight-byte value must be zero; the (theoretical) maximum size can
+  be represented by a signed 64-bit integer type.
+
+Note that the most significant bit of the first byte must be zero.
+
+Example:
+
+	POST /v2/call HTTP/1.1
+	Host: api.ninchat.com
+	Content-Type: application/octet-stream
+
+	\x52{"caller_id":"0ebbjg1g","caller_auth":"2634d03q1tkt0","action":"sen
+	d_message",...}\x16{"text":"hello world"}
+
+
+Responses
+---------
+
+The content type is chosen using the following algorithm:
+
+1. If the request's `Accept` header specified only one of `application/json`
+   and `application/octet-stream`, it is used.
+
+2. If the event doesn't have a payload and `application/json` is accepted, it
+   is used.
+
+3. If the event has a payload and `application/octet-stream` is accepted, it is
+   used.
+
+4. If no supported content types are accepted, the response will contain no
+   data.
+
+Support for additional content types may be added in the future, so using
+wildcards in the `Accept` header (e.g. `*/*` or `application/*`) may suddenly
+cause a response which the client can't handle.
+
+Responses may contain one or more events, depending on the action.  In case of
+an error, the "error" event is always the first one.
+
+
+### application/json
+
+The response body contains a list of event headers.  (Note that a payload is
+not supported.)
+
+Example:
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json
+
+	[{
+	  "event":      "channel_joined",
+	  "channel_id": "04jqf8db",
+	  ...
+	}]
+
+
+### application/octet-stream
+
+The response body uses the same encoding as the corresponding request content
+type.  Since multiple events may be returned, the event header may include the
+`frames` property (integer): if set and greater than 0, it specifies how many
+subsequent frames form the payload.
+
+Example:
+
+	HTTP/1.1 200 OK
+	Content-Type: application/octet-stream
+
+	\x2b{"event":"message_received","frames":1,...}\x0f{"text":hello"}
+
