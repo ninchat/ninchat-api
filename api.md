@@ -1338,6 +1338,17 @@ integers, counting seconds since 1970-01-01 UTC.
 Settings
 --------
 
+- `highlight` : string array
+
+	Highlight words to match against channel message text.  If a string ends
+    with an asterisk (\*), the substring preceding the asterisk is used to
+    match word prefixes instead of whole words.
+
+- `highlight_name` : boolean
+
+	Makes the current user name attribute a highlight word, regardless of the
+	value of the `highlight` setting.
+
 - `notifications` : object
 
 	Enables audio, email and desktop notifications for channel, hightlight
