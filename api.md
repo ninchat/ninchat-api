@@ -3,7 +3,45 @@ API.  It will be extended over time, without causing regressions to conforming
 client applications.  (If a new, backward-incompatible API version is released,
 it will be accessible using a new endpoint address or protocol identifier.)
 
-Copyright &copy; 2012-2013 Somia Reality Oy.  All rights reserved.
+Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
+
+
+Changes
+=======
+
+Version 2
+---------
+
+Backward-incompatible changes since version 1:
+
+- [WebSocket](#websocket) clients must be prepared to handle text and binary
+  frames.  Previously only text frames were sent to clients.
+
+- The initial value of the `action_id` parameter must be 1 (instead of any
+  positive integer), and it must be reset to 1 when a new session is created
+  and there are no action retries queued from previous sessions.  (See the
+  [Interface](#interface) section.)
+
+- The `ninchat.com/info` message type is split into multiple
+  [`ninchat.com/info/*`](#ninchatcominfo) types.
+
+- Message content must consist of at least one part.  (See the
+  [`send_message`](#send_message) action.)
+
+- The [`message_received`](#message_received) event might not include the
+  message content.
+
+- The `message_time` parameter type changed from integer to float.  (See the
+  [`message_received`](#message_received) event.)
+
+- The [`search_results`](#search_results) event's "users" and "channels"
+  objects were modified to accommodate more parameters.
+
+- The [`session_created`](#session_created) event might not include the
+  `session_host` parameter.
+
+- The WebSocket-Protocol header is no longer required; the API version is now
+  included in the [WebSocket](#websocket) endpoint URL.
 
 
 Interface
