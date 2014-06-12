@@ -370,6 +370,25 @@ Reply event: [`channel_found`](#channel_found)
 Reply event: [`channel_updated`](#channel_updated)
 
 
+### `follow_channel`
+
+- `action_id` : integer
+- `channel_id` : string (optional)
+- `access_key` : string (optional)
+
+Reply event: [`channel_found`](#channel_found)
+
+Like [`join_channel`](#join_channel), but:
+
+- May only be used with channels with the `disclosed_since`, `followable`
+  attributes set.  Realm channels also need the `public` attribute to be set.
+- The user won't appear on the channel's member list.
+- The user won't be able to send messages to the channel.
+- Only the session which invoked this action will receive `message_received`
+  events for this channel.
+- The user will stop following the channel when the session is closed.
+
+
 ### `join_channel`
 
 - `action_id` : integer
@@ -1206,6 +1225,11 @@ integers, counting seconds since 1970-01-01 UTC.
 	New members can see old messages since the specified time.  When set
 	initially, the current time will be used.  After that, only a later time
 	may be set, or the attribute may be unset.
+
+- `followable` : boolean (writable by operators)
+
+	The `follow_channel` action may be used.  The channel must also be
+	disclosed.
 
 - `name` : string (writable by operators)
 
