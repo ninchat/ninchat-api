@@ -96,6 +96,10 @@ _`session_id` must not be specified_ (see [Transports](#transports))
 - `identity_type` : string (optional)
 - `identity_name` : string (optional)
 - `identity_auth` : string (optional)
+- `identity_type_new` : string (optional)
+- `identity_name_new` : string (optional)
+- `identity_auth_new` : string (optional)
+- `identity_attrs` : object (optional)
 - `access_key` : string (optional)
 - `message_types` : string array
 
@@ -105,12 +109,17 @@ There are four modes of operation:
 
 1. If `user_id` and `user_auth` are specified, a new session for an existing
    user is created.
+
 2. If `identity_type`, `identity_name` and `identity_auth` are specified, a new
    session for an existing user is created.  The identity type and name must be
    verified for a user.
+
 3. If `access_key` is specified, a new session for an existing user is created.
    The access key configuration determines the user.
-4. Otherwise a new user is created.
+
+4. Otherwise a new user is created.  `identity_type_new`, `identity_name_new`,
+   `identity_auth_new` and/or `identity_attrs` may be used to create an
+   identity for the user.
 
 Accepted message types are specified as a list of strings to compare against
 incoming message types.  If a string ends with an asterisk (\*), the substring
