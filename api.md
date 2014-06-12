@@ -327,6 +327,20 @@ Reply event: [`identity_deleted`](#identity_deleted)
 `identity_auth` must be specified if the identity has one.
 
 
+### `update_dialogue`
+
+- `action_id` : integer
+- `user_id` : string
+- `member_attrs` : object (optional)
+- `dialogue_status` : string (optional)
+
+Reply event: [`dialogue_updated`](#dialogue_updated)
+
+Update your own member attributes in your dialogue with `user_id`, or your
+perceived status of the dialogue.  Valid values for `dialogue_status` are
+"visible" (not hidden, not highlighted) and "hidden".
+
+
 ### `create_channel`
 
 - `action_id` : integer
@@ -824,6 +838,7 @@ If set, the value of `dialogue_status` will be "highlight".
 - `action_id` : integer (if applicable)
 - `user_id` : string
 - `dialogue_members` : object
+- `dialogue_status` : string (if applicable)
 
 
 ### `channel_found`
