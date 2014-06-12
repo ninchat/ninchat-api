@@ -1306,6 +1306,11 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Organization name.
 
+- `owner_account` : object
+
+	Visible only to realm operators.  Contains the "channels" property (see the
+	`user_account` object of the `session_created` event).
+
 - `owner_id` : string
 
 	User identifier.
