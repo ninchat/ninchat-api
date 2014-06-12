@@ -7,6 +7,10 @@
 		"identity_type":        false,
 		"identity_name":        false,
 		"identity_auth":        false,
+		"identity_type_new":    false,
+		"identity_name_new":    false,
+		"identity_auth_new":    false,
+		"identity_attrs":       false,
 		"access_key":           false,
 		"message_types":        true
 	},
@@ -100,6 +104,13 @@
 		"identity_auth":        false
 	},
 
+	"update_dialogue": {
+		"action_id":            true,
+		"user_id":              true,
+		"member_attrs":         false,
+		"dialogue_status":      false
+	},
+
 	"create_channel": {
 		"action_id":            true,
 		"channel_attrs":        false,
@@ -115,6 +126,12 @@
 		"action_id":            true,
 		"channel_id":           true,
 		"channel_attrs":        true
+	},
+
+	"follow_channel": {
+		"action_id":            true,
+		"channel_id":           false,
+		"access_key":           false
 	},
 
 	"join_channel": {
@@ -181,6 +198,13 @@
 		"identity_name":        false,
 		"message_type":         true,
 		"message_ttl":          false
+	},
+
+	"update_message": {
+		"action_id":            true,
+		"channel_id":           true,
+		"message_id":           true,
+		"message_hidden":       true
 	},
 
 	"load_history": {

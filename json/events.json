@@ -85,7 +85,8 @@
 	"dialogue_updated": {
 		"action_id":            false,
 		"user_id":              true,
-		"dialogue_members":     true
+		"dialogue_members":     true,
+		"dialogue_status":      false
 	},
 
 	"channel_found": {
@@ -208,7 +209,15 @@
 		"message_user_id":      false,
 		"message_user_name":    false,
 		"message_ttl":          false,
+		"message_hidden":       false,
 		"history_length":       false
+	},
+
+	"message_updated": {
+		"action_id":            false,
+		"channel_id":           false,
+		"message_id":           true,
+		"message_hidden":       false
 	},
 
 	"history_results": {

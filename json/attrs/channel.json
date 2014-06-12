@@ -2,10 +2,14 @@
 	"autosilence":          { "type": "bool",         "writable":   true },
 	"blacklisted_message_types":
 	                        { "type": "string array", "writable":   true },
+	"disclosed_since":      { "type": "int",          "writable":   true },
+	"followable":           { "type": "bool",         "writable":   true },
 	"name":                 { "type": "string",       "writable":   true },
 	"owner_id":             { "type": "string" },
 	"private":              { "type": "bool",         "writable":   true },
 	"public":               { "type": "bool",         "writable":   true },
+	"ratelimit":            { "type": "string",       "writable":   true },
 	"suspended":            { "type": "bool",         "writable":   true },
-	"topic":                { "type": "string",       "writable":   true }
+	"topic":                { "type": "string",       "writable":   true },
+	"verified_join":        { "type": "bool",         "writable":   true }
 }
