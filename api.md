@@ -1280,6 +1280,10 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Longer subject description of the day.
 
+- `verified_join` : boolean (writable by operators)
+
+	The channel may not be joined without a verified identity.
+
 
 ### Channel membership
 
