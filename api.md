@@ -1268,6 +1268,10 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Channel is open for everyone despite being in a realm.
 
+- `ratelimit` : string (writable by operators)
+
+	"5/20" means 5 messages per 20 seconds.
+
 - `suspended` : boolean
 
 	Channel is in read-only state.
@@ -1360,6 +1364,7 @@ Error types
 - `identity_already_exists`
 - `identity_not_found`
 - `internal`
+- `message_dropped`
 - `message_has_too_many_parts`
 - `message_malformed`
 - `message_not_supported`
@@ -1372,6 +1377,7 @@ Error types
 - `realm_not_found`
 - `realm_quota_exceeded`
 - `request_malformed`
+- `send_rate_limited`
 - `session_buffer_overflow`
 - `session_not_found`
 - `user_not_found`
