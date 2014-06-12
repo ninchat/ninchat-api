@@ -1201,6 +1201,12 @@ integers, counting seconds since 1970-01-01 UTC.
 	parameter of the [`create_session`](#create_session) action.  This also
 	applies to the automatically generated `ninchat.com/info/*` messages.
 
+- `disclosed_since` : time (writable by operators)
+
+	New members can see old messages since the specified time.  When set
+	initially, the current time will be used.  After that, only a later time
+	may be set, or the attribute may be unset.
+
 - `name` : string (writable by operators)
 
 	Short subject name.
