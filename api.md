@@ -12,10 +12,10 @@ Changes
 Version 2
 ---------
 
-Backward-incompatible changes since version 1:
+Backward-incompatible changes from version 1:
 
 - [WebSocket](#websocket) clients must be prepared to handle text and binary
-  frames.  Previously only text frames were sent to clients.
+  frames.  (Previously only text frames were sent to clients.)
 
 - The initial value of the `action_id` parameter must be 1 (instead of any
   positive integer), and it must be reset to 1 when a new session is created
@@ -115,7 +115,7 @@ There are four modes of operation:
    verified for a user.
 
    If `identity_type` is set to "facebook", `identity_name` is set to a
-   Facebook user id and `identity_auth` contains a mathing signed request, a
+   Facebook user id and `identity_auth` contains a matching signed request, a
    session is created for the existing Ninchat user with the associated
    Facebook identity.
 
@@ -1694,8 +1694,8 @@ Polling:
 Call API
 ========
 
-The sessionless call API supports a subset of the [`Interface`](#interface):
-the actions which are practical without a connection-oriented transport may be
+The sessionless call API supports a subset of the [Interface](#interface): the
+actions which are practical without a connection-oriented transport may be
 invoked with a HTTP request (without setting up long polling).  The
 `https://api.ninchat.com/v2/call` URL may be accessed using GET and POST
 methods, with `application/json` and `application/octet-stream` content types.
