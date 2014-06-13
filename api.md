@@ -43,6 +43,9 @@ Backward-incompatible changes from version 1:
 - The WebSocket-Protocol header is no longer required; the API version is now
   included in the [WebSocket](#websocket) endpoint URL.
 
+See the [commit log](https://github.com/ninchat/ninchat-api/commits/v2/api.md)
+for incremental changes.
+
 
 Interface
 =========
