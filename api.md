@@ -59,8 +59,8 @@ Backward-incompatible changes from version 1:
 - The [`session_created`](#session_created) event might not include the
   `session_host` parameter.
 
-- The WebSocket-Protocol header is no longer required; the API version is now
-  included in the [WebSocket](#websocket) endpoint URL.
+- The WebSocket-Protocol header is now unversioned; the API version is included
+  in the [WebSocket](#websocket) endpoint URL.
 
 See the [commit log](https://github.com/ninchat/ninchat-api/commits/v2/api.md)
 for incremental changes.
