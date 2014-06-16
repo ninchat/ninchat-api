@@ -9,14 +9,24 @@ Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
 ### Contents
 
 - [Changes](#changes)
-  - [Version 2](#version-2)
 - [Interface](#interface)
   - [Actions](#actions)
   - [Events](#events)
   - [Attributes](#attributes)
-  - [Settings](#settings)
+    - [User](#user)
+    - [Identity](#identity)
+    - [Dialogue membership](#dialogue-membership)
+    - [Channel](#channel)
+    - [Channel membership](#channel-membership)
+    - [Realm](#realm)
+    - [Realm membership](#realm-membership)
+  - [User settings](#user-ssettings)
   - [Error types](#error-types)
   - [Message types](#message-types)
+    - [`ninchat.com/info/*`](#ninchatcominfo)
+    - [`ninchat.com/link`](#ninchatcomlink)
+    - [`ninchat.com/notice`](#ninchatcomnotice)
+    - [`ninchat.com/text`](#ninchatcomtext)
 - [Streaming transports](#streaming-transports)
   - [WebSocket](#websocket)
   - [HTTP long polling](#http-long-polling)
@@ -1361,8 +1371,8 @@ integers, counting seconds since 1970-01-01 UTC.
 	The user is a realm operator.
 
 
-Settings
---------
+User settings
+-------------
 
 - `highlight` : string array
 
