@@ -20,7 +20,7 @@ Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
     - [Channel membership](#channel-membership)
     - [Realm](#realm)
     - [Realm membership](#realm-membership)
-  - [User settings](#user-ssettings)
+  - [User settings](#user-settings)
   - [Error types](#error-types)
   - [Message types](#message-types)
     - [`ninchat.com/info/*`](#ninchatcominfo)
