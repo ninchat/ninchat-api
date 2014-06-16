@@ -17,10 +17,10 @@ Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
   - [Settings](#settings)
   - [Error types](#error-types)
   - [Message types](#message-types)
-- [Transports](#transports)
+- [Streaming transports](#streaming-transports)
   - [WebSocket](#websocket)
   - [HTTP long polling](#http-long-polling)
-- [Call API](#call-api)
+- [Sessionless HTTP calling](#sessionless-http-calling)
   - [Requests](#requests)
   - [Responses](#responses)
 
@@ -86,8 +86,8 @@ events are buffered by the server until they are acknowledged by the client, so
 that they can be retransmitted if the network connection is lost during a
 session.  (Events without an `event_id` are connection-specific.)  The
 acknowledgement procedure is transport-specific (see
-[Transports](#transports)).  Failure to acknowledge events results in session
-buffer overflow.
+[Streaming transports](#streaming-transports)).  Failure to acknowledge events
+results in session buffer overflow.
 
 Instead of the reply events listed below, any action may cause an `error`
 event.
@@ -109,7 +109,8 @@ Actions
 
 ### `create_session`
 
-_`session_id` must not be specified_ (see [Transports](#transports))
+_`session_id` must not be specified_ (see
+[Streaming transports](#streaming-transports))
 
 - `user_id` : string (optional)
 - `user_auth` : string (optional)
@@ -166,7 +167,7 @@ error type will be `access_denied`.  This condition is permanent:
 ### `resume_session`
 
 Receive or acknowledge events of an existing session.  See
-[Transports](#transports) for details.
+[Streaming transports](#streaming-transports) for details.
 
 
 ### `update_session`
@@ -181,7 +182,7 @@ Client-assisted idle user and unread message tracking.
 
 ### `close_session`
 
-See [Transports](#transports) for details.
+See [Streaming transports](#streaming-transports) for details.
 
 
 ### `describe_user`
@@ -519,9 +520,10 @@ Kicks a user out of a channel or a realm.
 Reply event: [`message_received`](#message_received) or none (if `action_id` is
              not specified)
 
-Message content is provided in the payload (see [Transports](#transports)).
-The content may not be empty: it must contain one or more parts (but the
-individual parts may be zero-length).
+Message content is provided in the payload (see
+[Streaming transports](#streaming-transports)).  The content may not be empty:
+it must contain one or more parts (but the individual parts may be
+zero-length).
 
 Exactly one of `channel_id`, `user_id` and `identity_name` must be specified.
 `user_id` specifies a private conversation party.  `identity_type` and
@@ -1065,9 +1067,9 @@ Someone else left or was removed from a realm.
 - `history_length` : integer (if succeeding a `history_results` event)
 
 Message content is optionally provided in the payload (see
-[Transports](#transports)).  The content may be omitted in some cases,
-including but not limited to the situation when the sender session hasn't
-subscribed to the sent message type, but expects a reply event.
+[Streaming transports](#streaming-transports)).  The content may be omitted in
+some cases, including but not limited to the situation when the sender session
+hasn't subscribed to the sent message type, but expects a reply event.
 
 `message_user_id` and `message_user_name` are not set for system messages (see
 [Message types](#message-types)).
@@ -1526,8 +1528,8 @@ consists of a single part with a JSON object containing a `text` property
 	{"text":"This is the content of the message."}
 
 
-Transports
-==========
+Streaming transports
+====================
 
 Both supported transport types support an initial service discovery step:
 
@@ -1713,18 +1715,19 @@ Polling:
 	}]);
 
 
-Call API
-========
+Sessionless HTTP calling
+========================
 
-The sessionless call API supports a subset of the [Interface](#interface): the
-actions which are practical without a connection-oriented transport may be
-invoked with a HTTP request (without setting up long polling).  The
+The call API supports a subset of the [Interface](#interface): the actions
+which are practical without a connection-oriented transport may be invoked with
+a HTTP request (without setting up long polling).  The
 `https://api.ninchat.com/v2/call` URL may be accessed using GET and POST
 methods, with `application/json` and `application/octet-stream` content types.
 
 Actions and events use a JSON-encoded header (object) containing at least an
 `action` or `event` property (string) and the parameter properties (see
-[Interface](#interface)).  The `action_id` parameter may be omitted.
+[Interface](#interface)).  The `action_id` parameter may be omitted from
+actions.  Events won't include the `event_id` parameter.
 
 
 Requests
