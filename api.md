@@ -6,6 +6,25 @@ it will be accessible using a new endpoint address or protocol identifier.)
 Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
 
 
+### Contents
+
+- [Changes](#changes)
+  - [Version 2](#version-2)
+- [Interface](#interface)
+  - [Actions](#actions)
+  - [Events](#events)
+  - [Attributes](#attributes)
+  - [Settings](#settings)
+  - [Error types](#error-types)
+  - [Message types](#message-types)
+- [Transports](#transports)
+  - [WebSocket](#websocket)
+  - [HTTP long polling](#http-long-polling)
+- [Call API](#call-api)
+  - [Requests](#requests)
+  - [Responses](#responses)
+
+
 Changes
 =======
 
@@ -1606,8 +1625,8 @@ Received WebSocket frame:
 	{"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 
 
-HTTP Long Poll
---------------
+HTTP long polling
+-----------------
 
 The URL format is `https://HOST/v2/poll` (excluding query parameters), where
 `HOST` is an address aquired during the service discovery step.
