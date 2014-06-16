@@ -1,7 +1,10 @@
+Ninchat API
+===========
+
 This document describes version 2 of the open [Ninchat](https://ninchat.com)
 API.  It will be extended over time, without causing regressions to conforming
-client applications.  (If a new, backward-incompatible API version is released,
-it will be accessible using a new endpoint address or protocol identifier.)
+client applications.  If a new, backward-incompatible API version is released,
+it will be accessible using new network endpoints.
 
 Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
 
@@ -38,8 +41,7 @@ Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
 Changes
 =======
 
-Version 2
----------
+### Version 2
 
 Backward-incompatible changes from version 1:
 
