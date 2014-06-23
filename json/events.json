@@ -238,6 +238,31 @@
 		"realm_id":             false
 	},
 
+	"queue_joined": {
+		"queue_id":             true,
+		"queue_attrs":          true,
+		"realm_id":             false
+	},
+
+	"queue_parted": {
+		"queue_id":             true,
+		"realm_id":             false
+	},
+
+	"queue_member_joined": {
+		"action_id":            false,
+		"queue_id":             true,
+		"user_id":              true,
+		"user_attrs":           true,
+		"member_attrs":         true
+	},
+
+	"queue_member_parted": {
+		"action_id":            false,
+		"queue_id":             true,
+		"user_id":              true
+	},
+
 	"audience_enqueued": {
 		"action_id":            false,
 		"queue_id":             true,

@@ -212,6 +212,12 @@
 		"user_id":              false
 	},
 
+	"add_member": {
+		"action_id":            true,
+		"queue_id":             true,
+		"user_id":              true
+	},
+
 	"update_member": {
 		"action_id":            true,
 		"channel_id":           false,
@@ -224,6 +230,7 @@
 		"action_id":            true,
 		"channel_id":           false,
 		"realm_id":             false,
+		"queue_id":             false,
 		"user_id":              true
 	},
 

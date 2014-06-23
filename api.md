@@ -562,8 +562,20 @@ Go to the end of the queue.
 
 Reply event: [`dialogue_updated`](#dialogue_updated)
 
-Take the first user from the queue.  The `queue_id` dialogue member attribute
-will be set for the accepted user.
+Take the first user from the queue.  Caller must be a queue member.  The
+`queue_id` dialogue member attribute will be set for the accepted user.
+
+
+### `add_member`
+
+- `action_id` : integer
+- `queue_id` : string
+- `user_id` : string
+
+Reply event: [`queue_member_joined`](#queue_member_joined)
+
+Causes a specific user to join an audience queue.  Caller must be a realm
+opereator.
 
 
 ### `update_member`
@@ -585,12 +597,16 @@ Sets or clears a channel or realm membership attributes for a user.
 - `action_id` : integer
 - `channel_id` : string (optional)
 - `realm_id` : string (optional)
+- `queue_id` : string (optional)
 - `user_id` : string
 
-Reply event: [`channel_member_parted`](#channel_member_parted) or
-             [`realm_member_parted`](#realm_member_parted)
+Reply event: [`channel_member_parted`](#channel_member_parted),
+             [`realm_member_parted`](#realm_member_parted) or
+             [`queue_member_parted`](#queue_member_parted)
 
-Kicks a user out of a channel or a realm.
+Kicks a user out of a channel, a realm or an audience queue.  Caller must be
+the target user, a channel operator (if removing from a channel) or a realm
+operator (if removing from a realm or a queue).
 
 
 ### `send_message`
@@ -1224,6 +1240,43 @@ event).
 - `action_id` : integer (if applicable)
 - `queue_id` : string
 - `realm_id` : string (if applicable)
+
+
+### `queue_joined`
+
+- `queue_id` : string
+- `queue_attrs` : object
+- `realm_id` : string (if applicable)
+
+You were added to an audience queue.
+
+
+### `queue_parted`
+
+- `queue_id` : string
+- `realm_id` : string (if applicable)
+
+You were removed from an audience queue.
+
+
+### `queue_member_joined`
+
+- `action_id` : integer (if applicable)
+- `queue_id` : string
+- `user_id` : string
+- `user_attrs` : object
+- `member_attrs` : object
+
+Someone was added to an audience queue.
+
+
+### `queue_member_parted`
+
+- `action_id` : integer (if applicable)
+- `queue_id` : string
+- `user_id` : string
+
+Someone was removed from an audience queue.
 
 
 ### `audience_enqueued`
