@@ -23,6 +23,7 @@ Copyright &copy; 2012-2014 Somia Reality Oy.  All rights reserved.
     - [Channel membership](#channel-membership)
     - [Realm](#realm)
     - [Realm membership](#realm-membership)
+    - [Queue](#queue)
   - [User settings](#user-settings)
   - [Error types](#error-types)
   - [Message types](#message-types)
@@ -475,6 +476,16 @@ The session user will become the owner of both.
 Reply event: [`realm_found`](#realm_found)
 
 
+### `describe_realm_queues`
+
+- `action_id` : integer
+- `realm_id` : string
+
+Reply event: [`realm_queues_found`](#realm_queues_found)
+
+Describe all audience queues of a realm.
+
+
 ### `update_realm`
 
 - `action_id` : integer
@@ -490,6 +501,69 @@ Reply event: [`realm_updated`](#realm_updated)
 - `realm_id` : string
 
 Reply event: [`realm_deleted`](#realm_deleted)
+
+
+### `create_queue`
+
+- `action_id` : integer
+- `realm_id` : string
+- `queue_attrs` : object
+
+Reply event: [`queue_created`](#queue_created)
+
+Create a new audience queue.  Caller must be a realm operator.
+
+
+### `update_queue`
+
+- `action_id` : integer
+- `queue_id` : string
+- `queue_attrs` : object
+
+Reply event: [`queue_updated`](#queue_updated)
+
+Update audience queue attributes.  Caller must be a realm operator.
+
+
+### `delete_queue`
+
+- `action_id` : integer
+- `queue_id` : string
+
+Reply event: [`queue_deleted`](#queue_deleted)
+
+Delete an audience queue.  Caller must be a realm operator.
+
+
+### `describe_queue`
+
+- `action_id` : integer
+- `queue_id` : string
+
+Reply event: [`queue_found`](#queue_found)
+
+Describe an audience queue.
+
+
+### `request_audience`
+
+- `action_id` : integer
+- `queue_id` : string
+
+Reply event: [`audience_enqueued`](#audience_enqueued)
+
+Go to the end of the queue.
+
+
+### `accept_audience`
+
+- `action_id` : integer
+- `queue_id` : string
+
+Reply event: [`dialogue_updated`](#dialogue_updated)
+
+Take the first user from the queue.  The `queue_id` dialogue member attribute
+will be set for the accepted user.
 
 
 ### `update_member`
@@ -712,6 +786,7 @@ Events
 - `identity_name` : string (if applicable)
 - `channel_id` : string (if applicable)
 - `realm_id` : string (if applicable)
+- `queue_id` : string (if applicable)
 - `message_type` : string (if applicable)
 
 
@@ -729,6 +804,7 @@ Events
 - `user_channels` : object
 - `user_realms` : object
 - `user_realms_member` : object (optional)
+- `user_queues` : object (optional)
 
 If specified, `session_host` contains a hostname which should be used in
 subsequent connections for this session.
@@ -737,8 +813,8 @@ If a new user was created, then `user_auth` contains a generated password which
 may be used in future [`create_session`](#create_session) actions by the
 client.
 
-The `user_account` object contains information about channel and realm quota
-and service subscription (optional):
+The `user_account` object contains information about channel, realm and queue
+quota and service subscription (optional):
 
 	"user_account": {
 		"channels": {
@@ -748,6 +824,13 @@ and service subscription (optional):
 		"realms": {
 			"quota":             3,
 			"available":         2
+		},
+		"queues": {
+			"quota":             5,
+			"available":         4
+		},
+		"queue_members": {
+			"quota":             5
 		},
 		"subscriptions": [
 			{
@@ -765,6 +848,13 @@ and service subscription (optional):
 				"realms": {
 					"quota":     1,
 					"suspended": 0
+				},
+				"queues": {
+					"quota":     0,
+					"suspended": 1
+				},
+				"queue_members": {
+					"quota":     0
 				}
 			}
 		]
@@ -825,6 +915,17 @@ objects containing the session user's realm membership attributes (if any):
 		...
 	}
 
+The `user_queues` object consists of queue identifiers mapped to objects
+containing the `queue_attrs` object and the `realm_id` string.
+
+	"user_queues": {
+		"12345": {
+			"queue_attrs": { "attr": "value", ... },
+			"realm_id":    "67890"
+		},
+		...
+	}
+
 
 ### `user_found`
 
@@ -838,6 +939,7 @@ objects containing the session user's realm membership attributes (if any):
 - `user_channels` : object (if the user is the session user)
 - `user_realms` : object (if the user is the session user)
 - `user_realms_member` : object (optional)
+- `user_queues` : object (if the user is the session user)
 - `dialogue_members` : object (if the session user has a dialogue with the user)
 - `dialogue_status` : string (if the session user has a dialogue with the user
                               and there are unread messages)
@@ -1006,6 +1108,27 @@ Someone else left or was removed from a channel.
 above.
 
 
+### `realm_queues_found`
+
+- `action_id` : integer
+- `realm_id` : string
+- `realm_queues` : object
+
+The `realm_queues` object consists of queue identifiers mapped to objects
+containing `queue_attrs` (object) and optionally `queue_position` (integer):
+
+	"realm_queues": {
+		"12345": {
+			"queue_attrs": {
+				"name": "First World Problems",
+				"length": 3
+			},
+			"queue_position": 1
+		},
+		...
+	}
+
+
 ### `realm_joined`
 
 - `action_id` : integer (if applicable)
@@ -1062,6 +1185,54 @@ Someone else left or was removed from a realm.
 - `realm_id` : string
 - `user_id` : string
 - `member_attrs` : object
+
+
+### `queue_created`
+
+- `action_id` : integer (if applicable)
+- `queue_id` : string
+- `queue_attrs` : object
+- `realm_id` : string (if applicable)
+
+
+### `queue_found`
+
+- `action_id` : integer
+- `queue_id` : string
+- `queue_attrs` : object
+- `queue_members` : object (if applicable)
+- `queue_position` : integer (if applicable)
+- `realm_id` : string (if applicable)
+
+`queue_members` is analogous to `channel_members` (see the `channel_found`
+event).
+
+
+### `queue_updated`
+
+- `action_id` : integer (if applicable)
+- `queue_id` : string
+- `queue_attrs` : object
+- `queue_position` : integer (if applicable)
+- `realm_id` : string (if applicable)
+
+`queue_position` is defined if you are currently in the queue.
+
+
+### `queue_deleted`
+
+- `action_id` : integer (if applicable)
+- `queue_id` : string
+- `realm_id` : string (if applicable)
+
+
+### `audience_enqueued`
+
+- `action_id` : integer (if applicable)
+- `queue_id` : string
+- `queue_attrs` : object
+- `queue_position` : integer
+- `realm_id` : string (if applicable)
 
 
 ### `message_received`
@@ -1265,6 +1436,21 @@ integers, counting seconds since 1970-01-01 UTC.
 
 ### Dialogue membership
 
+- `queue_id` : string
+
+	The dialogue was initiated by requesting an audience.
+
+- `rating` : integer (writable by self)
+
+	An optional rating given to your peer, in range [-1, 1].  (Set by
+    audience-requesting users.)
+
+- `writing` : bool (writable by self)
+
+	May be used to indicate that the user has recently entered unsent text.
+	(The API client is responsible for setting and clearing this indicator, if
+	it chooses to implement it.)
+
 
 ### Channel
 
@@ -1346,8 +1532,9 @@ integers, counting seconds since 1970-01-01 UTC.
 
 - `owner_account` : object
 
-	Visible only to realm operators.  Contains the "channels" property (see the
-	`user_account` object of the `session_created` event).
+	Visible only to realm operators.  Contains the "channels", "queues" and
+	"queue_members" properties (see the `user_account` object of the
+	`session_created` event).
 
 - `owner_id` : string
 
@@ -1371,6 +1558,25 @@ integers, counting seconds since 1970-01-01 UTC.
 - `operator` : boolean
 
 	The user is a realm operator.
+
+
+### Queue
+
+- `capacity` : integer (writable by realm members)
+
+	Maximum number of allowed users in queue at a given time.
+
+- `closed` : boolean (writable by realm members)
+
+	New users may not join the queue at this time.
+
+- `length` : integer
+
+	Number of users currently in the queue.
+
+- `name` : string (writable by realm operators)
+
+- `suspended` : boolean (writable by realm operators)
 
 
 User settings
@@ -1433,6 +1639,13 @@ Error types
 - `message_type_too_long`
 - `message_types_too_long`
 - `permission_denied`
+- `queue_is_closed`
+- `queue_is_empty`
+- `queue_is_full`
+- `queue_is_suspended`
+- `queue_member_quota_exceeded`
+- `queue_not_found`
+- `queue_quota_exceeded`
 - `realm_already_exists`
 - `realm_not_found`
 - `realm_quota_exceeded`

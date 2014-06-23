@@ -8,6 +8,7 @@
 		"identity_name":        false,
 		"channel_id":           false,
 		"realm_id":             false,
+		"queue_id":             false,
 		"message_type":         false
 	},
 
@@ -23,7 +24,8 @@
 		"user_dialogues":       true,
 		"user_channels":        true,
 		"user_realms":          true,
-		"user_realms_member":   false
+		"user_realms_member":   false,
+		"user_queues":          false
 	},
 
 	"user_found": {
@@ -37,6 +39,7 @@
 		"user_channels":        false,
 		"user_realms":          false,
 		"user_realms_member":   false,
+		"user_queues":          false,
 		"dialogue_members":     false,
 		"dialogue_status":      false
 	},
@@ -153,6 +156,12 @@
 		"realm_members":        false
 	},
 
+	"realm_queues_found": {
+		"action_id":            true,
+		"realm_id":             true,
+		"realm_queues":         true
+	},
+
 	"realm_joined": {
 		"action_id":            false,
 		"realm_id":             true,
@@ -197,6 +206,44 @@
 		"realm_id":             false,
 		"user_id":              true,
 		"member_attrs":         true
+	},
+
+	"queue_created": {
+		"action_id":            false,
+		"queue_id":             true,
+		"queue_attrs":          true,
+		"realm_id":             false
+	},
+
+	"queue_found": {
+		"action_id":            true,
+		"queue_id":             true,
+		"queue_attrs":          true,
+		"queue_members":        false,
+		"queue_position":       false,
+		"realm_id":             false
+	},
+
+	"queue_updated": {
+		"action_id":            false,
+		"queue_id":             true,
+		"queue_attrs":          true,
+		"queue_position":       false,
+		"realm_id":             false
+	},
+
+	"queue_deleted": {
+		"action_id":            false,
+		"queue_id":             true,
+		"realm_id":             false
+	},
+
+	"audience_enqueued": {
+		"action_id":            false,
+		"queue_id":             true,
+		"queue_attrs":          true,
+		"queue_position":       true,
+		"realm_id":             false
 	},
 
 	"message_received": {

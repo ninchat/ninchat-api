@@ -156,6 +156,11 @@
 		"realm_id":             true
 	},
 
+	"describe_realm_queues": {
+		"action_id":            true,
+		"realm_id":             true
+	},
+
 	"update_realm": {
 		"action_id":            true,
 		"realm_id":             true,
@@ -165,6 +170,38 @@
 	"delete_realm": {
 		"action_id":            true,
 		"realm_id":             true
+	},
+
+	"create_queue": {
+		"action_id":            true,
+		"realm_id":             true,
+		"queue_attrs":          true
+	},
+
+	"update_queue": {
+		"action_id":            true,
+		"queue_id":             true,
+		"queue_attrs":          true
+	},
+
+	"delete_queue": {
+		"action_id":            true,
+		"queue_id":             true
+	},
+
+	"describe_queue": {
+		"action_id":            true,
+		"queue_id":             true
+	},
+
+	"request_audience": {
+		"action_id":            true,
+		"queue_id":             true
+	},
+
+	"accept_audience": {
+		"action_id":            true,
+		"queue_id":             true
 	},
 
 	"create_access": {
