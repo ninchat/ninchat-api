@@ -1232,7 +1232,6 @@ event).
 - `queue_id` : string
 - `queue_attrs` : object
 - `queue_position` : integer
-- `realm_id` : string (if applicable)
 
 
 ### `message_received`

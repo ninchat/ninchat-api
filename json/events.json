@@ -242,8 +242,7 @@
 		"action_id":            false,
 		"queue_id":             true,
 		"queue_attrs":          true,
-		"queue_position":       true,
-		"realm_id":             false
+		"queue_position":       true
 	},
 
 	"message_received": {
