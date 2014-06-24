@@ -1410,8 +1410,8 @@ Attributes
 
 Attributes are read-only unless stated otherwise.  Setting the value of an
 attribute to `null` unsets the attribute.  The implicit value of an unset
-boolean attribute is `false`.  Time values are represented as non-negative
-integers, counting seconds since 1970-01-01 UTC.
+boolean attribute is `false`.  Values with "time" type are represented as
+non-negative integers, counting seconds since 1970-01-01 UTC.
 
 
 ### User
@@ -1586,7 +1586,7 @@ integers, counting seconds since 1970-01-01 UTC.
 
 	Visible only to realm operators.  Contains the "channels", "queues" and
 	"queue_members" properties (see the `user_account` object of the
-	`session_created` event).
+	[`session_created`](#session_created) event).
 
 - `owner_id` : string
 
@@ -1614,11 +1614,11 @@ integers, counting seconds since 1970-01-01 UTC.
 
 ### Queue
 
-- `capacity` : integer (writable by realm members)
+- `capacity` : integer (writable by queue members)
 
 	Maximum number of allowed users in queue at a given time.
 
-- `closed` : boolean (writable by realm members)
+- `closed` : boolean (writable by queue members)
 
 	New users may not join the queue at this time.
 
@@ -1628,7 +1628,12 @@ integers, counting seconds since 1970-01-01 UTC.
 
 - `name` : string (writable by realm operators)
 
+	Queue name.
+
 - `suspended` : boolean (writable by realm operators)
+
+	The queue is in read-only state.  (This is similar to the `closed`
+	attribute, but is not controlled by non-operator members.)
 
 
 User settings
