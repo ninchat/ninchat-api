@@ -214,11 +214,11 @@ Default value is `false` or `null` unless otherwise spesified.
 - `css` : string
 
 	URL for custom CSS file included in the chat.
-	
+
 - `dock` : string, default: `bottom`
 
-	Dock floating chat window to (only bottom supported atm).
-	
+	Dock floating chat window to `top` or `bottom`.
+
 - `height` : string, default: `400px`
 
 	Customer service chat window height.
