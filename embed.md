@@ -130,7 +130,11 @@ Default value is `false` or `null` unless otherwise spesified.
 - `audienceRating` : boolean
 
 	Enable customer service satisfaction rateing.
-	
+
+- `audienceMetadata` : object
+
+	Arbitrary strings to be displayed to the customer service agent at the start of the dialogue.
+
 - `channelId` : string
 
 	The channel id where we land after loading chat.
