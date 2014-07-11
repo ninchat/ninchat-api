@@ -199,7 +199,8 @@
 
 	"request_audience": {
 		"action_id":            true,
-		"queue_id":             true
+		"queue_id":             true,
+		"audience_metadata":    false
 	},
 
 	"accept_audience": {

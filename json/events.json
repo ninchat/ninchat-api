@@ -41,7 +41,8 @@
 		"user_realms_member":   false,
 		"user_queues":          false,
 		"dialogue_members":     false,
-		"dialogue_status":      false
+		"dialogue_status":      false,
+		"audience_metadata":    false
 	},
 
 	"user_updated": {
@@ -89,7 +90,8 @@
 		"action_id":            false,
 		"user_id":              true,
 		"dialogue_members":     true,
-		"dialogue_status":      false
+		"dialogue_status":      false,
+		"audience_metadata":    false
 	},
 
 	"channel_found": {

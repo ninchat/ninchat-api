@@ -559,10 +559,16 @@ Describe an audience queue.
 
 - `action_id` : integer
 - `queue_id` : string
+- `audience_metadata` : object (optional)
 
 Reply event: [`audience_enqueued`](#audience_enqueued)
 
 Go to the end of the queue.
+
+The `audience_metadata` object may contain arbitrary properties, but the
+"secure" property is special: if set to a string value, it will be decrypted
+using the queue owner's master key, and the contents will be set as the value
+of the property.  Other value types for "secure" property are rejected.
 
 
 ### `accept_audience`
@@ -925,7 +931,8 @@ containing identity names mapped to identity attributes:
 
 The `user_dialogues` object consists of user identifiers (of users with whom
 there are ongoing private conversations) mapped to objects containing the
-optional `dialogue_members` object and the optional `dialogue_status` string:
+optional `dialogue_members` object, `dialogue_status` string and
+`audience_metadata` object:
 
 	"user_dialogues": {
 		"12345": {
@@ -933,7 +940,8 @@ optional `dialogue_members` object and the optional `dialogue_status` string:
 				"23456": { "attr": "value", ... },
 				"65432": { "attr": "value", ... }
 			},
-			"dialogue_status": "highlight"
+			"dialogue_status": "highlight",
+			"audience_metadata": { "attr": "value", ... }
 		},
 		...
 	}
@@ -995,6 +1003,7 @@ containing the `queue_attrs` object and the `realm_id` string.
 - `dialogue_members` : object (if the session user has a dialogue with the user)
 - `dialogue_status` : string (if the session user has a dialogue with the user
                               and there are unread messages)
+- `audience_metadata` : object (if the session user has accepted an audience from the user)
 
 The `dialogue_members` object consists of two user identifiers mapped to
 dialogue membership attributes:
@@ -1062,6 +1071,7 @@ If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden"
 - `user_id` : string
 - `dialogue_members` : object
 - `dialogue_status` : string (if applicable)
+- `audience_metadata` : object (if the session user has accepted an audience from the user)
 
 
 ### `channel_found`

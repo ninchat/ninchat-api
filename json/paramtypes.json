@@ -3,6 +3,7 @@
 	"access_type":          "string",
 	"action":               "string",
 	"action_id":            "int",
+	"audience_metadata":    "object",
 	"channel_attrs":        "object",
 	"channel_id":           "string",
 	"channel_members":      "object",
