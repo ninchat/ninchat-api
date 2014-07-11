@@ -325,6 +325,22 @@
 		"access_key":           false
 	},
 
+	"master_found": {
+		"action_id":            true,
+		"master_keys":          true
+	},
+
+	"master_key_created": {
+		"action_id":            false,
+		"master_key_id":        true,
+		"master_key_secret":    false
+	},
+
+	"master_key_deleted": {
+		"action_id":            false,
+		"master_key_id":        true
+	},
+
 	"search_results": {
 		"action_id":            true,
 		"users":                false,

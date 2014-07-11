@@ -12,6 +12,7 @@
 		"identity_auth_new":    false,
 		"identity_attrs":       false,
 		"access_key":           false,
+		"master_sign":          false,
 		"message_types":        true
 	},
 
@@ -137,7 +138,9 @@
 	"join_channel": {
 		"action_id":            true,
 		"channel_id":           false,
-		"access_key":           false
+		"access_key":           false,
+		"master_sign":          false,
+		"member_attrs":         false
 	},
 
 	"part_channel": {
@@ -280,6 +283,21 @@
 		"user_id":              false,
 		"identity_type":        false,
 		"identity_name":        false
+	},
+
+	"describe_master": {
+		"action_id":            true
+	},
+
+	"create_master_key": {
+		"action_id":            true
+	},
+
+	"delete_master_key": {
+		"action_id":            true,
+		"master_key_id":        true,
+		"master_key_secret":    false,
+		"user_auth":            false
 	},
 
 	"search": {

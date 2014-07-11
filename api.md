@@ -137,6 +137,7 @@ _`session_id` must not be specified_ (see
 - `identity_auth_new` : string (optional)
 - `identity_attrs` : object (optional)
 - `access_key` : string (optional)
+- `master_sign` : string (optional)
 - `message_types` : string array
 
 Reply event: [`session_created`](#session_created)
@@ -158,7 +159,10 @@ There are four modes of operation:
 3. If `access_key` is specified, a new session for an existing user is created.
    The access key configuration determines the user.
 
-4. Otherwise a new user is created.  `identity_type_new`, `identity_name_new`,
+4. If `user_id` and `master_sign` are specified, a new session for an existing
+   user is created.
+
+5. Otherwise a new user is created.  `identity_type_new`, `identity_name_new`,
    `identity_auth_new` and/or `identity_attrs` may be used to create an
    identity for the user.
 
@@ -432,6 +436,8 @@ Like [`join_channel`](#join_channel), but:
 - `action_id` : integer
 - `channel_id` : string (optional)
 - `access_key` : string (optional)
+- `master_sign` : string (optional)
+- `member_attrs` : object (optional)
 
 Reply events: [`channel_joined`](#channel_joined) and
               [`realm_joined`](#realm_joined) (if applicable)
@@ -440,11 +446,15 @@ There are two modes of operation:
 
 1. `channel_id` specifies the channel to be joined.  It must not be in a realm
    or it must be in one of the user's realms.
+
 2. `access_key` grants permission to join a channel in a realm.  The access key
    configuration determines the channel to be joined.  The
    [`realm_joined`](#realm_joined) event indicates that the user was granted
    access to the channel's realm in addition to the channel (depending on the
    access key configuration).
+
+3. `master_sign` grants permission to join the channel (`channel_id` must be
+   specified).  It may also permit `member_attrs` to be specified.
 
 
 ### `part_channel`
@@ -769,6 +779,32 @@ _`session_id` not required_
 - `access_key` : string
 
 Reply event: [`access_found`](#access_found)
+
+
+### `describe_master`
+
+- `action_id` : integer
+
+Reply event: [`master_found`](#master_found)
+
+
+### `create_master_key`
+
+- `action_id` : integer
+
+Reply event: [`master_key_created`](#master_key_created)
+
+
+### `delete_master_key`
+
+- `action_id` : integer
+- `master_key_id` : string
+- `master_key_secret` : string (optional)
+- `user_auth` : string (optional)
+
+Reply event: [`master_key_deleted`](#master_key_deleted)
+
+Specify either `master_key_secret` or `user_auth`.
 
 
 ### `search`
@@ -1369,6 +1405,32 @@ properties are set:
 - `action_id` : integer (if applicable)
 - `access_type` : string
 - `access_key` : string (if applicable)
+
+
+### `master_found`
+
+- `action_id` : integer
+- `master_keys` : object
+
+The `master_keys` object contains key ids mapped to empty objects:
+
+	"master_keys": {
+		"12345": {},
+		...
+	}
+
+
+### `master_key_created`
+
+- `action_id` : integer (optional)
+- `master_key_id` : string
+- `master_key_secret` : string (optional)
+
+
+### `master_key_deleted`
+
+- `action_id` : integer (optional)
+- `master_key_id` : string
 
 
 ### `search_results`
