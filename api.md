@@ -142,7 +142,7 @@ _`session_id` must not be specified_ (see
 
 Reply event: [`session_created`](#session_created)
 
-There are four modes of operation:
+There are five modes of operation:
 
 1. If `user_id` and `user_auth` are specified, a new session for an existing
    user is created.
