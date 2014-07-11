@@ -971,7 +971,7 @@ dialogue membership attributes:
 The dialogue membership attributes objects will be empty unless the user is the
 session user.
 
-If set, the value of `dialogue_status` will be "highlight".
+If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden".
 
 
 ### `user_updated`
