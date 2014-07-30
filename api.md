@@ -585,13 +585,14 @@ Take the first user from the queue.  Caller must be a queue member.  The
 ### `add_member`
 
 - `action_id` : integer
-- `queue_id` : string
+- `realm_id` : string (optional)
+- `queue_id` : string (optional)
 - `user_id` : string
 
 Reply event: [`queue_member_joined`](#queue_member_joined)
 
-Causes a specific user to join an audience queue.  Caller must be a realm
-opereator.
+Causes a specific user to join a realm or an audience queue.  Caller must be a
+realm opereator.
 
 
 ### `update_member`
@@ -1224,6 +1225,7 @@ The session user left or was removed from a realm.
 
 ### `realm_member_joined`
 
+- `action_id` : integer (if applicable)
 - `realm_id` : string
 - `user_id` : string
 - `user_attrs` : object
