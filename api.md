@@ -1,7 +1,5 @@
-This document describes version 1 of the open [Ninchat](https://ninchat.com)
-API.  It will be extended over time, without causing regressions to conforming
-client applications.  (If a new, backward-incompatible API version is released,
-it will be accessible using a new endpoint address or protocol identifier.)
+This document describes the **deprecated** version 1 of the open
+[Ninchat](https://ninchat.com) API.
 
 Copyright &copy; 2012-2013 Somia Reality Oy.  All rights reserved.
 
