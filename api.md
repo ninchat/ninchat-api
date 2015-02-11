@@ -162,9 +162,13 @@ There are five modes of operation:
 4. If `user_id` and `master_sign` are specified, a new session for an existing
    user is created.
 
-5. Otherwise a new user is created.  `identity_type_new`, `identity_name_new`,
-   `identity_auth_new` and/or `identity_attrs` may be used to create an
-   identity for the user.
+5. Otherwise a new user is created.
+
+   The user will be a guest unless the `guest` user attribute is explicitly set
+   as false.
+
+   `identity_type_new`, `identity_name_new`, `identity_auth_new` and/or
+   `identity_attrs` may be used to create an identity for the user.
 
    If `identity_type_new` is set to "facebook", `identity_name_new` is set to a
    Facebook user id and `identity_auth_new` contains a matching signed request
@@ -200,6 +204,31 @@ Client-assisted idle user and unread message tracking.
 ### `close_session`
 
 See [Streaming transports](#streaming-transports) for details.
+
+
+### `create_user`
+
+- `action_id` : integer
+- `user_attrs` : string (optional)
+- `user_settings` : string (optional)
+
+Reply event: [`user_created`](#user_created)
+
+Like [`create_session`](#create_session), but doesn't create a session.  Useful
+with the [sessionless API](#sessionless-http-calling).
+
+If called by an existing user (e.g. there is a session, or the caller is
+authenticated), the created user will become a puppet of the calling (master)
+user.  The [`user_created`](#user_created) event won't include the `user_auth`
+parameter; instead, the puppet user may be logged in and manipulated using the
+master key mechanism.
+
+If called without a session or authentication credentials, a standalone user is
+created.  The [`user_created`](#user_created) event will include the
+`user_auth` parameter.
+
+The created user will be a guest unless the `guest` user attribute is
+explicitly set as false.
 
 
 ### `describe_user`
@@ -986,6 +1015,15 @@ containing the `queue_attrs` object and the `realm_id` string.
 		},
 		...
 	}
+
+
+### `user_created`
+
+- `action_id` : integer (if applicable)
+- `user_id` : string
+- `user_auth` : string (if a standalone user was created)
+- `user_attrs` : object
+- `user_settings` : object
 
 
 ### `user_found`
