@@ -1017,6 +1017,16 @@ containing the `queue_attrs` object and the `realm_id` string.
 	}
 
 
+### `session_status_updated`
+
+- `channel_id` : string (if applicable)
+- `user_id` : string (if applicable)
+- `message_id` : string
+
+Another session indicated that it has read channel or dialogue messages up to
+the specified message.
+
+
 ### `user_created`
 
 - `action_id` : integer (if applicable)

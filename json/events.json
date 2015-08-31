@@ -28,6 +28,12 @@
 		"user_queues":          false
 	},
 
+	"session_status_updated": {
+		"channel_id":           false,
+		"user_id":              false,
+		"message_id":           true
+	},
+
 	"user_found": {
 		"action_id":            false,
 		"user_id":              true,
