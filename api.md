@@ -844,6 +844,27 @@ Reply event: [`master_key_deleted`](#master_key_deleted)
 Specify either `master_key_secret` or `user_auth`.
 
 
+### `send_file`
+
+- `action_id` : integer
+- `file_attrs` : object
+- `user_id` : string (optional)
+- `channel_id` : string (optional)
+
+Reply event: [`message_received`](#message_received)
+
+File contents are uploaded in the first payload part.  A `ninchat.com/file`
+message is sent to the specified user or channel.
+
+
+### `describe_file`
+
+- `action_id` : integer
+- `file_id` : string
+
+Reply event: [`file_found`](#file_found)
+
+
 ### `search`
 
 - `action_id` : integer
@@ -1495,6 +1516,22 @@ The `master_keys` object contains key ids mapped to empty objects:
 - `master_key_id` : string
 
 
+### `file_found`
+
+New parameters:
+
+- `action_id` : integer (optional)
+- `file_id` : string
+- `file_attrs` : object
+- `file_url` : string
+- `thumbnail_url` : string (optional)
+- `url_expiry` : integer
+
+The temporary `file_url` may be used to download the file.  `url_expiry`
+specifies the time when `file_url` and `thumbnail_url` stop working.
+`thumbnail_url` is specified if the file is of a common image type.
+
+
 ### `search_results`
 
 - `action_id` : integer
@@ -1760,6 +1797,21 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	attribute, but is not controlled by non-operator members.)
 
 
+### File
+
+- `name` : string (writable by owner)
+
+	The filename.  Required.
+
+- `type` : string
+
+	Mime type of an image file.  Detected automatically.
+
+- `size` : integer
+
+	File size in bytes.  Calculated automatically.
+
+
 User settings
 -------------
 
@@ -1808,6 +1860,7 @@ Error types
 - `channel_quota_exceeded`
 - `connection_superseded`
 - `deprecated`
+- `file_not_found`
 - `identity_already_exists`
 - `identity_not_found`
 - `internal`
@@ -1844,6 +1897,20 @@ The server treats message types prefixed with "ninchat.com/" differently from
 others: only the ones documented here are accepted by the server.  Messages
 with other kind of message types are passed through without any additional
 processing.
+
+
+### `ninchat.com/file`
+
+The payload consists of a single part with a JSON object containing the
+following properties:
+
+- `text` : string (optional)
+- `files` : object list
+
+The `files` list contains one or more objects with the following properties:
+
+- `file_id` : string
+- `file_attrs` : string
 
 
 ### `ninchat.com/info/*`
