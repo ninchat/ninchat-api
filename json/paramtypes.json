@@ -63,6 +63,7 @@
 	"user_dialogues":       "object",
 	"user_id":              "string",
 	"user_identities":      "object",
+	"user_metadata":        "object",
 	"user_queues":          "object",
 	"user_realms":          "object",
 	"user_realms_member":   "object",

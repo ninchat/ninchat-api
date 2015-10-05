@@ -4,6 +4,7 @@
 		"user_auth":            false,
 		"user_attrs":           false,
 		"user_settings":        false,
+		"user_metadata":        false,
 		"identity_type":        false,
 		"identity_name":        false,
 		"identity_auth":        false,

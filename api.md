@@ -129,6 +129,7 @@ _`session_id` must not be specified_ (see
 - `user_auth` : string (optional)
 - `user_attrs` : object (optional)
 - `user_settings` : object (optional)
+- `user_metadata` : object (optional)
 - `identity_type` : string (optional)
 - `identity_name` : string (optional)
 - `identity_auth` : string (optional)
