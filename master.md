@@ -66,7 +66,8 @@ mode of operation.
 
 #### [`create_session`](api.md#create_session)
 
-1. A new puppet user is created by default.
+1. A new puppet user is created by default.  The optional `puppet_attrs`
+   parameter is supported.
 
 2. If the `user_id` parameter is specified, an existing puppet user is logged
    in.  (Note that the mode flag is not used.)

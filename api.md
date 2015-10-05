@@ -25,6 +25,7 @@ Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
     - [Realm membership](#realm-membership)
     - [Queue](#queue)
     - [File](#file)
+    - [Puppet](#puppet)
   - [User settings](#user-settings)
   - [Error types](#error-types)
   - [Message types](#message-types)
@@ -147,6 +148,7 @@ _`session_id` must not be specified_ (see
 - `identity_attrs` : object (optional)
 - `access_key` : string (optional)
 - `master_sign` : string (optional)
+- `puppet_attrs` : object (optional)
 - `message_types` : string array
 
 Reply event: [`session_created`](#session_created)
@@ -220,6 +222,7 @@ See [Streaming Transports](#streaming-transports) for details.
 - `action_id` : integer
 - `user_attrs` : string (optional)
 - `user_settings` : string (optional)
+- `puppet_attrs` : object (optional)
 
 Reply event: [`user_created`](#user_created)
 
@@ -1823,6 +1826,13 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 - `size` : integer
 
 	File size in bytes.  Calculated automatically.
+
+
+### Puppet
+
+- `name` : string (writable by master)
+
+	User name.
 
 
 User settings
