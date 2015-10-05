@@ -39,6 +39,13 @@ Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
   - [Responses](#responses)
 
 
+### Associated documents
+
+- [Ninchat master keys](master.md)
+  - [Action signatures](master.md#action-signatures)
+  - [Secure metadata](master.md#secure-metadata)
+
+
 Changes
 =======
 
@@ -161,7 +168,7 @@ There are five modes of operation:
    The access key configuration determines the user.
 
 4. If `user_id` and `master_sign` are specified, a new session for an existing
-   user is created.
+   user is created.  See [Action signatures](master.md#action-signatures).
 
 5. Otherwise a new user is created.
 
@@ -484,7 +491,8 @@ There are two modes of operation:
    access key configuration).
 
 3. `master_sign` grants permission to join the channel (`channel_id` must be
-   specified).  It may also permit `member_attrs` to be specified.
+   specified).  It may also permit `member_attrs` to be specified.  See
+   [Action signatures](master.md#action-signatures).
 
 
 ### `part_channel`
@@ -598,7 +606,8 @@ Go to the end of the queue.
 The `audience_metadata` object may contain arbitrary properties, but the
 "secure" property is special: if set to a string value, it will be decrypted
 using the queue owner's master key, and the contents will be set as the value
-of the property.  Other value types for "secure" property are rejected.
+of the property.  Other value types for "secure" property are rejected.  See
+[Secure metadata](master.md#secure-metadata).
 
 
 ### `accept_audience`
