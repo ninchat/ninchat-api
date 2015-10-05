@@ -33,6 +33,7 @@
 	"master_keys":          "object",
 	"master_sign":          "string",
 	"member_attrs":         "object",
+	"message_fold":         "bool",
 	"message_hidden":       "bool",
 	"message_id":           "string",
 	"message_time":         "float",

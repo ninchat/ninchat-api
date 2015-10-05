@@ -245,6 +245,7 @@
 		"identity_type":        false,
 		"identity_name":        false,
 		"message_type":         true,
+		"message_fold":         false,
 		"message_ttl":          false
 	},
 

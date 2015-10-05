@@ -663,6 +663,7 @@ operator (if removing from a realm or a queue).
 - `identity_type` : string (optional)
 - `identity_name` : string (optional)
 - `message_type` : string
+- `message_fold` : boolean (optional)
 - `message_ttl` : float (optional)
 
 Reply event: [`message_received`](#message_received) or none (if `action_id` is
@@ -1393,8 +1394,9 @@ Someone was removed from an audience queue.
 - `message_type` : string
 - `message_user_id` : string (if applicable)
 - `message_user_name` : string (if applicable)
-- `message_ttl` : float (if applicable)
-- `message_hidden` : boolean (if applicable)
+- `message_hidden` : boolean (optional)
+- `message_fold` : boolean (optional)
+- `message_ttl` : float (optional)
 - `history_length` : integer (if succeeding a `history_results` event)
 
 Message content is optionally provided in the payload (see

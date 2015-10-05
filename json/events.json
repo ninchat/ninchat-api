@@ -287,8 +287,9 @@
 		"message_type":         true,
 		"message_user_id":      false,
 		"message_user_name":    false,
-		"message_ttl":          false,
 		"message_hidden":       false,
+		"message_fold":         false,
+		"message_ttl":          false,
 		"history_length":       false
 	},
 
