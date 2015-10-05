@@ -24,6 +24,7 @@ Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
     - [Realm](#realm)
     - [Realm membership](#realm-membership)
     - [Queue](#queue)
+    - [File](#file)
   - [User settings](#user-settings)
   - [Error types](#error-types)
   - [Message types](#message-types)
