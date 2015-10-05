@@ -664,6 +664,7 @@ operator (if removing from a realm or a queue).
 - `identity_type` : string (optional)
 - `identity_name` : string (optional)
 - `message_type` : string
+- `message_recipient_ids` : string array (optional)
 - `message_fold` : boolean (optional)
 - `message_ttl` : float (optional)
 
@@ -1416,6 +1417,7 @@ Someone was removed from an audience queue.
 - `message_type` : string
 - `message_user_id` : string (if applicable)
 - `message_user_name` : string (if applicable)
+- `message_recipient_ids` : string array (optional)
 - `message_hidden` : boolean (optional)
 - `message_fold` : boolean (optional)
 - `message_ttl` : float (optional)

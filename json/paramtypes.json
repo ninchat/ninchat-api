@@ -36,6 +36,7 @@
 	"message_fold":         "bool",
 	"message_hidden":       "bool",
 	"message_id":           "string",
+	"message_recipient_ids":"string array",
 	"message_time":         "float",
 	"message_ttl":          "float",
 	"message_type":         "string",
