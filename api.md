@@ -1986,6 +1986,19 @@ single part with a JSON object containing properties described below.
 - `thumbnail` : string (optional)
 
 
+### `ninchat.com/metadata`
+
+The payload consists of a single part with a JSON object containing the
+following properties:
+
+- `data` : object
+- `time` : float (optional)
+
+If `time` is specified, it overrides the `message_time` property of the
+`message_received` event.  (It is used to indicate that the metadata change
+happened some time before messaging was initiated.)
+
+
 ### `ninchat.com/notice`
 
 Similar to `ninchat.com/text` (described below), but may only be sent to
