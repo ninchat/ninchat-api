@@ -2,7 +2,7 @@ Ninchat master keys
 ===================
 
 This document describes the signing and encryption which may be used with some
-[Ninchat API](api.md) actions.  The required keys are created with the see
+[Ninchat API](api.md) actions.  The required keys are created with the
 [`create_master_key`](api.md#create_master_key) API action.
 
 
