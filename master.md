@@ -1,4 +1,4 @@
-Ninchat master keys
+Ninchat Master Keys
 ===================
 
 This document describes the signing and encryption which may be used with some
@@ -6,8 +6,8 @@ This document describes the signing and encryption which may be used with some
 [`create_master_key`](api.md#create_master_key) API action.
 
 
-Action signatures
------------------
+Action Signatures
+=================
 
 A signature is formed from the following inputs:
 
@@ -82,8 +82,8 @@ parameter is supported.
    signature.  The mode flag must be specified in the signature.
 
 
-Secure metadata
----------------
+Secure Metadata
+===============
 
 An encrypted metadata property is formed from the following inputs:
 

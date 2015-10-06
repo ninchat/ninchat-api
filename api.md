@@ -32,19 +32,19 @@ Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
     - [ninchat.com/link](#ninchatcomlink)
     - [ninchat.com/notice](#ninchatcomnotice)
     - [ninchat.com/text](#ninchatcomtext)
-- [Streaming transports](#streaming-transports)
+- [Streaming Transports](#streaming-transports)
   - [WebSocket](#websocket)
   - [HTTP long polling](#http-long-polling)
-- [Sessionless HTTP calling](#sessionless-http-calling)
+- [Sessionless HTTP Calling](#sessionless-http-calling)
   - [Requests](#requests)
   - [Responses](#responses)
 
 
 ### Associated documents
 
-- [Ninchat master keys](master.md)
-  - [Action signatures](master.md#action-signatures)
-  - [Secure metadata](master.md#secure-metadata)
+- [Ninchat Master Keys](master.md)
+  - [Action Signatures](master.md#action-signatures)
+  - [Secure Metadata](master.md#secure-metadata)
 
 
 Changes
@@ -107,7 +107,7 @@ events are buffered by the server until they are acknowledged by the client, so
 that they can be retransmitted if the network connection is lost during a
 session.  (Events without an `event_id` are connection-specific.)  The
 acknowledgement procedure is transport-specific (see
-[Streaming transports](#streaming-transports)).  Failure to acknowledge events
+[Streaming Transports](#streaming-transports)).  Failure to acknowledge events
 results in session buffer overflow.
 
 Instead of the reply events listed below, any action may cause an `error`
@@ -131,7 +131,7 @@ Actions
 ### `create_session`
 
 _`session_id` must not be specified_ (see
-[Streaming transports](#streaming-transports))
+[Streaming Transports](#streaming-transports))
 
 - `user_id` : string (optional)
 - `user_auth` : string (optional)
@@ -197,7 +197,7 @@ error type will be `access_denied`.  This condition is permanent:
 ### `resume_session`
 
 Receive or acknowledge events of an existing session.  See
-[Streaming transports](#streaming-transports) for details.
+[Streaming Transports](#streaming-transports) for details.
 
 
 ### `update_session`
@@ -212,7 +212,7 @@ Client-assisted idle user and unread message tracking.
 
 ### `close_session`
 
-See [Streaming transports](#streaming-transports) for details.
+See [Streaming Transports](#streaming-transports) for details.
 
 
 ### `create_user`
@@ -682,7 +682,7 @@ Reply event: [`message_received`](#message_received) or none (if `action_id` is
              not specified)
 
 Message content is provided in the payload (see
-[Streaming transports](#streaming-transports)).  The content may not be empty:
+[Streaming Transports](#streaming-transports)).  The content may not be empty:
 it must contain one or more parts (but the individual parts may be
 zero-length).
 
@@ -1434,7 +1434,7 @@ Someone was removed from an audience queue.
 - `history_length` : integer (if succeeding a `history_results` event)
 
 Message content is optionally provided in the payload (see
-[Streaming transports](#streaming-transports)).  The content may be omitted in
+[Streaming Transports](#streaming-transports)).  The content may be omitted in
 some cases, including but not limited to the situation when the sender session
 hasn't subscribed to the sent message type, but expects a reply event.
 
@@ -2027,7 +2027,7 @@ consists of a single part with a JSON object containing a `text` property
 	{"text":"This is the content of the message."}
 
 
-Streaming transports
+Streaming Transports
 ====================
 
 Both supported transport types support an initial service discovery step:
@@ -2214,7 +2214,7 @@ Polling:
 	}]);
 
 
-Sessionless HTTP calling
+Sessionless HTTP Calling
 ========================
 
 The call API supports a subset of the [Interface](#interface): the actions
