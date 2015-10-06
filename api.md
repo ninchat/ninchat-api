@@ -2232,9 +2232,14 @@ actions.  Events won't include the `event_id` parameter.
 Requests
 --------
 
-Actions which require authentication (due to the lack of sessions) must also
-contain the `caller_id` and `caller_auth` properties (strings), which specify
-user login credentials.
+Most actions require authentication (due to the lack of sessions):
+
+1. The `caller_id` and `caller_auth` properties (strings) specify user agent
+   login credentials.
+
+2. The `caller_type`, `caller_name` and `caller_auth` properties (strings)
+   specify identity credentials.  Currently only the "email" identity type is
+   supported.
 
 When the GET method or the POST method with `application/json` content type is
 used, actions may also contain the `payload` property.  If specified, its value
