@@ -209,8 +209,7 @@
 
 	"realm_member_updated": {
 		"action_id":            false,
-		"channel_id":           false,
-		"realm_id":             false,
+		"realm_id":             true,
 		"user_id":              true,
 		"member_attrs":         true
 	},
