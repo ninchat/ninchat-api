@@ -343,6 +343,15 @@ Reply event: [`identity_updated`](#identity_updated)
 Accepts or rejects a pending user identity.
 
 
+### `describe_identity`
+
+- `action_id` : integer
+- `identity_type` : string
+- `identity_name` : string
+
+Reply event: [`identity_found`](#identity_found)
+
+
 ### `update_identity`
 
 - `action_id` : integer
