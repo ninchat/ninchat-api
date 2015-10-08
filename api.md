@@ -641,7 +641,7 @@ Take the first user from the queue.  Caller must be a queue member.  The
 - `queue_id` : string (optional)
 - `user_id` : string
 
-Reply event: [`queue_member_joined`](#queue_member_joined)
+Reply event: [`realm_member_joined`](#realm_member_joined) or [`queue_member_joined`](#queue_member_joined)
 
 Causes a specific user to join a realm or an audience queue.  Caller must be a
 realm opereator.

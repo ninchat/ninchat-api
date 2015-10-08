@@ -135,8 +135,7 @@
 	},
 
 	"channel_member_joined": {
-		"channel_id":           false,
-		"realm_id":             false,
+		"channel_id":           true,
 		"user_id":              true,
 		"user_attrs":           true,
 		"member_attrs":         true
@@ -194,8 +193,8 @@
 	},
 
 	"realm_member_joined": {
-		"channel_id":           false,
-		"realm_id":             false,
+		"action_id":            false,
+		"realm_id":             true,
 		"user_id":              true,
 		"user_attrs":           true,
 		"member_attrs":         true
