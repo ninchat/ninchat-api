@@ -439,7 +439,7 @@ perceived status of the dialogue.  Valid values for `dialogue_status` are
 - `channel_attrs` : object (optional)
 - `realm_id` : string (optional)
 
-Reply event: [`channel_created`](#channel_created)
+Reply event: [`channel_joined`](#channel_joined)
 
 If `realm_id` is specified, the realm owner will become the channel owner.
 Otherwise the session user will become the owner.
