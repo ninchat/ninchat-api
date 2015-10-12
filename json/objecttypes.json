@@ -1,0 +1,172 @@
+{
+	"channel_member": {
+		"params": {
+			"member_attrs": { "type": "channel_member_attrs" },
+			"user_attrs":   { "type": "user_attrs"           }
+		}
+	},
+
+	"channel_members": {
+		"value": "channel_member"
+	},
+
+	"channel_result": {
+		"params": {
+			"channel_attrs": { "type": "channel_attrs" },
+			"realm_id":      { "type": "string",       "optional": true },
+			"weight":        { "type": "float"         }
+		}
+	},
+
+	"channels": {
+		"value": "channel_result"
+	},
+
+	"dialogue_members": {
+		"value": "dialogue_member_attrs"
+	},
+
+	"master_key": {
+		"params": {
+		}
+	},
+
+	"master_keys": {
+		"value": "master_key"
+	},
+
+	"queue_member": {
+		"params": {
+			"member_attrs": { "type": "queue_member_attrs" },
+			"user_attrs":   { "type": "user_attrs"         }
+		}
+	},
+
+	"queue_members": {
+		"value": "queue_member"
+	},
+
+	"realm_member": {
+		"params": {
+			"member_attrs": { "type": "realm_member_attrs" },
+			"user_attrs":   { "type": "user_attrs"         }
+		}
+	},
+
+	"realm_members": {
+		"value": "realm_member"
+	},
+
+	"realm_queue": {
+		"params": {
+			"queue_attrs":    { "type": "queue_attrs" },
+			"queue_position": { "type": "int",        "optional": true }
+		}
+	},
+
+	"realm_queues": {
+		"value": "realm_queue"
+	},
+
+	"strings": {
+		"value": "string"
+	},
+
+	"user_account": {
+		"params": {
+			"channels":      { "type": "user_account_objects",       "optional": true },
+			"queue_members": { "type": "user_account_members",       "optional": true },
+			"queues":        { "type": "user_account_objects",       "optional": true },
+			"realms":        { "type": "user_account_objects",       "optional": true },
+			"subscriptions": { "type": "user_account_subscriptions", "optional": true }
+		}
+	},
+
+	"user_account_members": {
+		"params": {
+			"quota": { "type": "int" }
+		}
+	},
+
+	"user_account_objects": {
+		"params": {
+			"available": { "type": "int" },
+			"quota":     { "type": "int" }
+		}
+	},
+
+	"user_account_subscription": {
+		"params": {
+			"active":        { "type": "bool"                  },
+			"channels":      { "type": "user_account_objects", "optional": true },
+			"expiration":    { "type": "int",                  "optional": true },
+			"plan":          { "type": "string"                },
+			"queue_members": { "type": "user_account_members", "optional": true },
+			"queues":        { "type": "user_account_objects", "optional": true },
+			"realms":        { "type": "user_account_objects", "optional": true },
+			"renewal":       { "type": "int",                  "optional": true }
+		}
+	},
+
+	"user_account_subscriptions": {
+		"item": "user_account_subscription"
+	},
+
+	"user_channel": {
+		"params": {
+			"channel_attrs":  { "type": "channel_attrs" },
+			"channel_status": { "type": "string",       "optional": true },
+			"realm_id":       { "type": "string",       "optional": true }
+		}
+	},
+
+	"user_channels": {
+		"value": "user_channel"
+	},
+
+	"user_dialogue": {
+		"params": {
+			"audience_metadata": { "type": "strings",          "optional": true },
+			"dialogue_members":  { "type": "dialogue_members", "optional": true },
+			"dialogue_status":   { "type": "string",           "optional": true }
+		}
+	},
+
+	"user_dialogues": {
+		"value": "user_dialogue"
+	},
+
+	"user_identities": {
+		"value": "identity_attrs"
+	},
+
+	"user_queue": {
+		"params": {
+			"queue_attrs": { "type": "queue_attrs" },
+			"realm_id":    { "type": "string"      }
+		}
+	},
+
+	"user_queues": {
+		"value": "user_queue"
+	},
+
+	"user_realms": {
+		"value": "realm_attrs"
+	},
+
+	"user_realms_member": {
+		"value": "realm_member_attrs"
+	},
+
+	"user_result": {
+		"params": {
+			"user_attrs": { "type": "user_attrs" },
+			"weight":     { "type": "float"      }
+		}
+	},
+
+	"users": {
+		"value": "user_result"
+	}
+}
