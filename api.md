@@ -1187,8 +1187,8 @@ channel-specific attributes of the user):
 
 	"channel_members": {
 		"12345": {
-			"user_attrs": { "attrs": "value", ... },
-			"member_attrs": { "attrs": "value", ... }
+			"user_attrs": { "attr": "value", ... },
+			"member_attrs": { "attr": "value", ... }
 		},
 		...
 	}
