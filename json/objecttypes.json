@@ -68,10 +68,6 @@
 		"value": "realm_queue"
 	},
 
-	"strings": {
-		"value": "string"
-	},
-
 	"user_account": {
 		"params": {
 			"channels":      { "type": "user_account_objects",       "optional": true },
@@ -126,7 +122,7 @@
 
 	"user_dialogue": {
 		"params": {
-			"audience_metadata": { "type": "strings",          "optional": true },
+			"audience_metadata": { "type": "object",           "optional": true },
 			"dialogue_members":  { "type": "dialogue_members", "optional": true },
 			"dialogue_status":   { "type": "string",           "optional": true }
 		}
