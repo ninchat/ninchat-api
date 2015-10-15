@@ -1469,7 +1469,7 @@ hasn't subscribed to the sent message type, but expects a reply event.
 - `action_id` : integer
 - `channel_id` : string (if applicable)
 - `user_id` : string (if applicable)
-- `history_length` : integer (if applicable)
+- `history_length` : integer
 
 
 ### `history_discarded`
