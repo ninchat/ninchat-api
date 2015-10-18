@@ -1470,6 +1470,11 @@ hasn't subscribed to the sent message type, but expects a reply event.
 - `channel_id` : string (if applicable)
 - `user_id` : string (if applicable)
 - `history_length` : integer
+- `message_id` : string (if applicable)
+
+The `message_id` is set to the last message's id if `history_length` > 0.  The
+`history_order` specified in the `load_history` action causes this event's
+`message_id` to be either the smallest or the greatest of the received ids.
 
 
 ### `history_discarded`

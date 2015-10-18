@@ -303,7 +303,8 @@
 		"action_id":            true,
 		"channel_id":           false,
 		"user_id":              false,
-		"history_length":       true
+		"history_length":       true,
+		"message_id":           false
 	},
 
 	"history_discarded": {
