@@ -133,6 +133,10 @@
 	},
 
 	"user_identities": {
+		"value": "user_identities_2"
+	},
+
+	"user_identities_2": {
 		"value": "identity_attrs"
 	},
 
