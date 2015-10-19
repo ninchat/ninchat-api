@@ -30,6 +30,7 @@
 	"identity_type_new":    "string",
 	"master_key_id":        "string",
 	"master_key_secret":    "string",
+	"master_key_type":      "string",
 	"master_keys":          "object",
 	"master_sign":          "string",
 	"member_attrs":         "object",

@@ -32,6 +32,10 @@
 	},
 
 	"master_keys": {
+		"value": "master_keys_2"
+	},
+
+	"master_keys_2": {
 		"value": "master_key"
 	},
 

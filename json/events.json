@@ -334,19 +334,21 @@
 		"access_key":           false
 	},
 
-	"master_found": {
+	"master_keys_found": {
 		"action_id":            true,
 		"master_keys":          true
 	},
 
 	"master_key_created": {
 		"action_id":            false,
+		"master_key_type":      true,
 		"master_key_id":        true,
 		"master_key_secret":    false
 	},
 
 	"master_key_deleted": {
 		"action_id":            false,
+		"master_key_type":      true,
 		"master_key_id":        true
 	},
 

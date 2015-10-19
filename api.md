@@ -149,6 +149,7 @@ _`session_id` must not be specified_ (see
 - `identity_auth_new` : string (optional)
 - `identity_attrs` : object (optional)
 - `access_key` : string (optional)
+- `master_key_type` : string (optional)
 - `master_sign` : string (optional)
 - `puppet_attrs` : object (optional)
 - `message_types` : string array
@@ -173,7 +174,8 @@ There are five modes of operation:
    The access key configuration determines the user.
 
 4. If `user_id` and `master_sign` are specified, a new session for an existing
-   user is created.  See [Action signatures](master.md#action-signatures).
+   user is created.  `master_key_type` specifies the signature type (defaults
+   to "ninchat").  See [Action signatures](master.md#action-signatures).
 
 5. Otherwise a new user is created.
 
@@ -488,6 +490,7 @@ Like [`join_channel`](#join_channel), but:
 - `action_id` : integer
 - `channel_id` : string (optional)
 - `access_key` : string (optional)
+- `master_key_type` : string (optional)
 - `master_sign` : string (optional)
 - `member_attrs` : object (optional)
 
@@ -505,8 +508,8 @@ There are two modes of operation:
    access to the channel's realm in addition to the channel (depending on the
    access key configuration).
 
-3. `master_sign` grants permission to join the channel (`channel_id` must be
-   specified).  It may also permit `member_attrs` to be specified.  See
+3. `master_sign` grants permission to join the channel.  `master_key_type`
+   specifies the signature type (defaults to "ninchat").  See
    [Action signatures](master.md#action-signatures).
 
 
@@ -844,30 +847,50 @@ _`session_id` not required_
 Reply event: [`access_found`](#access_found)
 
 
-### `describe_master`
+### `describe_master_keys`
+
+- `action_id` : integer
+
+Reply event: [`master_keys_found`](#master_keys_found)
+
+
+### `describe_master` (deprecated)
 
 - `action_id` : integer
 
 Reply event: [`master_found`](#master_found)
 
+This action has been superseded by
+[`describe_master_keys`](#describe_master_keys).
+
 
 ### `create_master_key`
 
 - `action_id` : integer
+- `master_key_type` : string (optional)
+- `master_key_id` : string (optional)
 
 Reply event: [`master_key_created`](#master_key_created)
+
+If `master_key_type` is "ninchat" or left unspecified, an id and a secret key
+are generated automatically.
+
+If `master_key_type` is "jwt", `master_key_id` must be specified, and the key
+material must be provided in the payload.
 
 
 ### `delete_master_key`
 
 - `action_id` : integer
+- `master_key_type` : string (optional)
 - `master_key_id` : string
 - `master_key_secret` : string (optional)
 - `user_auth` : string (optional)
 
 Reply event: [`master_key_deleted`](#master_key_deleted)
 
-Specify either `master_key_secret` or `user_auth`.
+Specify either `master_key_secret` or `user_auth`.  `master_key_type` defaults
+to "ninchat".
 
 
 ### `send_file`
@@ -1522,7 +1545,23 @@ properties are set:
 - `access_key` : string (if applicable)
 
 
-### `master_found`
+### `master_keys_found`
+
+- `action_id` : integer
+- `master_keys` : object
+
+The `master_keys` object contains key types mapped to objects containing key
+ids mapped to empty objects:
+
+	"master_keys": {
+		"ninchat": {
+			"12345": {}
+		}
+		...
+	}
+
+
+### `master_found` (deprecated)
 
 - `action_id` : integer
 - `master_keys` : object
@@ -1538,6 +1577,7 @@ The `master_keys` object contains key ids mapped to empty objects:
 ### `master_key_created`
 
 - `action_id` : integer (optional)
+- `master_key_type` : string
 - `master_key_id` : string
 - `master_key_secret` : string (optional)
 
@@ -1545,6 +1585,7 @@ The `master_keys` object contains key ids mapped to empty objects:
 ### `master_key_deleted`
 
 - `action_id` : integer (optional)
+- `master_key_type` : string
 - `master_key_id` : string
 
 
