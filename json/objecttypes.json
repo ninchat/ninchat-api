@@ -27,15 +27,15 @@
 	},
 
 	"master_key": {
+		"value": "master_key_attrs"
+	},
+
+	"master_key_attrs": {
 		"params": {
 		}
 	},
 
 	"master_keys": {
-		"value": "master_keys_2"
-	},
-
-	"master_keys_2": {
 		"value": "master_key"
 	},
 
@@ -137,10 +137,10 @@
 	},
 
 	"user_identities": {
-		"value": "user_identities_2"
+		"value": "user_identity"
 	},
 
-	"user_identities_2": {
+	"user_identity": {
 		"value": "identity_attrs"
 	},
 
