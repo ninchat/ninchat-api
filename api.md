@@ -175,7 +175,8 @@ There are five modes of operation:
 
 4. If `user_id` and `master_sign` are specified, a new session for an existing
    user is created.  `master_key_type` specifies the signature type (defaults
-   to "ninchat").  See [Action signatures](master.md#action-signatures).
+   to "ninchat").  An `access_expired` error type is returned if the signature
+   has expired.  See [Action signatures](master.md#action-signatures).
 
 5. Otherwise a new user is created.
 
@@ -624,8 +625,9 @@ Go to the end of the queue.
 The `audience_metadata` object may contain arbitrary properties, but the
 "secure" property is special: if set to a string value, it will be decrypted
 using the queue owner's master key, and the contents will be set as the value
-of the property.  Other value types for "secure" property are rejected.  See
-[Secure metadata](master.md#secure-metadata).
+of the property.  Other value types for "secure" property are rejected.  A
+`permission_expired` error type is returned if the encrypted metadata has
+expired.  See [Secure metadata](master.md#secure-metadata).
 
 
 ### `accept_audience`
@@ -1953,6 +1955,7 @@ Error types
 - `message_type_too_long`
 - `message_types_too_long`
 - `permission_denied`
+- `permission_expired`
 - `queue_is_closed`
 - `queue_is_empty`
 - `queue_is_full`
