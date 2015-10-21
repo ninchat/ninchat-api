@@ -46,6 +46,7 @@
 	"message_user_name":    "string",
 	"payload_attrs":        "string array",
 	"puppet_attrs":         "object",
+	"puppet_masters":       "object",
 	"queue_attrs":          "object",
 	"queue_id":             "string",
 	"queue_members":        "object",

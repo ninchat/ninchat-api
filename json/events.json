@@ -25,7 +25,8 @@
 		"user_channels":        true,
 		"user_realms":          true,
 		"user_realms_member":   false,
-		"user_queues":          false
+		"user_queues":          false,
+		"puppet_masters":       false
 	},
 
 	"session_status_updated": {
@@ -48,7 +49,8 @@
 		"user_queues":          false,
 		"dialogue_members":     false,
 		"dialogue_status":      false,
-		"audience_metadata":    false
+		"audience_metadata":    false,
+		"puppet_masters":       false
 	},
 
 	"user_updated": {
@@ -56,7 +58,8 @@
 		"user_id":              true,
 		"user_attrs":           true,
 		"user_settings":        false,
-		"user_account":         false
+		"user_account":         false,
+		"puppet_masters":       false
 	},
 
 	"user_deleted": {

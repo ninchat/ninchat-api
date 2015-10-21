@@ -39,6 +39,16 @@
 		"value": "master_key"
 	},
 
+	"puppet_master": {
+		"params": {
+			"puppet_attrs": { "type": "puppet_attrs" }
+		}
+	},
+
+	"puppet_masters": {
+		"value": "puppet_master"
+	},
+
 	"queue_member": {
 		"params": {
 			"member_attrs": { "type": "queue_member_attrs" },

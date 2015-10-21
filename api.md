@@ -968,6 +968,7 @@ Events
 - `user_realms` : object
 - `user_realms_member` : object (optional)
 - `user_queues` : object (optional)
+- `puppet_masters` : object (optional)
 
 If specified, `session_host` contains a hostname which should be used in
 subsequent connections for this session.
@@ -1091,6 +1092,16 @@ containing the `queue_attrs` object and the `realm_id` string.
 		...
 	}
 
+The `puppet_masters` object consists of master user identifiers mapped to
+objects containing the `puppet_attrs` object:
+
+	"puppet_masters": {
+		"12345": {
+			"puppet_attrs": { "attr": "value", ... }
+		},
+		...
+	}
+
 
 ### `session_status_updated`
 
@@ -1109,6 +1120,7 @@ the specified message.
 - `user_auth` : string (if a standalone user was created)
 - `user_attrs` : object
 - `user_settings` : object
+- `puppet_masters` : object (optional)
 
 
 ### `user_found`
@@ -1128,6 +1140,7 @@ the specified message.
 - `dialogue_status` : string (if the session user has a dialogue with the user
                               and there are unread messages)
 - `audience_metadata` : object (if the session user has accepted an audience from the user)
+- `puppet_masters` : object (optional)
 
 The `dialogue_members` object consists of two user identifiers mapped to
 dialogue membership attributes:
@@ -1150,6 +1163,7 @@ If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden"
 - `user_attrs` : object
 - `user_settings` : object (if the user is the session user)
 - `user_account` : object (if the user is the session user)
+- `puppet_masters` : object (optional)
 
 
 ### `user_deleted`
