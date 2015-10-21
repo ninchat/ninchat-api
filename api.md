@@ -478,7 +478,7 @@ Reply event: [`channel_found`](#channel_found)
 Like [`join_channel`](#join_channel), but:
 
 - May only be used with channels with the `disclosed_since`, `followable`
-  attributes set.  Realm channels also need the `public` attribute to be set.
+  attributes set.
 - The user won't appear on the channel's member list.
 - The user won't be able to send messages to the channel.
 - Only the session which invoked this action will receive `message_received`
@@ -1761,8 +1761,8 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 - `followable` : boolean (writable by operators)
 
-	The `follow_channel` action may be used.  The channel must also be
-	disclosed.
+	The `follow_channel` action may be used (by anyone).  The channel must also
+	be disclosed.
 
 - `name` : string (writable by operators)
 
