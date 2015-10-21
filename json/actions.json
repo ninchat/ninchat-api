@@ -134,8 +134,9 @@
 
 	"follow_channel": {
 		"action_id":            true,
-		"channel_id":           false,
-		"access_key":           false
+		"channel_id":           true,
+		"master_key_type":      false,
+		"master_sign":          false
 	},
 
 	"join_channel": {
