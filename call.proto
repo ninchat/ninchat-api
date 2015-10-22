@@ -1,0 +1,9 @@
+package call;
+
+message Response {
+	repeated Event event = 1;
+}
+
+message Event {
+	repeated bytes frame = 1;
+}

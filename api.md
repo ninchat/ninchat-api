@@ -2313,7 +2313,8 @@ The call API supports a subset of the [Interface](#interface): the actions
 which are practical without a connection-oriented transport may be invoked with
 a HTTP request (without setting up long polling).  The
 `https://api.ninchat.com/v2/call` URL may be accessed using GET and POST
-methods, with `application/json` and `application/octet-stream` content types.
+methods, with `application/json`, `application/x-protobuf` and
+`application/octet-stream` content types.
 
 Actions and events use a JSON-encoded header (object) containing at least an
 `action` or `event` property (string) and the parameter properties (see
@@ -2406,16 +2407,18 @@ Example:
 Responses
 ---------
 
-The content type is chosen using the following algorithm:
+The content type is chosen from the request's `Accept` header using the
+following algorithm:
 
-1. If the request's `Accept` header specified only one of `application/json`
-   and `application/octet-stream`, it is used.
+1. If there is only one event, it doesn't have a payload, and
+   `application/json` is accepted, it is used.
 
-2. If the event doesn't have a payload and `application/json` is accepted, it
-   is used.
+2. If the event has a payload or there are multiple events, and
+   `application/x-protobuf` is accepted, it is used.
 
-3. If the event has a payload and `application/octet-stream` is accepted, it is
-   used.
+3. If only one of `application/json`, `application/x-protobuf` and
+   `application/octet-stream` is specified, it is used.  This may result in an
+   incomplete response.
 
 4. If no supported content types are accepted, the response will contain no
    data.
@@ -2445,17 +2448,27 @@ Example:
 	}]
 
 
-### application/octet-stream
+### application/x-protobuf
 
-The response body uses the same encoding as the corresponding request content
-type.  Since multiple events may be returned, the event header may include the
-`frames` property (integer): if set and greater than 0, it specifies how many
-subsequent frames form the payload.
+The response body contains a serialized
+[Protocol Buffers](https://developers.google.com/protocol-buffers/) message.
+It is the `Response` message defined in [`call.proto`](call.proto); it supports
+multiple events and payloads.
 
 Example:
 
 	HTTP/1.1 200 OK
-	Content-Type: application/octet-stream
+	Content-Type: application/x-protobuf
 
-	\x2b{"event":"message_received","frames":1,...}\x0f{"text":hello"}
+	\x0a\x60\x0a\x5e{"channel_id":"103uok1j","message_id":"38f8589h","event
+	":"history_results","history_length":1}\x0a\xcd\x01\x0a\xb7\x01{"histor
+	y_length":0,"event":"message_received","channel_id":"103uok1j","message
+	_user_id":"38f829b","message_time":1445514364,"message_type":"ninchat.c
+	om/text","message_id":"38f8589h"}\x0a\x11{"text": "hello"}'
+
+
+### application/octet-stream
+
+The response body uses the same encoding as the corresponding request content
+type, but currently only a single frame is supported.
 
