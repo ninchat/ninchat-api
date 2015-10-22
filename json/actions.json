@@ -312,6 +312,12 @@
 		"user_auth":            false
 	},
 
+	"get_transcript": {
+		"action_id":            true,
+		"dialogue_id":          true,
+		"message_id":           false
+	},
+
 	"search": {
 		"action_id":            true,
 		"search_term":          true

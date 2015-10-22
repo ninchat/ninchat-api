@@ -918,6 +918,19 @@ message is sent to the specified user or channel.
 Reply event: [`file_found`](#file_found)
 
 
+### `get_transcript`
+
+- `action_id` : integer
+- `dialogue_id` : string array
+- `message_id` : string (optional)
+
+Reply event: [`transcript_contents`](#transcript_contents)
+
+`dialogue_id` holds a pair of user ids (the order doesn't matter).
+`message_id` may be used to get more contents if an earlier call didn't return
+everything.
+
+
 ### `search`
 
 - `action_id` : integer
@@ -1623,6 +1636,21 @@ The `master_keys` object contains key ids mapped to empty objects:
 The temporary `file_url` may be used to download the file.  `url_expiry`
 specifies the time when `file_url` and `thumbnail_url` stop working.
 `thumbnail_url` is specified if the file is of a common image type.
+
+
+### `transcript_contents`
+
+- `action_id` : integer
+- `dialogue_members` : object (if applicable)
+- `audience_metadata` : object (optional)
+- `transcript_messages` : object array
+- `message_id` : string (optional)
+
+To identify the user who requested the audience, see which dialogue member has
+the `queue_id` attribute.
+
+`message_id` is set if `transcript_messages` doesn't contain everything.  It
+may be used in a subsequent `get_transcript` call to get successive messages.
 
 
 ### `search_results`

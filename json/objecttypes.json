@@ -84,6 +84,21 @@
 		"value": "realm_queue"
 	},
 
+	"transcript_message": {
+		"params": {
+			"message_id":        { "type": "string"  },
+			"message_time":      { "type": "float"   },
+			"message_type":      { "type": "string"  },
+			"message_user_id":   { "type": "string", "optional": true },
+			"message_user_name": { "type": "string", "optional": true },
+			"payload":           { }
+		}
+	},
+
+	"transcript_messages": {
+		"item": "transcript_message"
+	},
+
 	"user_account": {
 		"params": {
 			"channels":      { "type": "user_account_objects",       "optional": true },

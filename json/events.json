@@ -357,6 +357,14 @@
 		"master_key_id":        true
 	},
 
+	"transcript_contents": {
+		"action_id":            true,
+		"dialogue_members":     false,
+		"audience_metadata":    false,
+		"transcript_messages":  true,
+		"message_id":           false
+	},
+
 	"search_results": {
 		"action_id":            true,
 		"users":                false,
