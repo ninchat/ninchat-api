@@ -1613,8 +1613,6 @@ The `master_keys` object contains key ids mapped to empty objects:
 
 ### `file_found`
 
-New parameters:
-
 - `action_id` : integer (optional)
 - `file_id` : string
 - `file_attrs` : object
