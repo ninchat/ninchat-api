@@ -1742,6 +1742,11 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 ### Dialogue membership
 
+- `audience_ended` : bool (writable by self)
+
+	Indicates that the member has ended the dialogue which started via an
+    audience queue.
+
 - `queue_id` : string
 
 	The dialogue was initiated by requesting an audience.

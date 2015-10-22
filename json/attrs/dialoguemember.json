@@ -1,4 +1,5 @@
 {
+	"audience_ended":       { "type": "bool" },
 	"queue_id":             { "type": "string" },
 	"rating":               { "type": "int",          "writable":   true },
 	"writing":              { "type": "bool",         "writable":   true }
