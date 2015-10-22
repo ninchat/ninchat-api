@@ -1223,13 +1223,15 @@ If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden"
 - `realm_id` : string (if applicable)
 
 The `channel_members` object consists of user identifiers mapped to objects
-containing the `user_attrs` object and the `member_attrs` object (the
-channel-specific attributes of the user):
+containing the `user_attrs` object, the `member_attrs` object (the
+channel-specific attributes of the user) and the optional `puppet_attrs` object
+(if the channel owner is a puppet master):
 
 	"channel_members": {
 		"12345": {
 			"user_attrs": { "attr": "value", ... },
-			"member_attrs": { "attr": "value", ... }
+			"member_attrs": { "attr": "value", ... },
+			"puppet_attrs": { "attr": "value", ... }
 		},
 		...
 	}

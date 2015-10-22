@@ -2,6 +2,7 @@
 	"channel_member": {
 		"params": {
 			"member_attrs": { "type": "channel_member_attrs" },
+			"puppet_attrs": { "type": "puppet_attrs",        "optional": true },
 			"user_attrs":   { "type": "user_attrs"           }
 		}
 	},
@@ -63,6 +64,7 @@
 	"realm_member": {
 		"params": {
 			"member_attrs": { "type": "realm_member_attrs" },
+			"puppet_attrs": { "type": "puppet_attrs",      "optional": true },
 			"user_attrs":   { "type": "user_attrs"         }
 		}
 	},
