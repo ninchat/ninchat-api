@@ -1278,6 +1278,7 @@ The session user left or was removed from a channel.
 - `user_id` : string
 - `user_attrs` : object
 - `member_attrs` : object
+- `puppet_attrs` : object (optional)
 
 Someone else joined a channel.
 
@@ -1369,6 +1370,7 @@ The session user left or was removed from a realm.
 - `user_id` : string
 - `user_attrs` : object
 - `member_attrs` : object
+- `puppet_attrs` : object (optional)
 
 Someone else joined a realm.
 

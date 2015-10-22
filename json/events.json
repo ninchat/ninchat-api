@@ -141,7 +141,8 @@
 		"channel_id":           true,
 		"user_id":              true,
 		"user_attrs":           true,
-		"member_attrs":         true
+		"member_attrs":         true,
+		"puppet_attrs":         false
 	},
 
 	"channel_member_parted": {
@@ -200,7 +201,8 @@
 		"realm_id":             true,
 		"user_id":              true,
 		"user_attrs":           true,
-		"member_attrs":         true
+		"member_attrs":         true,
+		"puppet_attrs":         false
 	},
 
 	"realm_member_parted": {
