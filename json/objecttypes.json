@@ -91,6 +91,7 @@
 			"message_type":      { "type": "string"  },
 			"message_user_id":   { "type": "string", "optional": true },
 			"message_user_name": { "type": "string", "optional": true },
+			"message_fold":      { "type": "bool",   "optional": true },
 			"payload":           { }
 		}
 	},

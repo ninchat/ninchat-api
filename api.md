@@ -926,7 +926,9 @@ Reply event: [`file_found`](#file_found)
 
 Reply event: [`transcript_contents`](#transcript_contents)
 
-`dialogue_id` holds a pair of user ids (the order doesn't matter).
+Dump the "ninchat.com/*" messages sent in a dialogue.  `dialogue_id` holds a
+pair of user ids (the order doesn't matter).
+
 `message_id` may be used to get more contents if an earlier call didn't return
 everything.
 
@@ -1651,6 +1653,26 @@ the `queue_id` attribute.
 
 `message_id` is set if `transcript_messages` doesn't contain everything.  It
 may be used in a subsequent `get_transcript` call to get successive messages.
+
+The `transcript_messages` array looks like this (the `message_user_id`,
+`message_user_name` and `message_fold` properties are optional):
+
+	"transcript_messages": [
+		{
+			"message_id":        "0fb74jl5",
+			"message_time":      1320846070.265,
+			"message_type":      "ninchat.com/text",
+			"message_user_id":   "05kq2htc"
+			"message_user_name": "Vance",
+			"message_fold":      true,
+			"payload": {
+				"text": "Gold Five to Red Leader; lost Tiree, lost Dutch."
+			}
+		},
+		...
+	]
+
+The messages are sorted from oldest to newest.
 
 
 ### `search_results`
