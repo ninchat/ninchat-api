@@ -933,6 +933,41 @@ pair of user ids (the order doesn't matter).
 everything.
 
 
+### `delete_transcript`
+
+- `action_id` : integer
+- `dialogue_id` : string array
+
+Reply event: [`transcript_deleted`](#transcript_deleted)
+
+
+### `describe_queue_transcripts`
+
+- `action_id` : integer
+- `queue_id` : string
+- `interval_begin` : float
+- `interval_end` : float (optional)
+
+Reply event: [`queue_transcripts_found`](#queue_transcripts_found)
+
+List all dialogues which have started from the specified audience queue and
+completed during the specified interval.  The interval may be open-ended.
+
+
+### `delete_queue_transcripts`
+
+- `action_id` : integer
+- `queue_id` : string
+- `interval_begin` : float
+- `interval_end` : float
+
+Reply event: [`queue_transcripts_deleted`](#queue_transcripts_deleted)
+
+Discard all dialogues which have started from the specified audience queue and
+completed during the specified interval.  The interval length must not exceed
+one month.
+
+
 ### `search`
 
 - `action_id` : integer
@@ -1673,6 +1708,46 @@ The `transcript_messages` array looks like this (the `message_user_id`,
 	]
 
 The messages are sorted from oldest to newest.
+
+
+### `transcript_deleted`
+
+- `action_id` : integer (optional)
+- `dialogue_id` : string array (if applicable)
+
+
+### `queue_transcripts_found`
+
+- `action_id` : integer
+- `queue_id` : string
+- `queue_transcripts` : object array
+
+The `queue_transcripts` array looks like this (the `rating` property is
+optional):
+
+	"queue_transcripts": [
+		{
+			"request_time":  1445592871.785086,
+			"accept_time":   1445592877.183851,
+			"finish_time":   1445592952.232474,
+			"complete_time": 1445592955.341256,
+			"dialogue_id":   ["05kq2htc", "38hj5ip5000eg"],
+			"agent_id":      "05kq2htc",
+			"rating":        -1
+		},
+		...
+	]
+
+The transcripts are sorted by `complete_time`; if the latest transcripts are
+requested multiple times, new transcripts appear at the end.
+
+
+### `queue_transcripts_deleted`
+
+- `action_id` : integer
+- `queue_id` : string
+- `interval_begin` : float
+- `interval_end` : float
 
 
 ### `search_results`

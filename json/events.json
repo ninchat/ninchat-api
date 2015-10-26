@@ -365,6 +365,24 @@
 		"message_id":           false
 	},
 
+	"transcript_deleted": {
+		"action_id":            false,
+		"dialogue_id":          false
+	},
+
+	"queue_transcripts_found": {
+		"action_id":            true,
+		"queue_id":             true,
+		"queue_transcripts":    true
+	},
+
+	"queue_transcripts_deleted": {
+		"action_id":            true,
+		"queue_id":             true,
+		"interval_begin":       true,
+		"interval_end":         true
+	},
+
 	"search_results": {
 		"action_id":            true,
 		"users":                false,

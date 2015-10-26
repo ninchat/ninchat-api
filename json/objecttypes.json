@@ -61,6 +61,22 @@
 		"value": "queue_member"
 	},
 
+	"queue_transcript": {
+		"params": {
+			"accept_time":   { "type": "float"        },
+			"agent_id":      { "type": "string"       },
+			"complete_time": { "type": "float"        },
+			"dialogue_id":   { "type": "string array" },
+			"finish_time":   { "type": "float"        },
+			"rating":        { "type": "int",         "optional": true },
+			"request_time":  { "type": "float"        }
+		}
+	},
+
+	"queue_transcripts": {
+		"item": "queue_transcript"
+	},
+
 	"realm_member": {
 		"params": {
 			"member_attrs": { "type": "realm_member_attrs" },
