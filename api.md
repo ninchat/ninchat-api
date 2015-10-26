@@ -2088,6 +2088,7 @@ Error types
 - `access_denied`
 - `access_expired`
 - `action_not_supported`
+- `audience_not_found`
 - `channel_not_found`
 - `channel_quota_exceeded`
 - `connection_superseded`
