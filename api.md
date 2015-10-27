@@ -1915,6 +1915,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	parameter of the [`create_session`](#create_session) action.  This also
 	applies to the automatically generated `ninchat.com/info/*` messages.
 
+- `closed` : boolean (writable by operators)
+
+	Channel is in read-only state.
+
 - `disclosed_since` : time (writable by operators)
 
 	New members can see old messages since the specified time.  When set
@@ -1948,9 +1952,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	"5/20" means 5 messages per 20 seconds.
 
-- `suspended` : boolean
+- `suspended` : boolean (writable by owner)
 
-	Channel is in read-only state.
+	Similar to `closed`, but the channel doesn't count towards the owner's
+	quota.
 
 - `topic` : string (writable by operators)
 

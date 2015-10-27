@@ -2,6 +2,7 @@
 	"autosilence":          { "type": "bool",         "writable":   true },
 	"blacklisted_message_types":
 	                        { "type": "string array", "writable":   true },
+	"closed":               { "type": "bool",         "writable":   true },
 	"disclosed_since":      { "type": "int",          "writable":   true },
 	"followable":           { "type": "bool",         "writable":   true },
 	"name":                 { "type": "string",       "writable":   true },
