@@ -263,6 +263,14 @@
 		"message_hidden":       true
 	},
 
+	"update_user_messages": {
+		"action_id":            true,
+		"channel_id":           true,
+		"message_user_id":      true,
+		"message_id":           true,
+		"message_hidden":       true
+	},
+
 	"load_history": {
 		"action_id":            true,
 		"channel_id":           false,

@@ -729,7 +729,21 @@ sense.
 
 Reply event: [`message_updated`](#message_updated)
 
-Available for the message author and channel operators.
+Available for channel operators.  Affects a single message on the channel.
+
+
+### `update_user_messages`
+
+- `action_id` : integer
+- `channel_id` : string
+- `message_user_id` : string
+- `message_id` : string
+- `message_hidden` : boolean
+
+Reply event: [`message_updated`](#message_updated)
+
+Available for channel operators.  Affects all messages up to and including
+`message_id` which have been sent by `message_user_id` to the channel.
 
 
 ### `load_history`
