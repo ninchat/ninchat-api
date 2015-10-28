@@ -1,4 +1,5 @@
 {
+	"autohide":             { "type": "bool",         "writable":   true },
 	"autosilence":          { "type": "bool",         "writable":   true },
 	"blacklisted_message_types":
 	                        { "type": "string array", "writable":   true },
@@ -12,5 +13,6 @@
 	"ratelimit":            { "type": "string",       "writable":   true },
 	"suspended":            { "type": "bool",         "writable":   true },
 	"topic":                { "type": "string",       "writable":   true },
+	"upload":               { "type": "string",       "writable":   true },
 	"verified_join":        { "type": "bool",         "writable":   true }
 }

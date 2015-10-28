@@ -122,7 +122,15 @@
 			"queue_members": { "type": "user_account_members",       "optional": true },
 			"queues":        { "type": "user_account_objects",       "optional": true },
 			"realms":        { "type": "user_account_objects",       "optional": true },
-			"subscriptions": { "type": "user_account_subscriptions", "optional": true }
+			"subscriptions": { "type": "user_account_subscriptions", "optional": true },
+			"uploads":       { "type": "user_account_extent",        "optional": true }
+		}
+	},
+
+	"user_account_extent": {
+		"params": {
+			"available": { "type": "float" },
+			"quota":     { "type": "float" }
 		}
 	},
 
