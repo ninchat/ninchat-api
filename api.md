@@ -1913,6 +1913,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 ### Channel
 
+- `autohide` : boolean (writable by operators)
+
+	Set the `autohide` channel member attribute for users who join the channel.
+
 - `autosilence` : boolean (writable by operators)
 
 	Set the `silenced` channel member attribute for users who join the channel.
@@ -1983,6 +1987,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 
 ### Channel membership
+
+- `autohide` : boolean (writable by operators and moderators)
+
+	Set the `message_hidden` parameter for messages sent to the channel.
 
 - `moderator` : boolean (writable by operators)
 
