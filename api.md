@@ -1041,8 +1041,8 @@ If a new user was created, then `user_auth` contains a generated password which
 may be used in future [`create_session`](#create_session) actions by the
 client.
 
-The `user_account` object contains information about channel, realm and queue
-quota and service subscription (optional):
+The `user_account` object contains information about channel, realm, queue and
+file upload quota and service subscription (optional):
 
 	"user_account": {
 		"channels": {
@@ -1059,6 +1059,10 @@ quota and service subscription (optional):
 		},
 		"queue_members": {
 			"quota":             5
+		},
+		"uploads": {
+			"quota":             1073741824,
+			"available":         917187592
 		},
 		"subscriptions": [
 			{
@@ -1083,6 +1087,9 @@ quota and service subscription (optional):
 				},
 				"queue_members": {
 					"quota":     0
+				},
+				"uploads": {
+					"quota":     1048576
 				}
 			}
 		]
@@ -1961,6 +1968,13 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	Longer subject description of the day.
 
+- `upload` : string (writable by operators)
+
+	Enables `send_file` action:
+
+	- "member" enables it for all members.
+	- "operator" enables it for members with the `operator` attribute.
+
 - `verified_join` : boolean (writable by operators)
 
 	The channel may not be joined without a verified identity.
@@ -2039,6 +2053,13 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	The queue is in read-only state.  (This is similar to the `closed`
 	attribute, but is not controlled by non-operator members.)
+
+- `upload` : string (writable by realm operators)
+
+	Enables `send_file` action in audience dialogues:
+
+	- "member" enables it for both members.
+	- "agent" enables it for the member who accepted the audience.
 
 
 ### File
@@ -2140,6 +2161,7 @@ Error types
 - `send_rate_limited`
 - `session_buffer_overflow`
 - `session_not_found`
+- `upload_quota_exceeded`
 - `user_not_found`
 
 
