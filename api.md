@@ -683,8 +683,8 @@ Reply event: [`channel_member_parted`](#channel_member_parted),
              [`queue_member_parted`](#queue_member_parted)
 
 Kicks a user out of a channel, a realm or an audience queue.  Caller must be
-the target user, a channel operator (if removing from a channel) or a realm
-operator (if removing from a realm or a queue).
+the target user, a channel operator or moderator (if removing from a channel)
+or a realm operator (if removing from a realm or a queue).
 
 
 ### `send_message`
@@ -729,7 +729,8 @@ sense.
 
 Reply event: [`message_updated`](#message_updated)
 
-Available for channel operators.  Affects a single message on the channel.
+Available for channel operators and moderators.  Affects a single message on
+the channel.
 
 
 ### `update_user_messages`
@@ -742,8 +743,9 @@ Available for channel operators.  Affects a single message on the channel.
 
 Reply event: [`message_updated`](#message_updated)
 
-Available for channel operators.  Affects all messages up to and including
-`message_id` which have been sent by `message_user_id` to the channel.
+Available for channel operators and moderators.  Affects all messages up to and
+including `message_id` which have been sent by `message_user_id` to the
+channel.
 
 
 ### `load_history`
@@ -1982,11 +1984,15 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 ### Channel membership
 
+- `moderator` : boolean (writable by operators)
+
+	The user is a channel moderator.
+
 - `operator` : boolean (writable by operators)
 
 	The user is a channel operator.
 
-- `silenced` : boolean (writable by operators)
+- `silenced` : boolean (writable by operators and moderators)
 
 	The user may not send messages to the channel.
 
