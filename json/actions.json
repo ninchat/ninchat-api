@@ -267,7 +267,8 @@
 		"action_id":            true,
 		"channel_id":           true,
 		"message_user_id":      true,
-		"message_id":           true,
+		"message_id":           false,
+		"interval_end":         false,
 		"message_hidden":       true
 	},
 

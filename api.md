@@ -738,14 +738,16 @@ the channel.
 - `action_id` : integer
 - `channel_id` : string
 - `message_user_id` : string
-- `message_id` : string
+- `message_id` : string (optional)
+- `interval_end` : float (optional)
 - `message_hidden` : boolean
 
 Reply event: [`message_updated`](#message_updated)
 
 Available for channel operators and moderators.  Affects all messages up to and
 including `message_id` which have been sent by `message_user_id` to the
-channel.
+channel.  `interval_end` may be used instead of `message_id` to specify the
+(inclusive) end of time range.
 
 
 ### `load_history`
