@@ -2161,6 +2161,7 @@ Error types
 - `message_too_long`
 - `message_type_too_long`
 - `message_types_too_long`
+- `permission_already_spent`
 - `permission_denied`
 - `permission_expired`
 - `queue_is_closed`
