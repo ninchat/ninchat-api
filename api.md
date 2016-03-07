@@ -2141,6 +2141,7 @@ User settings
 Error types
 -----------
 
+- `access_already_spent`
 - `access_denied`
 - `access_expired`
 - `action_not_supported`
