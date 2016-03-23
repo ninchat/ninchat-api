@@ -309,12 +309,14 @@
 
 	"create_master_key": {
 		"action_id":            true,
+		"realm_id":             false,
 		"master_key_type":      false,
 		"master_key_id":        false
 	},
 
 	"delete_master_key": {
 		"action_id":            true,
+		"realm_id":             false,
 		"master_key_type":      false,
 		"master_key_id":        true,
 		"master_key_secret":    false,

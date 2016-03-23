@@ -346,6 +346,7 @@
 
 	"master_key_created": {
 		"action_id":            false,
+		"realm_id":             false,
 		"master_key_type":      true,
 		"master_key_id":        true,
 		"master_key_secret":    false
@@ -353,6 +354,7 @@
 
 	"master_key_deleted": {
 		"action_id":            false,
+		"realm_id":             false,
 		"master_key_type":      true,
 		"master_key_id":        true
 	},
