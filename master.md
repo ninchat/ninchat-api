@@ -4,20 +4,12 @@ Ninchat Master Keys
 This document describes the signing and encryption which may be used with some
 [Ninchat API](api.md) actions.
 
-The required keys can be created in two ways:
-
-1. While logged in at Ninchat.com, go to
-   `https://ninchat.com/#/x/settings/masterkeys`.
-
-2. Using the [`create_master_key`](api.md#create_master_key) API action, with
-   the `master_key_type` parameter set to "ninchat".
-
-
 Copyright &copy; 2015-2016 Somia Reality Oy.  All rights reserved.
 
 
 ### Contents
 
+- [Creating Keys](#creating-keys)
 - [Action Signatures](#action-signatures)
 - [Secure Metadata](#secure-metadata)
 
@@ -25,6 +17,18 @@ Copyright &copy; 2015-2016 Somia Reality Oy.  All rights reserved.
 ### Associated documents
 
 - [Ninchat API](api.md)
+
+
+Creating Keys
+=============
+
+The required keys can be created in two ways:
+
+1. While logged in at [Ninchat](https://ninchat.com/), go to
+   `https://ninchat.com/#/x/settings/masterkeys`.
+
+2. Using the [`create_master_key`](api.md#create_master_key) API action, with
+   the `master_key_type` parameter set to "ninchat".
 
 
 Action Signatures
