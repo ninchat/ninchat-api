@@ -29,6 +29,7 @@
 
 	"master_key": {
 		"params": {
+			"realm_id": { "type": "string", "optional": true }
 		}
 	},
 
