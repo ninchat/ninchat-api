@@ -14,6 +14,17 @@ This document describes the signing and encryption which may be used with some
 Copyright &copy; 2015-2016 Somia Reality Oy.  All rights reserved.
 
 
+### Contents
+
+- [Action Signatures](#action-signatures)
+- [Secure Metadata](#secure-metadata)
+
+
+### Associated documents
+
+- [Ninchat API](api.md)
+
+
 Action Signatures
 =================
 
