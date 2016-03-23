@@ -12,6 +12,7 @@ Copyright &copy; 2015-2016 Somia Reality Oy.  All rights reserved.
 - [Creating Keys](#creating-keys)
 - [Action Signatures](#action-signatures)
 - [Secure Metadata](#secure-metadata)
+- [Available Implementations](#available-implementations)
 
 
 ### Associated documents
@@ -172,4 +173,20 @@ An example JSON object:
 		},
 		"user_id": "05kq2htc"
 	}
+
+
+Available Implementations
+=========================
+
+Open source libraries implementing some or all of the functionality described
+in this document are available for the following programming languages:
+
+- [Java](https://github.com/ninchat/ninchat-java)
+
+- [Node.js](https://github.com/ninchat/ninchat-nodejs)
+
+- [PHP](https://github.com/ninchat/ninchat-php)
+
+- [Python](https://github.com/ninchat/ninchat-python) -
+  [Read the Docs](https://ninchat-python.readthedocs.org/en/latest/master.html)
 
