@@ -889,10 +889,19 @@ This action has been superseded by
 ### `create_master_key`
 
 - `action_id` : integer
+- `realm_id` : string (optional)
 - `master_key_type` : string (optional)
 - `master_key_id` : string (optional)
 
 Reply event: [`master_key_created`](#master_key_created)
+
+If `realm_id` is not specified, the created key can be used with any resource
+owned by the creator (to the extent supported by the API).  In particular,
+puppet users can be created and controlled with such keys.
+
+If `realm_id` is specified, the created key can only be used with resources
+associated with that realm (e.g. channels and audience metadata).  Such keys
+can be created and deleted by realm operators.
 
 If `master_key_type` is "ninchat" or left unspecified, an id and a secret key
 are generated automatically.
@@ -904,6 +913,7 @@ material must be provided in the payload.
 ### `delete_master_key`
 
 - `action_id` : integer
+- `realm_id` : string (optional)
 - `master_key_type` : string (optional)
 - `master_key_id` : string
 - `master_key_secret` : string (optional)
@@ -911,8 +921,12 @@ material must be provided in the payload.
 
 Reply event: [`master_key_deleted`](#master_key_deleted)
 
-Specify either `master_key_secret` or `user_auth`.  `master_key_type` defaults
-to "ninchat".
+`realm_id` must be specified if the key is associated with a realm.
+
+If the key is not associated with a realm (= it's a personal key), either
+`master_key_secret` or `user_auth` must be specified for extra safety.
+
+`master_key_type` defaults to "ninchat".
 
 
 ### `send_file`
@@ -1648,11 +1662,15 @@ properties are set:
 - `master_keys` : object
 
 The `master_keys` object contains key types mapped to objects containing key
-ids mapped to empty objects:
+ids mapped to objects containing the optional `realm_id` property:
 
 	"master_keys": {
 		"ninchat": {
-			"12345": {}
+			"12345": {
+			},
+			"23456": {
+				"realm_id": "01234"
+			}
 		}
 		...
 	}
@@ -1674,6 +1692,7 @@ The `master_keys` object contains key ids mapped to empty objects:
 ### `master_key_created`
 
 - `action_id` : integer (optional)
+- `realm_id` : string (optional)
 - `master_key_type` : string
 - `master_key_id` : string
 - `master_key_secret` : string (optional)
@@ -1682,6 +1701,7 @@ The `master_keys` object contains key ids mapped to empty objects:
 ### `master_key_deleted`
 
 - `action_id` : integer (optional)
+- `realm_id` : string (optional)
 - `master_key_type` : string
 - `master_key_id` : string
 
