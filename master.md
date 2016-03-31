@@ -181,7 +181,8 @@ Available Implementations
 Open source libraries implementing some or all of the functionality described
 in this document are available for the following programming languages:
 
-- [Java](https://github.com/ninchat/ninchat-java)
+- [Java](https://github.com/ninchat/ninchat-java) -
+  [Javadoc](https://ninchat.github.io/ninchat-java/master)
 - [Node.js](https://github.com/ninchat/ninchat-nodejs)
 - [PHP](https://github.com/ninchat/ninchat-php)
 - [Python](https://github.com/ninchat/ninchat-python) -
