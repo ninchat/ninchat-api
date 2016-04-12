@@ -35,6 +35,15 @@
 		"message_id":           true
 	},
 
+	"user_created": {
+		"action_id":            false,
+		"user_id":              true,
+		"user_auth":            false,
+		"user_attrs":           true,
+		"user_settings":        true,
+		"puppet_masters":       false
+	},
+
 	"user_found": {
 		"action_id":            false,
 		"user_id":              true,

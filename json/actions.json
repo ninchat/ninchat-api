@@ -32,6 +32,13 @@
 	"close_session": {
 	},
 
+	"create_user": {
+		"action_id":            false,
+		"user_attrs":           false,
+		"user_settings":        false,
+		"puppet_attrs":         false
+	},
+
 	"describe_user": {
 		"action_id":            true,
 		"user_id":              false
