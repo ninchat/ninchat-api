@@ -394,6 +394,11 @@
 		"interval_end":         true
 	},
 
+	"queue_stats_contents": {
+		"action_id":            true,
+		"queue_stats":          true
+	},
+
 	"search_results": {
 		"action_id":            true,
 		"users":                false,

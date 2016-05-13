@@ -1000,6 +1000,21 @@ completed during the specified interval.  The interval length must not exceed
 one month.
 
 
+### `get_queue_stats`
+
+- `action_id` : integer
+- `queue_id` : string
+- `stats_hour` : string (optional)
+- `stats_length` : integer
+
+Reply events: [`queue_stats_contents`](#queue_stats_contents)
+
+`stats_hour` specifies the start of the time range as "YYYYMMDDHH"; if omitted,
+the range ends at the latest occurrence of available data.  `stats_length`
+specifies the number of hours to load.  No more than one month of data may be
+requested at a time (does NOT need to be aligned to start or end of month).
+
+
 ### `search`
 
 - `action_id` : integer
@@ -1793,6 +1808,60 @@ requested multiple times, new transcripts appear at the end.
 - `queue_id` : string
 - `interval_begin` : float
 - `interval_end` : float
+
+
+### `queue_stats_contents`
+
+- `action_id` : integer
+- `queue_stats` : object
+
+Example queue stats:
+
+	"queue_stats": {
+		"2013091812": {
+			"describe_count": 67,
+			"request_count": 10,
+			"audiences": [
+				{
+					"agent_id": "12345",
+					"accept_count": 3,
+					"finish_count": 2,
+					"finish_duration_avg": 257.3,
+					"ratings": {
+						"-1": 1,
+						"1": 1
+					}
+				},
+				{
+					"agent_id": "23456",
+					"tag_ids": [
+						"76543"
+					],
+					"vars": {
+						"xyz": "100",
+						"abcdef": "ghijkl"
+					},
+					"accept_count": 1,
+					"finish_count": 2,
+					"finish_duration_avg": 130.01,
+					"ratings": {
+						"0": 2
+					}
+				},
+				...
+			],
+			"accept_delay_avg": 41.7,
+			"drop_count": 6,
+			"drop_delay_avg": 237.13
+		},
+		...
+	}
+
+The timestamp keys of the `queue_stats` object are composed of year, month, day
+and hour (UTC).
+
+The "audiences" array contains groups of statistics.  Each group is identified
+by "agent_id", optional "tag_ids" and optional "vars".
 
 
 ### `search_results`
