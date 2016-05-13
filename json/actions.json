@@ -355,6 +355,13 @@
 		"interval_end":         true
 	},
 
+	"get_queue_stats": {
+		"action_id":            true,
+		"queue_id":             true,
+		"stats_hour":           false,
+		"stats_length":         true
+	},
+
 	"search": {
 		"action_id":            true,
 		"search_term":          true
