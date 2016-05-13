@@ -2096,6 +2096,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	- "member" enables it for both members.
 	- "agent" enables it for the member who accepted the audience.
+	- "customer" enables it for the member who requested the audience.
 
 
 ### File
