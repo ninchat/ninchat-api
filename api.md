@@ -16,16 +16,17 @@ Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
   - [Actions](#actions)
   - [Events](#events)
   - [Attributes](#attributes)
-    - [User](#user)
-    - [Identity](#identity)
-    - [Dialogue membership](#dialogue-membership)
     - [Channel](#channel)
     - [Channel membership](#channel-membership)
+    - [Dialogue membership](#dialogue-membership)
+    - [File](#file)
+    - [Identity](#identity)
+    - [Puppet](#puppet)
+    - [Queue](#queue)
     - [Realm](#realm)
     - [Realm membership](#realm-membership)
-    - [Queue](#queue)
-    - [File](#file)
-    - [Puppet](#puppet)
+    - [Tag](#tag)
+    - [User](#user)
   - [User settings](#user-settings)
   - [Error types](#error-types)
   - [Message types](#message-types)
@@ -1000,6 +1001,53 @@ completed during the specified interval.  The interval length must not exceed
 one month.
 
 
+### `create_tag`
+
+- `action_id` : integer
+- `realm_id` : string
+- `tag_attrs` : object
+
+Reply event: [`tag_created`](#tag_created)
+
+
+### `describe_tag`
+
+- `action_id` : integer
+- `tag_id` : string
+
+Reply event: [`tag_found`](#tag_found)
+
+
+### `describe_tags`
+
+- `action_id` : integer
+- `realm_id` : string (optional)
+- `tag_id` : string (optional)
+- `tag_depth` : integer (optional)
+
+Reply event: [`tags_found`](#tags_found)
+
+Either `realm_id` or `tag_id` must be specified.  If `tag_depth` is specified,
+it must be between 1 and 10 (inclusive).
+
+
+### `update_tag`
+
+- `action_id` : integer
+- `tag_id` : string
+- `tag_attrs` : object
+
+Reply event: [`tag_updated`](#tag_updated)
+
+
+### `delete_tag`
+
+- `action_id` : integer
+- `tag_id` : string
+
+Reply event: [`tag_deleted`](#tag_deleted)
+
+
 ### `get_queue_stats`
 
 - `action_id` : integer
@@ -1047,6 +1095,7 @@ Events
 - `channel_id` : string (if applicable)
 - `realm_id` : string (if applicable)
 - `queue_id` : string (if applicable)
+- `tag_id` : string (if applicable)
 - `message_type` : string (if applicable)
 
 
@@ -1810,6 +1859,82 @@ requested multiple times, new transcripts appear at the end.
 - `interval_end` : float
 
 
+### `tag_created`
+
+- `action_id` : integer (optional)
+- `realm_id` : string (if applicable)
+- `tag_id` : string
+- `tag_attrs` : object
+
+
+### `tag_found`
+
+- `action_id` : integer (optional)
+- `realm_id` : string (if applicable)
+- `tag_id` : string
+- `tag_attrs` : object
+
+`realm_id` is set if the tag belongs to a realm.  (Currently tags always belong
+to a realm.)
+
+
+### `tags_found`
+
+- `action_id` : integer (optional)
+- `realm_id` : string (if applicable)
+- `tag_id` : string (if applicable)
+- `tag_attrs` : object (if applicable)
+- `tag_children` : object
+
+`realm_id` is set if the tags belong to a realm (regardless of what was
+specified in [`describe_tags`](#describe_tags)).
+
+`tag_id` and `tag_attrs` are set if `tag_id` was specified in
+[`describe_tags`](#describe_tags).
+
+The `tag_children` object maps tag identifiers to objects containing tag
+attributes and child tags (unless limited by the `tag_depth` specified in
+[`describe_tags`](#describe_tags)):
+
+	"tag_children": {
+		"23456": {
+			"tag_attrs": {
+				"name": "My tag group"
+			},
+			"tag_children": {
+				"34567": {
+					"tag_attrs": {
+						"name":      "My blue tag",
+						"parent_id": "23456",
+						"theme":     {"color": "#0000ff"}
+					},
+					"tag_children": {}
+				},
+				...
+			}
+		},
+		...
+	}
+
+
+### `tag_updated`
+
+- `action_id` : integer (optional)
+- `realm_id` : string (if applicable)
+- `tag_id` : string
+- `tag_attrs` : object
+
+
+### `tag_deleted`
+
+- `action_id` : integer (optional)
+- `realm_id` : string (if applicable)
+- `tag_id` : string
+- `tag_attrs` : object
+
+`tag_attrs` contains the `parent_id` attribute, if the tag has one.
+
+
 ### `queue_stats_contents`
 
 - `action_id` : integer
@@ -2179,6 +2304,25 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	File size in bytes.  Calculated automatically.
 
 
+### Tag
+
+- `name` : string (writable by realm operators)
+
+	Tag name.
+
+- `parent_id` : string (writable by realm operators)
+
+	Identifier of the parent tag, if this tag belongs to a tag group.
+
+- `theme` : object (writable by realm operators)
+
+	Customizes the color of the tag label:
+
+		"theme": {
+			"color": "#ff0000"
+		}
+
+
 ### Puppet
 
 - `name` : string (writable by master)
@@ -2265,6 +2409,7 @@ Error types
 - `send_rate_limited`
 - `session_buffer_overflow`
 - `session_not_found`
+- `tag_not_found`
 - `upload_quota_exceeded`
 - `user_not_found`
 
