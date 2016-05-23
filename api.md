@@ -36,6 +36,7 @@ Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
     - [ninchat.com/metadata](#ninchatcommetadata)
     - [ninchat.com/notice](#ninchatcomnotice)
     - [ninchat.com/text](#ninchatcomtext)
+  - [Audience metadata](#audience-metadata)
 - [Streaming Transports](#streaming-transports)
   - [WebSocket](#websocket)
   - [HTTP long polling](#http-long-polling)
@@ -2540,6 +2541,34 @@ consists of a single part with a JSON object containing a `text` property
 (string):
 
 	{"text":"This is the content of the message."}
+
+
+Audience metadata
+-----------------
+
+Custom key-value pairs may be set via the `audience_metadata` action parameter,
+or by sending an [`ninchat.com/metadata`](#ninchatcommetadata) message to a
+audience dialogue.  Some metadata keys have predefined meanings, and are used
+by Ninchat if set in the specified way:
+
+
+### `secure`
+
+See the [`request_audience`](#request_audience) action for details.
+
+
+### `tag_ids`
+
+String array containing tag identifiers.  Set by the acceptor of the audience
+by sending a [`ninchat.com/metadata`](#ninchatcommetadata) message.  Used in
+queue statistics.
+
+
+### `vars`
+
+Object containing key-value pairs (string values).  Set by the requester of the
+audience via the [`request_audience`](#request_audience) action.  Used in queue
+statistics.
 
 
 Streaming Transports
