@@ -1962,6 +1962,10 @@ Example queue stats:
 					"tag_ids": [
 						"76543"
 					],
+					"vars": {
+						"xyz": "100",
+						"abcdef": "ghijkl"
+					},
 					"accept_count": 1,
 					"finish_count": 2,
 					"finish_duration_avg": 130.01,
@@ -1982,7 +1986,7 @@ The timestamp keys of the `queue_stats` object are composed of year, month, day
 and hour (UTC).
 
 The "audiences" array contains groups of statistics.  Each group is identified
-by "agent_id" and optional "tag_ids".
+by "agent_id", optional "tag_ids" and optional "vars".
 
 
 ### `search_results`
