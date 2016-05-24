@@ -1,0 +1,5 @@
+{
+	"name":                 { "type": "string",       "writable":   true },
+	"parent_id":            { "type": "string",       "writable":   true },
+	"theme":                { "type": "object",       "writable":   true }
+}
