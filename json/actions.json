@@ -355,6 +355,35 @@
 		"interval_end":         true
 	},
 
+	"create_tag": {
+		"action_id":            true,
+		"realm_id":             true,
+		"tag_attrs":            true
+	},
+
+	"describe_tag": {
+		"action_id":            true,
+		"tag_id":               true
+	},
+
+	"describe_tags": {
+		"action_id":            true,
+		"realm_id":             false,
+		"tag_id":               false,
+		"tag_depth":            false
+	},
+
+	"update_tag": {
+		"action_id":            true,
+		"tag_id":               true,
+		"tag_attrs":            true
+	},
+
+	"delete_tag": {
+		"action_id":            true,
+		"tag_id":               true
+	},
+
 	"get_queue_stats": {
 		"action_id":            true,
 		"queue_id":             true,

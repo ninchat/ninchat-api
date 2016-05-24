@@ -394,6 +394,42 @@
 		"interval_end":         true
 	},
 
+	"tag_created": {
+		"action_id":            false,
+		"realm_id":             false,
+		"tag_id":               true,
+		"tag_attrs":            true
+	},
+
+	"tag_found": {
+		"action_id":            false,
+		"realm_id":             false,
+		"tag_id":               true,
+		"tag_attrs":            true
+	},
+
+	"tags_found": {
+		"action_id":            false,
+		"realm_id":             false,
+		"tag_id":               false,
+		"tag_attrs":            false,
+		"tag_children":         true
+	},
+
+	"tag_updated": {
+		"action_id":            false,
+		"realm_id":             false,
+		"tag_id":               true,
+		"tag_attrs":            true
+	},
+
+	"tag_deleted": {
+		"action_id":            false,
+		"realm_id":             false,
+		"tag_id":               true,
+		"tag_attrs":            true
+	},
+
 	"queue_stats_contents": {
 		"action_id":            true,
 		"queue_stats":          true

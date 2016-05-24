@@ -101,6 +101,17 @@
 		"value": "realm_queue"
 	},
 
+	"tag_child": {
+		"params": {
+			"tag_attrs":    { "type": "tag_attrs"     },
+			"tag_children": { "type": "tag_children", "optional": true }
+		}
+	},
+
+	"tag_children": {
+		"value": "tag_child"
+	},
+
 	"transcript_message": {
 		"params": {
 			"message_id":        { "type": "string"  },
