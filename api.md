@@ -1987,7 +1987,9 @@ The timestamp keys of the `queue_stats` object are composed of year, month, day
 and hour (UTC).
 
 The "audiences" array contains groups of statistics.  Each group is identified
-by "agent_id", optional "tag_ids" and optional "vars".
+by "agent_id", optional "tag_ids" and optional "vars".  See
+[Audience metadata](#audience-metadata) for information about setting tag
+identifiers and custom variables.
 
 
 ### `search_results`
@@ -2547,9 +2549,9 @@ Audience metadata
 -----------------
 
 Custom key-value pairs may be set via the `audience_metadata` action parameter,
-or by sending an [`ninchat.com/metadata`](#ninchatcommetadata) message to a
+or by sending a [`ninchat.com/metadata`](#ninchatcommetadata) message to a
 audience dialogue.  Some metadata keys have predefined meanings, and are used
-by Ninchat if set in the specified way:
+by Ninchat if set in a specific way:
 
 
 ### `secure`
