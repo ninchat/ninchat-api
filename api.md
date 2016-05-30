@@ -2359,7 +2359,7 @@ User settings
 
 - `notifications` : object
 
-	Enables audio, email, desktop and GCM/APNs notifications for channel,
+	Enables desktop, audio, email and GCM/APNS notifications for channel,
 	hightlight and/or private messages:
 
 		"notifications": {
@@ -2372,7 +2372,8 @@ User settings
 			"private_email":    false,
 			"private_mobile":   false,
 			"channel":          false,
-			"channel_audio":    false
+			"channel_audio":    false,
+			"channel_mobile":   false
 		}
 
 - `proto` : boolean
