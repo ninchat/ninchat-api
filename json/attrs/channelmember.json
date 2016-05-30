@@ -3,5 +3,6 @@
 	"moderator":            { "type": "bool",         "writable":   true },
 	"operator":             { "type": "bool",         "writable":   true },
 	"silenced":             { "type": "bool",         "writable":   true },
-	"since":                { "type": "int" }
+	"since":                { "type": "int" },
+	"writing":              { "type": "bool",         "writable":   true }
 }

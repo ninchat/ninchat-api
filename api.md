@@ -2227,6 +2227,12 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	Join time.
 
+- `writing` : bool (writable by self)
+
+	May be used to indicate that the user has recently entered unsent text.
+	(The API client is responsible for setting and clearing this indicator, if
+	it chooses to implement it.)
+
 
 ### Realm
 
