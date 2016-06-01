@@ -2323,7 +2323,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	Tag name.
 
-- `parent_id` : string (writable by realm operators)
+- `parent_id` : string (initializable by realm operators)
 
 	Identifier of the parent tag, if this tag belongs to a tag group.
 
