@@ -323,6 +323,21 @@ A secret authentication token (password) is associated with the identity if
 `identity_auth_new` is specified.
 
 
+### `create_identity_with_auth_reset_access`
+
+- `action_id` : integer
+- `identity_type` : string
+- `identity_name` : string
+- `identity_attrs` : object (optional)
+
+Reply event: [`identity_created`](#identity_created)
+
+Combines the [`create_identity`](#create_identity) and
+[`request_identity_auth_reset_access`](#request_identity_auth_reset_access)
+actions: password is not set by the action, but via a link received in an
+email.  The identity will be verified when a password is set (via the link).
+
+
 ### `request_identity_verify_access`
 
 _`session_id` not required_
