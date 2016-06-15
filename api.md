@@ -2134,6 +2134,11 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	The identity has not been verified.
 
+- `protected` : boolean
+
+	The identity (e.g. email address) is visible to users who are members of
+    the same realms as you are.
+
 - `public` : boolean
 
 	The identity (e.g. email address) is visible to other users.

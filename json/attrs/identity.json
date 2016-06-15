@@ -2,6 +2,7 @@
 	"auth":                 { "type": "bool" },
 	"blocked":              { "type": "bool" },
 	"pending":              { "type": "bool" },
+	"protected":            { "type": "bool",         "writable":   true },
 	"public":               { "type": "bool",         "writable":   true },
 	"rejected":             { "type": "bool" }
 }
