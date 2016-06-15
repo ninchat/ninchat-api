@@ -6,7 +6,7 @@ API.  It will be extended over time, without causing regressions to conforming
 client applications.  If a new, backward-incompatible API version is released,
 it will be accessible using new network endpoints.
 
-Copyright &copy; 2012-2015 Somia Reality Oy.  All rights reserved.
+Copyright &copy; 2012-2016 Somia Reality Oy.  All rights reserved.
 
 
 ### Contents
