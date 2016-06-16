@@ -443,5 +443,9 @@
 
 	"pong": {
 		"action_id":            false
+	},
+
+	"ack": {
+		"action_id":            true
 	}
 }

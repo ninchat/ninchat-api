@@ -2044,6 +2044,11 @@ The `users` and `channels` objects look like this:
 - `action_id` : integer (if specified in [`ping`](#ping))
 
 
+### `ack`
+
+- `action_id` : integer
+
+
 Attributes
 ----------
 
