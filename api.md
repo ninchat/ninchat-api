@@ -487,7 +487,6 @@ Reply event: [`channel_updated`](#channel_updated)
 ### `follow_channel`
 
 - `action_id` : integer
-- `puppet_id` : string (optional)
 - `channel_id` : string
 - `master_key_type` : string (optional)
 - `master_sign` : string (optional)
@@ -505,12 +504,11 @@ Like [`join_channel`](#join_channel), but:
   events for this channel.
 - The user will stop following the channel when the session is closed.
 
-A master user may act on a puppet user's behalf by specifying `puppet_id`.
-
 
 ### `join_channel`
 
 - `action_id` : integer
+- `puppet_id` : string (optional)
 - `channel_id` : string (optional)
 - `access_key` : string (optional)
 - `master_key_type` : string (optional)
@@ -534,6 +532,8 @@ There are two modes of operation:
 3. `master_sign` grants permission to join the channel.  `master_key_type`
    specifies the signature type (defaults to "ninchat").  See
    [Action signatures](master.md#action-signatures).
+
+A master user may act on a puppet user's behalf by specifying `puppet_id`.
 
 
 ### `part_channel`
