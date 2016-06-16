@@ -518,7 +518,7 @@ Like [`join_channel`](#join_channel), but:
 Reply events: [`channel_joined`](#channel_joined) and
               [`realm_joined`](#realm_joined) (if applicable)
 
-There are two modes of operation:
+There are three modes of operation:
 
 1. `channel_id` specifies the channel to be joined.  It must not be in a realm
    or it must be in one of the user's realms.
