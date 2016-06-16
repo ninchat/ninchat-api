@@ -569,10 +569,12 @@ Reply event: [`realm_found`](#realm_found)
 
 - `action_id` : integer
 - `realm_id` : string
+- `queue_ids` : string array (optional)
+- `track_metadata` : object (optional)
 
 Reply event: [`realm_queues_found`](#realm_queues_found)
 
-Describe all audience queues of a realm.
+Describe some or all audience queues of a realm.
 
 
 ### `update_realm`

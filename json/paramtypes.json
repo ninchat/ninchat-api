@@ -52,6 +52,7 @@
 	"puppet_masters":       "object",
 	"queue_attrs":          "object",
 	"queue_id":             "string",
+	"queue_ids":            "string array",
 	"queue_members":        "object",
 	"queue_position":       "int",
 	"queue_stats":          "object",

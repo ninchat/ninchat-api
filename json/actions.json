@@ -173,7 +173,9 @@
 
 	"describe_realm_queues": {
 		"action_id":            true,
-		"realm_id":             true
+		"realm_id":             true,
+		"queue_ids":            false,
+		"track_metadata":       false
 	},
 
 	"update_realm": {
