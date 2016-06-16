@@ -396,6 +396,14 @@
 		"search_term":          true
 	},
 
+	"track": {
+		"action_id":            true,
+		"realm_id":             true,
+		"queue_ids":            false,
+		"track_stage":          true,
+		"track_metadata":       true
+	},
+
 	"ping": {
 		"action_id":            false
 	}

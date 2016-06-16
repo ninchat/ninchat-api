@@ -1092,6 +1092,17 @@ Reply events: [`search_results`](#search_results) multiple times
 Searches users and channels by name or realname prefixes.
 
 
+### `track`
+
+- `action_id` : integer
+- `realm_id` : string
+- `queue_ids` : string array (optional)
+- `track_stage` : string
+- `track_metadata` : object
+
+Reply event: [`ack`](#ack)
+
+
 ### `ping`
 
 - `action_id` : integer (optional)

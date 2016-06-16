@@ -71,6 +71,8 @@
 	"tag_children":         "object",
 	"tag_depth":            "int",
 	"tag_id":               "string",
+	"track_metadata":       "object",
+	"track_stage":          "string",
 	"transcript_messages":  "object array",
 	"user_account":         "object",
 	"user_attrs":           "object",
