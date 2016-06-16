@@ -1360,6 +1360,7 @@ If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden"
 ### `identity_found`
 
 - `action_id` : integer (if applicable)
+- `user_id` : string
 - `identity_type` : string
 - `identity_name` : string
 - `identity_attrs` : object (if belonging to the session user)
