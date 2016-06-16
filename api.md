@@ -487,6 +487,7 @@ Reply event: [`channel_updated`](#channel_updated)
 ### `follow_channel`
 
 - `action_id` : integer
+- `puppet_id` : string (optional)
 - `channel_id` : string
 - `master_key_type` : string (optional)
 - `master_sign` : string (optional)
@@ -503,6 +504,8 @@ Like [`join_channel`](#join_channel), but:
 - Only the session which invoked this action will receive `message_received`
   events for this channel.
 - The user will stop following the channel when the session is closed.
+
+A master user may act on a puppet user's behalf by specifying `puppet_id`.
 
 
 ### `join_channel`
