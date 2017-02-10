@@ -2428,6 +2428,7 @@ Error types
 -----------
 
 - `access_already_spent`
+- `access_blocked`
 - `access_denied`
 - `access_expired`
 - `action_not_supported`
