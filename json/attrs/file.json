@@ -1,0 +1,6 @@
+{
+	"name":                 { "type": "string",       "writable":   true },
+	"type":                 { "type": "string" },
+	"size":                 { "type": "integer" },
+	"thumbnail":            { "type": "object" }
+}

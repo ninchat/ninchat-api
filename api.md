@@ -2358,6 +2358,16 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	File size in bytes.  Calculated automatically.
 
+- `thumbnail` : object
+
+	Image file thumbnail dimensions in pixels
+	(only exists if mime type is image file):
+
+		"thumbnail": {
+			"width": 128,
+			"height": 96
+		}
+
 
 ### Tag
 
