@@ -31,6 +31,18 @@ The required keys can be created in two ways:
 2. Using the [`create_master_key`](api.md#create_master_key) API action, with
    the `master_key_type` parameter set to "ninchat".
 
+By default a master key may be used for the following things:
+
+- Authentication and control of puppet users.
+- Authorizing access to the master user's resources (such as channels).
+
+A master key may optionally be specific to a realm (aka. organization).  Such
+keys differ from the non-specific ones in the following ways:
+
+- They may not be used with puppets.
+- They authorize access only to the specific realm's resources.
+- Also the realm's operators may create and delete the keys.
+
 
 Action Signatures
 =================
