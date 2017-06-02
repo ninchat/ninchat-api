@@ -17,6 +17,7 @@ Copyright &copy; 2015-2017 Somia Reality Oy.  All rights reserved.
 
 ### Associated documents
 
+- [Ninchat Puppets](puppet.md)
 - [Ninchat API](api.md)
 
 
