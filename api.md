@@ -1,5 +1,5 @@
-Ninchat API
-===========
+Ninchat API Reference
+=====================
 
 This document describes version 2 of the open [Ninchat](https://ninchat.com)
 API.  It will be extended over time, without causing regressions to conforming

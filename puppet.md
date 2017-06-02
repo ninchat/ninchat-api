@@ -17,7 +17,7 @@ Copyright &copy; 2017 Somia Reality Oy.  All rights reserved.
 - [Ninchat Master Keys](master.md)
   - [Action Signatures](master.md#action-signatures)
   - [Secure Metadata](master.md#secure-metadata)
-- [Ninchat API](api.md)
+- [Ninchat API Reference](api.md)
 
 
 Introduction
