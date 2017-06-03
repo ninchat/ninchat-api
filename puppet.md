@@ -10,6 +10,7 @@ Copyright &copy; 2017 Somia Reality Oy.  All rights reserved.
 - [Creating Puppets](#creating-puppets)
 - [Puppet Login](#puppet-login)
 - [Puppet Control](#puppet-control)
+- [Puppet Attributes](#puppet-attributes)
 
 
 ### Associated documents
@@ -76,3 +77,17 @@ The puppet's privileges will be applied when processing the action; if the
 master wishes the puppet to gain access to the master's resources, that needs
 to be authorized by simultaneously specifying an [action
 signature](master.md#action-signatures).
+
+
+Puppet Attributes
+=================
+
+Puppet users may control themselves like any normal user, including modifying
+user attributes.
+
+A master may enforce additional [attributes](api.md#puppet) on its puppets,
+which the puppet users themselves cannot override.
+
+A puppet's attributes are visible to other members of realms and channels which
+are owned by the puppet's master.  Client implementations will see both user
+and puppet attributes, and are responsible for consolidating the information.
