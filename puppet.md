@@ -83,10 +83,8 @@ Puppet Attributes
 =================
 
 Puppet users may control themselves like any normal user, including modifying
-user attributes.
-
-A master may enforce additional [attributes](api.md#puppet) on its puppets,
-which the puppet users themselves cannot override.
+user attributes.  A master may enforce [separate attributes](api.md#puppet) on
+its puppets, which the puppet users themselves cannot override.
 
 A puppet's attributes are visible to other members of realms and channels which
 are owned by the puppet's master.  Client implementations will see both user
