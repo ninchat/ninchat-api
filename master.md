@@ -198,5 +198,5 @@ in this document are available for the following programming languages:
 - [Node.js](https://github.com/ninchat/ninchat-nodejs)
 - [PHP](https://github.com/ninchat/ninchat-php)
 - [Python](https://github.com/ninchat/ninchat-python) -
-  [read the docs](https://ninchat-python.readthedocs.org/en/latest/master.html)
+  [API docs](https://ninchat.github.io/ninchat-python/master.html)
 
