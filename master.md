@@ -182,8 +182,7 @@ An example JSON object:
 		"metadata": {
 			"Foo": "bar",
 			"Baz": "quux"
-		},
-		"user_id": "05kq2htc"
+		}
 	}
 
 
