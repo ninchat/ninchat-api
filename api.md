@@ -976,13 +976,14 @@ Reply event: [`file_found`](#file_found)
 ### `get_transcript`
 
 - `action_id` : integer
-- `dialogue_id` : string array
+- `channel_id` : string (optional)
+- `dialogue_id` : string array (optional)
 - `message_id` : string (optional)
 
 Reply event: [`transcript_contents`](#transcript_contents)
 
-Dump the "ninchat.com/*" messages sent in a dialogue.  `dialogue_id` holds a
-pair of user ids (the order doesn't matter).
+Dump the "ninchat.com/*" messages sent on a channel or in a dialogue.
+`dialogue_id` holds a pair of user ids (the order doesn't matter).
 
 `message_id` may be used to get more contents if an earlier call didn't return
 everything.
