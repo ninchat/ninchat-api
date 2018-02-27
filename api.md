@@ -536,6 +536,11 @@ There are three modes of operation:
 
 A master user may act on a puppet user's behalf by specifying `puppet_id`.
 
+`member_attrs` can only be specified in conjunction with `master_sign`, when
+`master_key_type` is "ninchat" (see [Ninchat Master Keys](master.md)).  It can
+only be used to disable the "silenced" member attribute, when the channel has
+"autosilence" attribute enabled.
+
 
 ### `part_channel`
 
