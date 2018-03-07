@@ -156,6 +156,7 @@
 
 	"channel_member_parted": {
 		"action_id":            false,
+		"event_cause":          false,
 		"channel_id":           false,
 		"realm_id":             false,
 		"user_id":              true
@@ -216,6 +217,7 @@
 
 	"realm_member_parted": {
 		"action_id":            false,
+		"event_cause":          false,
 		"channel_id":           false,
 		"realm_id":             false,
 		"user_id":              true
@@ -279,6 +281,7 @@
 
 	"queue_member_parted": {
 		"action_id":            false,
+		"event_cause":          false,
 		"queue_id":             true,
 		"user_id":              true
 	},

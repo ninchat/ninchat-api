@@ -1479,10 +1479,14 @@ Someone else joined a channel.
 ### `channel_member_parted`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `channel_id` : string
 - `user_id` : string
 
 Someone else left or was removed from a channel.
+
+The `event_cause` is "member_remove" if the event was caused by a
+`remove_member` action.
 
 
 ### `channel_member_updated`
@@ -1571,10 +1575,14 @@ Someone else joined a realm.
 ### `realm_member_parted`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `realm_id` : string
 - `user_id` : string
 
 Someone else left or was removed from a realm.
+
+The `event_cause` is "member_remove" if the event was caused by a
+`remove_member` action.
 
 
 ### `realm_member_updated`
@@ -1655,10 +1663,14 @@ Someone was added to an audience queue.
 ### `queue_member_parted`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `queue_id` : string
 - `user_id` : string
 
 Someone was removed from an audience queue.
+
+The `event_cause` is "member_remove" if the event was caused by a
+`remove_member` action.
 
 
 ### `audience_enqueued`
