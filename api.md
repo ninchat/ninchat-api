@@ -2559,8 +2559,12 @@ A user joined the channel.
 
 - `user_id` : string
 - `user_name` : string (optional)
+- `cause` : string (optional)
 
 A user left the channel.
+
+The `cause` is "member_remove" if the message was caused by a `remove_member`
+action.
 
 #### `ninchat.com/info/member`
 
