@@ -34,6 +34,7 @@
 
 	"create_user": {
 		"action_id":            false,
+		"puppet_id":            false,
 		"user_attrs":           false,
 		"user_settings":        false,
 		"puppet_attrs":         false
@@ -41,11 +42,13 @@
 
 	"describe_user": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"user_id":              false
 	},
 
 	"update_user": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"user_attrs":           false,
 		"user_settings":        false,
 		"payload_attrs":        false
@@ -53,11 +56,13 @@
 
 	"delete_user": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"user_auth":            true
 	},
 
 	"create_identity": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true,
 		"identity_attrs":       false,
@@ -66,35 +71,41 @@
 
 	"request_identity_verify_access": {
 		"action_id":            false,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true
 	},
 
 	"verify_identity": {
 		"action_id":            false,
+		"puppet_id":            false,
 		"access_key":           true,
 		"identity_accept":      true
 	},
 
 	"describe_identity": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true
 	},
 
 	"request_identity_auth_reset_access": {
 		"action_id":            false,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true
 	},
 
 	"reset_identity_auth": {
 		"access_key":           true,
+		"puppet_id":            false,
 		"identity_auth_new":    true
 	},
 
 	"update_identity": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true,
 		"identity_attrs":       true
@@ -102,6 +113,7 @@
 
 	"update_identity_auth": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true,
 		"identity_auth":        false,
@@ -110,6 +122,7 @@
 
 	"delete_identity": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"identity_type":        true,
 		"identity_name":        true,
 		"identity_auth":        false
@@ -117,6 +130,7 @@
 
 	"update_dialogue": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"user_id":              true,
 		"member_attrs":         false,
 		"dialogue_status":      false
@@ -124,23 +138,27 @@
 
 	"create_channel": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_attrs":        false,
 		"realm_id":             false
 	},
 
 	"describe_channel": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           true
 	},
 
 	"update_channel": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           true,
 		"channel_attrs":        true
 	},
 
 	"follow_channel": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           true,
 		"master_key_type":      false,
 		"master_sign":          false
@@ -148,6 +166,7 @@
 
 	"join_channel": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           false,
 		"access_key":           false,
 		"master_key_type":      false,
@@ -157,22 +176,26 @@
 
 	"part_channel": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           true
 	},
 
 	"create_realm": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_attrs":          false,
 		"channel_attrs":        false
 	},
 
 	"describe_realm": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true
 	},
 
 	"describe_realm_queues": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true,
 		"queue_ids":            false,
 		"track_metadata":       false
@@ -180,50 +203,59 @@
 
 	"update_realm": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true,
 		"realm_attrs":          true
 	},
 
 	"delete_realm": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true
 	},
 
 	"create_queue": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true,
 		"queue_attrs":          true
 	},
 
 	"update_queue": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true,
 		"queue_attrs":          true
 	},
 
 	"delete_queue": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true
 	},
 
 	"describe_queue": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true
 	},
 
 	"request_audience": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true,
 		"audience_metadata":    false
 	},
 
 	"accept_audience": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true
 	},
 
 	"create_access": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"access_type":          true,
 		"channel_id":           false,
 		"realm_member":         false,
@@ -232,6 +264,7 @@
 
 	"add_member": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             false,
 		"queue_id":             false,
 		"user_id":              true
@@ -239,6 +272,7 @@
 
 	"update_member": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           false,
 		"realm_id":             false,
 		"user_id":              true,
@@ -247,6 +281,7 @@
 
 	"remove_member": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           false,
 		"realm_id":             false,
 		"queue_id":             false,
@@ -255,6 +290,7 @@
 
 	"send_message": {
 		"action_id":            false,
+		"puppet_id":            false,
 		"channel_id":           false,
 		"user_id":              false,
 		"identity_type":        false,
@@ -267,6 +303,7 @@
 
 	"update_message": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           true,
 		"message_id":           true,
 		"message_hidden":       true
@@ -274,6 +311,7 @@
 
 	"update_user_messages": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           true,
 		"message_user_id":      true,
 		"message_id":           false,
@@ -283,6 +321,7 @@
 
 	"load_history": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           false,
 		"user_id":              false,
 		"message_types":        false,
@@ -295,17 +334,20 @@
 
 	"discard_history": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"user_id":              true,
 		"message_id":           true
 	},
 
 	"describe_access": {
 		"action_id":            false,
+		"puppet_id":            false,
 		"access_key":           true
 	},
 
 	"send_access": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"access_key":           false,
 		"user_id":              false,
 		"identity_type":        false,
@@ -313,11 +355,13 @@
 	},
 
 	"describe_master_keys": {
-		"action_id":            true
+		"action_id":            true,
+		"puppet_id":            false
 	},
 
 	"create_master_key": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             false,
 		"master_key_type":      false,
 		"master_key_id":        false
@@ -325,6 +369,7 @@
 
 	"delete_master_key": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             false,
 		"master_key_type":      false,
 		"master_key_id":        true,
@@ -334,6 +379,7 @@
 
 	"get_transcript": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"channel_id":           false,
 		"dialogue_id":          false,
 		"message_id":           false
@@ -341,11 +387,13 @@
 
 	"delete_transcript": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"dialogue_id":          true
 	},
 
 	"describe_queue_transcripts": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true,
 		"interval_begin":       true,
 		"interval_end":         false
@@ -353,6 +401,7 @@
 
 	"delete_queue_transcripts": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true,
 		"interval_begin":       true,
 		"interval_end":         true
@@ -360,17 +409,20 @@
 
 	"create_tag": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true,
 		"tag_attrs":            true
 	},
 
 	"describe_tag": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"tag_id":               true
 	},
 
 	"describe_tags": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             false,
 		"tag_id":               false,
 		"tag_depth":            false
@@ -378,17 +430,20 @@
 
 	"update_tag": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"tag_id":               true,
 		"tag_attrs":            true
 	},
 
 	"delete_tag": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"tag_id":               true
 	},
 
 	"get_queue_stats": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"queue_id":             true,
 		"stats_hour":           false,
 		"stats_length":         true
@@ -396,11 +451,13 @@
 
 	"search": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"search_term":          true
 	},
 
 	"track": {
 		"action_id":            true,
+		"puppet_id":            false,
 		"realm_id":             true,
 		"queue_ids":            false,
 		"track_stage":          true,
@@ -408,6 +465,7 @@
 	},
 
 	"ping": {
-		"action_id":            false
+		"action_id":            false,
+		"puppet_id":            false
 	}
 }

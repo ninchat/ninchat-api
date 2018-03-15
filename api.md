@@ -100,12 +100,17 @@ Clients send actions to the server, which sends events to clients.  Action and
 event parameter values are represented as JSON types.
 
 Most actions support or require the `action_id` parameter, which may be used to
-detect success or failure of the action.  When the client receives (at least)
-one event with the corresponding `action_id`, the action has succeeded, unless
+detect success or failure of the action.  The action reference indicates the
+exceptions when it is *not* supported.  When the client receives (at least) one
+event with the corresponding `action_id`, the action has succeeded, unless
 the event was `error`.  The values should be ascending integers, starting at 1,
 over the lifetime of the client instance's state (even across sessions).  If no
 response event is received, the client may retry the action (e.g. after
 reconnecting) with the same `action_id` value.
+
+Most actions support the `puppet_id` parameter.  The action reference indicates
+the exceptions when it is *not* supported.  See the
+[Ninchat Puppets](puppet.md) document for more information.
 
 In addition to the parameters listed below, most events contain the
 monotonically ascending `event_id` integer parameter (starting at 1).  Such
@@ -136,9 +141,6 @@ Actions
 
 ### `create_session`
 
-_`session_id` must not be specified_ (see
-[Streaming Transports](#streaming-transports))
-
 - `user_id` : string (optional)
 - `user_auth` : string (optional)
 - `user_attrs` : object (optional)
@@ -156,6 +158,11 @@ _`session_id` must not be specified_ (see
 - `master_sign` : string (optional)
 - `puppet_attrs` : object (optional)
 - `message_types` : string array
+
+Exceptions:
+
+- `puppet_id` is not supported.
+- `session_id` is not supported (see [Streaming Transports](#streaming-transports)).
 
 Reply event: [`session_created`](#session_created)
 
@@ -206,6 +213,10 @@ error type will be `access_denied`.  This condition is permanent:
 
 ### `resume_session`
 
+Exceptions:
+
+- `puppet_id` is not supported
+
 Receive or acknowledge events of an existing session.  See
 [Streaming Transports](#streaming-transports) for details.
 
@@ -217,10 +228,18 @@ Receive or acknowledge events of an existing session.  See
 - `user_id` : string (optional)
 - `message_id` : string (optional)
 
+Exceptions:
+
+- `puppet_id` is not supported.
+
 Client-assisted idle user and unread message tracking.
 
 
 ### `close_session`
+
+Exceptions:
+
+- `puppet_id` is not supported.
 
 See [Streaming Transports](#streaming-transports) for details.
 
@@ -341,11 +360,13 @@ email.  The identity will be verified when a password is set (via the link).
 
 ### `request_identity_verify_access`
 
-_`session_id` not required_
-
 - `action_id` : integer (optional)
 - `identity_type` : string
 - `identity_name` : string
+
+Exceptions:
+
+- `session_id` is optional (see [Streaming Transports](#streaming-transports)).
 
 Reply event: `access_created` (without `access_key`)
 
@@ -355,11 +376,13 @@ verification.  (In other words, `identity_type` must be "email" for now.)
 
 ### `verify_identity`
 
-_`session_id` not required_
-
 - `action_id` : integer (optional)
 - `access_key` : string
 - `identity_accept` : boolean
+
+Exceptions:
+
+- `session_id` is optional (see [Streaming Transports](#streaming-transports)).
 
 Reply event: [`identity_updated`](#identity_updated)
 
@@ -404,11 +427,13 @@ identity already has one.  It will be replaced with `identity_auth_new`.  If
 
 ### `request_identity_auth_reset_access`
 
-_`session_id` not required_
-
 - `action_id` : integer (optional)
 - `identity_type` : string
 - `identity_name` : string
+
+Exceptions:
+
+- `session_id` is optional (see [Streaming Transports](#streaming-transports)).
 
 Reply event: [`access_created`](#access_created) (without `access_key`)
 
@@ -419,10 +444,12 @@ The access key may be used to reset the password associated with the identity.
 
 ### `reset_identity_auth`
 
-_`session_id` not required_
-
 - `access_key` : string
 - `identity_auth_new` : string
+
+Exceptions:
+
+- `session_id` is optional (see [Streaming Transports](#streaming-transports)).
 
 Reply event: [`identity_updated`](#identity_updated)
 
@@ -509,7 +536,6 @@ Like [`join_channel`](#join_channel), but:
 ### `join_channel`
 
 - `action_id` : integer
-- `puppet_id` : string (optional)
 - `channel_id` : string (optional)
 - `access_key` : string (optional)
 - `master_key_type` : string (optional)
@@ -533,8 +559,6 @@ There are three modes of operation:
 3. `master_sign` grants permission to join the channel.  `master_key_type`
    specifies the signature type (defaults to "ninchat").  See
    [Action signatures](master.md#action-signatures).
-
-A master user may act on a puppet user's behalf by specifying `puppet_id`.
 
 `member_attrs` can only be specified in conjunction with `master_sign`, when
 `master_key_type` is "ninchat" (see [Ninchat Master Keys](master.md)).  It can
@@ -889,10 +913,12 @@ modes of operation:
 
 ### `describe_access`
 
-_`session_id` not required_
-
 - `action_id` : integer (optional)
 - `access_key` : string
+
+Exceptions:
+
+- `session_id` is optional (see [Streaming Transports](#streaming-transports)).
 
 Reply event: [`access_found`](#access_found)
 

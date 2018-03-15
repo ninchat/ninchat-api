@@ -69,9 +69,9 @@ users), and passed to the client which invokes the API action.
 Puppet Control
 ==============
 
-Several API actions support the `puppet_id` parameter.  It allows a master to
+Most API actions support the `puppet_id` parameter.  It allows a master to
 impersonate one of its puppets while invoking an action.  (This is somewhat
-analoguous to `sudo -u`.)
+analoguous to `sudo -u` in Unix.)
 
 The puppet's privileges will be applied when processing the action; if the
 master wishes the puppet to gain access to the master's resources, that needs
