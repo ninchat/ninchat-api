@@ -1,471 +1,469 @@
 {
-	"create_session": {
-		"user_id":              false,
-		"user_auth":            false,
-		"user_attrs":           false,
-		"user_settings":        false,
-		"user_metadata":        false,
-		"identity_type":        false,
-		"identity_name":        false,
-		"identity_auth":        false,
-		"identity_type_new":    false,
-		"identity_name_new":    false,
-		"identity_auth_new":    false,
-		"identity_attrs":       false,
-		"access_key":           false,
-		"master_key_type":      false,
-		"master_sign":          false,
-		"puppet_attrs":         false,
-		"message_types":        true
-	},
-
-	"resume_session": {
-	},
-
-	"update_session": {
-		"session_idle":         false,
-		"channel_id":           false,
-		"user_id":              false,
-		"message_id":           false
-	},
-
-	"close_session": {
-	},
-
-	"create_user": {
-		"action_id":            false,
-		"puppet_id":            false,
-		"user_attrs":           false,
-		"user_settings":        false,
-		"puppet_attrs":         false
-	},
-
-	"describe_user": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"user_id":              false
-	},
-
-	"update_user": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"user_attrs":           false,
-		"user_settings":        false,
-		"payload_attrs":        false
-	},
-
-	"delete_user": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"user_auth":            true
-	},
-
-	"create_identity": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true,
-		"identity_attrs":       false,
-		"identity_auth_new":    false
-	},
-
-	"request_identity_verify_access": {
-		"action_id":            false,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true
-	},
-
-	"verify_identity": {
-		"action_id":            false,
-		"puppet_id":            false,
-		"access_key":           true,
-		"identity_accept":      true
-	},
-
-	"describe_identity": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true
-	},
-
-	"request_identity_auth_reset_access": {
-		"action_id":            false,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true
-	},
-
-	"reset_identity_auth": {
-		"access_key":           true,
-		"puppet_id":            false,
-		"identity_auth_new":    true
-	},
-
-	"update_identity": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true,
-		"identity_attrs":       true
-	},
-
-	"update_identity_auth": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true,
-		"identity_auth":        false,
-		"identity_auth_new":    true
-	},
-
-	"delete_identity": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"identity_type":        true,
-		"identity_name":        true,
-		"identity_auth":        false
-	},
-
-	"update_dialogue": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"user_id":              true,
-		"member_attrs":         false,
-		"dialogue_status":      false
-	},
-
-	"create_channel": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_attrs":        false,
-		"realm_id":             false
-	},
-
-	"describe_channel": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           true
-	},
-
-	"update_channel": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           true,
-		"channel_attrs":        true
-	},
-
-	"follow_channel": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           true,
-		"master_key_type":      false,
-		"master_sign":          false
-	},
-
-	"join_channel": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           false,
-		"access_key":           false,
-		"master_key_type":      false,
-		"master_sign":          false,
-		"member_attrs":         false
-	},
-
-	"part_channel": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           true
-	},
-
-	"create_realm": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_attrs":          false,
-		"channel_attrs":        false
-	},
-
-	"describe_realm": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true
-	},
-
-	"describe_realm_queues": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true,
-		"queue_ids":            false,
-		"track_metadata":       false
-	},
-
-	"update_realm": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true,
-		"realm_attrs":          true
-	},
-
-	"delete_realm": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true
-	},
-
-	"create_queue": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true,
-		"queue_attrs":          true
-	},
-
-	"update_queue": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true,
-		"queue_attrs":          true
-	},
-
-	"delete_queue": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true
-	},
-
-	"describe_queue": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true
-	},
-
-	"request_audience": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true,
-		"audience_metadata":    false
-	},
-
 	"accept_audience": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true
-	},
-
-	"create_access": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"access_type":          true,
-		"channel_id":           false,
-		"realm_member":         false,
-		"user_id":              false
+		"action_id": true,
+		"puppet_id": false,
+		"queue_id": true
 	},
 
 	"add_member": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             false,
-		"queue_id":             false,
-		"user_id":              true
+		"action_id": true,
+		"puppet_id": false,
+		"queue_id": false,
+		"realm_id": false,
+		"user_id": true
 	},
 
-	"update_member": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           false,
-		"realm_id":             false,
-		"user_id":              true,
-		"member_attrs":         true
+	"close_session": {},
+
+	"create_access": {
+		"access_type": true,
+		"action_id": true,
+		"channel_id": false,
+		"puppet_id": false,
+		"realm_member": false,
+		"user_id": false
 	},
 
-	"remove_member": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           false,
-		"realm_id":             false,
-		"queue_id":             false,
-		"user_id":              true
+	"create_channel": {
+		"action_id": true,
+		"channel_attrs": false,
+		"puppet_id": false,
+		"realm_id": false
 	},
 
-	"send_message": {
-		"action_id":            false,
-		"puppet_id":            false,
-		"channel_id":           false,
-		"user_id":              false,
-		"identity_type":        false,
-		"identity_name":        false,
-		"message_type":         true,
-		"message_recipient_ids":false,
-		"message_fold":         false,
-		"message_ttl":          false
-	},
-
-	"update_message": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           true,
-		"message_id":           true,
-		"message_hidden":       true
-	},
-
-	"update_user_messages": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           true,
-		"message_user_id":      true,
-		"message_id":           false,
-		"interval_end":         false,
-		"message_hidden":       true
-	},
-
-	"load_history": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           false,
-		"user_id":              false,
-		"message_types":        false,
-		"message_id":           false,
-		"history_length":       false,
-		"history_order":        false,
-		"filter_property":      false,
-		"filter_substring":     false
-	},
-
-	"discard_history": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"user_id":              true,
-		"message_id":           true
-	},
-
-	"describe_access": {
-		"action_id":            false,
-		"puppet_id":            false,
-		"access_key":           true
-	},
-
-	"send_access": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"access_key":           false,
-		"user_id":              false,
-		"identity_type":        false,
-		"identity_name":        false
-	},
-
-	"describe_master_keys": {
-		"action_id":            true,
-		"puppet_id":            false
+	"create_identity": {
+		"action_id": true,
+		"identity_attrs": false,
+		"identity_auth_new": false,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
 	},
 
 	"create_master_key": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             false,
-		"master_key_type":      false,
-		"master_key_id":        false
+		"action_id": true,
+		"master_key_id": false,
+		"master_key_type": false,
+		"puppet_id": false,
+		"realm_id": false
 	},
 
-	"delete_master_key": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             false,
-		"master_key_type":      false,
-		"master_key_id":        true,
-		"master_key_secret":    false,
-		"user_auth":            false
+	"create_queue": {
+		"action_id": true,
+		"puppet_id": false,
+		"queue_attrs": true,
+		"realm_id": true
 	},
 
-	"get_transcript": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"channel_id":           false,
-		"dialogue_id":          false,
-		"message_id":           false
+	"create_realm": {
+		"action_id": true,
+		"channel_attrs": false,
+		"puppet_id": false,
+		"realm_attrs": false
 	},
 
-	"delete_transcript": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"dialogue_id":          true
-	},
-
-	"describe_queue_transcripts": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true,
-		"interval_begin":       true,
-		"interval_end":         false
-	},
-
-	"delete_queue_transcripts": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true,
-		"interval_begin":       true,
-		"interval_end":         true
+	"create_session": {
+		"access_key": false,
+		"identity_attrs": false,
+		"identity_auth": false,
+		"identity_auth_new": false,
+		"identity_name": false,
+		"identity_name_new": false,
+		"identity_type": false,
+		"identity_type_new": false,
+		"master_key_type": false,
+		"master_sign": false,
+		"message_types": true,
+		"puppet_attrs": false,
+		"user_attrs": false,
+		"user_auth": false,
+		"user_id": false,
+		"user_metadata": false,
+		"user_settings": false
 	},
 
 	"create_tag": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true,
-		"tag_attrs":            true
+		"action_id": true,
+		"puppet_id": false,
+		"realm_id": true,
+		"tag_attrs": true
 	},
 
-	"describe_tag": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"tag_id":               true
+	"create_user": {
+		"action_id": false,
+		"puppet_attrs": false,
+		"puppet_id": false,
+		"user_attrs": false,
+		"user_settings": false
 	},
 
-	"describe_tags": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             false,
-		"tag_id":               false,
-		"tag_depth":            false
+	"delete_identity": {
+		"action_id": true,
+		"identity_auth": false,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
 	},
 
-	"update_tag": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"tag_id":               true,
-		"tag_attrs":            true
+	"delete_master_key": {
+		"action_id": true,
+		"master_key_id": true,
+		"master_key_secret": false,
+		"master_key_type": false,
+		"puppet_id": false,
+		"realm_id": false,
+		"user_auth": false
+	},
+
+	"delete_queue": {
+		"action_id": true,
+		"puppet_id": false,
+		"queue_id": true
+	},
+
+	"delete_queue_transcripts": {
+		"action_id": true,
+		"interval_begin": true,
+		"interval_end": true,
+		"puppet_id": false,
+		"queue_id": true
+	},
+
+	"delete_realm": {
+		"action_id": true,
+		"puppet_id": false,
+		"realm_id": true
 	},
 
 	"delete_tag": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"tag_id":               true
+		"action_id": true,
+		"puppet_id": false,
+		"tag_id": true
+	},
+
+	"delete_transcript": {
+		"action_id": true,
+		"dialogue_id": true,
+		"puppet_id": false
+	},
+
+	"delete_user": {
+		"action_id": true,
+		"puppet_id": false,
+		"user_auth": true
+	},
+
+	"describe_access": {
+		"access_key": true,
+		"action_id": false,
+		"puppet_id": false
+	},
+
+	"describe_channel": {
+		"action_id": true,
+		"channel_id": true,
+		"puppet_id": false
+	},
+
+	"describe_identity": {
+		"action_id": true,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
+	},
+
+	"describe_master_keys": {
+		"action_id": true,
+		"puppet_id": false
+	},
+
+	"describe_queue": {
+		"action_id": true,
+		"puppet_id": false,
+		"queue_id": true
+	},
+
+	"describe_queue_transcripts": {
+		"action_id": true,
+		"interval_begin": true,
+		"interval_end": false,
+		"puppet_id": false,
+		"queue_id": true
+	},
+
+	"describe_realm": {
+		"action_id": true,
+		"puppet_id": false,
+		"realm_id": true
+	},
+
+	"describe_realm_queues": {
+		"action_id": true,
+		"puppet_id": false,
+		"queue_ids": false,
+		"realm_id": true,
+		"track_metadata": false
+	},
+
+	"describe_tag": {
+		"action_id": true,
+		"puppet_id": false,
+		"tag_id": true
+	},
+
+	"describe_tags": {
+		"action_id": true,
+		"puppet_id": false,
+		"realm_id": false,
+		"tag_depth": false,
+		"tag_id": false
+	},
+
+	"describe_user": {
+		"action_id": true,
+		"puppet_id": false,
+		"user_id": false
+	},
+
+	"discard_history": {
+		"action_id": true,
+		"message_id": true,
+		"puppet_id": false,
+		"user_id": true
+	},
+
+	"follow_channel": {
+		"action_id": true,
+		"channel_id": true,
+		"master_key_type": false,
+		"master_sign": false,
+		"puppet_id": false
 	},
 
 	"get_queue_stats": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"queue_id":             true,
-		"stats_hour":           false,
-		"stats_length":         true
+		"action_id": true,
+		"puppet_id": false,
+		"queue_id": true,
+		"stats_hour": false,
+		"stats_length": true
 	},
 
-	"search": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"search_term":          true
+	"get_transcript": {
+		"action_id": true,
+		"channel_id": false,
+		"dialogue_id": false,
+		"message_id": false,
+		"puppet_id": false
 	},
 
-	"track": {
-		"action_id":            true,
-		"puppet_id":            false,
-		"realm_id":             true,
-		"queue_ids":            false,
-		"track_stage":          true,
-		"track_metadata":       true
+	"join_channel": {
+		"access_key": false,
+		"action_id": true,
+		"channel_id": false,
+		"master_key_type": false,
+		"master_sign": false,
+		"member_attrs": false,
+		"puppet_id": false
+	},
+
+	"load_history": {
+		"action_id": true,
+		"channel_id": false,
+		"filter_property": false,
+		"filter_substring": false,
+		"history_length": false,
+		"history_order": false,
+		"message_id": false,
+		"message_types": false,
+		"puppet_id": false,
+		"user_id": false
+	},
+
+	"part_channel": {
+		"action_id": true,
+		"channel_id": true,
+		"puppet_id": false
 	},
 
 	"ping": {
-		"action_id":            false,
-		"puppet_id":            false
+		"action_id": false,
+		"puppet_id": false
+	},
+
+	"remove_member": {
+		"action_id": true,
+		"channel_id": false,
+		"puppet_id": false,
+		"queue_id": false,
+		"realm_id": false,
+		"user_id": true
+	},
+
+	"request_audience": {
+		"action_id": true,
+		"audience_metadata": false,
+		"puppet_id": false,
+		"queue_id": true
+	},
+
+	"request_identity_auth_reset_access": {
+		"action_id": false,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
+	},
+
+	"request_identity_verify_access": {
+		"action_id": false,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
+	},
+
+	"reset_identity_auth": {
+		"access_key": true,
+		"identity_auth_new": true,
+		"puppet_id": false
+	},
+
+	"resume_session": {},
+
+	"search": {
+		"action_id": true,
+		"puppet_id": false,
+		"search_term": true
+	},
+
+	"send_access": {
+		"access_key": false,
+		"action_id": true,
+		"identity_name": false,
+		"identity_type": false,
+		"puppet_id": false,
+		"user_id": false
+	},
+
+	"send_message": {
+		"action_id": false,
+		"channel_id": false,
+		"identity_name": false,
+		"identity_type": false,
+		"message_fold": false,
+		"message_recipient_ids": false,
+		"message_ttl": false,
+		"message_type": true,
+		"puppet_id": false,
+		"user_id": false
+	},
+
+	"track": {
+		"action_id": true,
+		"puppet_id": false,
+		"queue_ids": false,
+		"realm_id": true,
+		"track_metadata": true,
+		"track_stage": true
+	},
+
+	"update_channel": {
+		"action_id": true,
+		"channel_attrs": true,
+		"channel_id": true,
+		"puppet_id": false
+	},
+
+	"update_dialogue": {
+		"action_id": true,
+		"dialogue_status": false,
+		"member_attrs": false,
+		"puppet_id": false,
+		"user_id": true
+	},
+
+	"update_identity": {
+		"action_id": true,
+		"identity_attrs": true,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
+	},
+
+	"update_identity_auth": {
+		"action_id": true,
+		"identity_auth": false,
+		"identity_auth_new": true,
+		"identity_name": true,
+		"identity_type": true,
+		"puppet_id": false
+	},
+
+	"update_member": {
+		"action_id": true,
+		"channel_id": false,
+		"member_attrs": true,
+		"puppet_id": false,
+		"realm_id": false,
+		"user_id": true
+	},
+
+	"update_message": {
+		"action_id": true,
+		"channel_id": true,
+		"message_hidden": true,
+		"message_id": true,
+		"puppet_id": false
+	},
+
+	"update_queue": {
+		"action_id": true,
+		"puppet_id": false,
+		"queue_attrs": true,
+		"queue_id": true
+	},
+
+	"update_realm": {
+		"action_id": true,
+		"puppet_id": false,
+		"realm_attrs": true,
+		"realm_id": true
+	},
+
+	"update_session": {
+		"channel_id": false,
+		"message_id": false,
+		"session_idle": false,
+		"user_id": false
+	},
+
+	"update_tag": {
+		"action_id": true,
+		"puppet_id": false,
+		"tag_attrs": true,
+		"tag_id": true
+	},
+
+	"update_user": {
+		"action_id": true,
+		"payload_attrs": false,
+		"puppet_id": false,
+		"user_attrs": false,
+		"user_settings": false
+	},
+
+	"update_user_messages": {
+		"action_id": true,
+		"channel_id": true,
+		"interval_end": false,
+		"message_hidden": true,
+		"message_id": false,
+		"message_user_id": true,
+		"puppet_id": false
+	},
+
+	"verify_identity": {
+		"access_key": true,
+		"action_id": false,
+		"identity_accept": true,
+		"puppet_id": false
 	}
 }
