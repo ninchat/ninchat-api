@@ -1472,6 +1472,7 @@ The session user created a new or joined an existing channel.
 ### `channel_parted`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `channel_id` : string
 
 The session user left or was removed from a channel.
@@ -1480,6 +1481,7 @@ The session user left or was removed from a channel.
 ### `channel_updated`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `channel_id` : string
 - `channel_attrs` : object
 - `realm_id` : string (if applicable)
@@ -1568,6 +1570,7 @@ The session user created a new or joined an existing realm.
 ### `realm_parted`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `realm_id` : string
 
 The session user left or was removed from a realm.
@@ -1643,6 +1646,7 @@ event).
 ### `queue_updated`
 
 - `action_id` : integer (if applicable)
+- `event_cause` : string (optional)
 - `queue_id` : string
 - `queue_attrs` : object
 - `queue_position` : integer (if applicable)
@@ -1669,6 +1673,7 @@ You were added to an audience queue.
 
 ### `queue_parted`
 
+- `event_cause` : string (optional)
 - `queue_id` : string
 - `realm_id` : string (if applicable)
 

@@ -131,11 +131,13 @@
 
 	"channel_parted": {
 		"action_id":            false,
+		"event_cause":          false,
 		"channel_id":           true
 	},
 
 	"channel_updated": {
 		"action_id":            false,
+		"event_cause":          false,
 		"channel_id":           true,
 		"channel_attrs":        true,
 		"realm_id":             false
@@ -192,6 +194,7 @@
 
 	"realm_parted": {
 		"action_id":            false,
+		"event_cause":          false,
 		"realm_id":             true
 	},
 
@@ -248,6 +251,7 @@
 
 	"queue_updated": {
 		"action_id":            false,
+		"event_cause":          false,
 		"queue_id":             true,
 		"queue_attrs":          true,
 		"queue_position":       false,
@@ -267,6 +271,7 @@
 	},
 
 	"queue_parted": {
+		"event_cause":          false,
 		"queue_id":             true,
 		"realm_id":             false
 	},
