@@ -60,7 +60,8 @@
 		"action_id": true,
 		"channel_attrs": false,
 		"puppet_id": false,
-		"realm_attrs": false
+		"realm_attrs": false,
+		"realm_settings": false
 	},
 
 	"create_session": {

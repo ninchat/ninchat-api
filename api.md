@@ -579,6 +579,7 @@ Reply event: [`channel_parted`](#channel_parted)
 
 - `action_id` : integer
 - `realm_attrs` : object (optional)
+- `realm_settings` : object (optional)
 - `channel_attrs` : object (optional)
 
 Reply events: [`realm_joined`](#realm_joined) and
