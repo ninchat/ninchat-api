@@ -310,11 +310,12 @@ Second frame:
 ### `delete_user`
 
 - `action_id` : integer
-- `user_auth` : string
+- `user_auth` : string (optional)
 
 Reply event: [`user_deleted`](#user_deleted)
 
-You must repeat `user_auth` here to avoid accidents and mischief.
+The `user_auth` token must be repeated here to avoid accidents and mischief,
+except for guest users, or when this action is invoked with `puppet_id`.
 
 
 ### `create_identity`

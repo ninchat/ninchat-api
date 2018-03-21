@@ -150,7 +150,7 @@
 	"delete_user": {
 		"action_id": true,
 		"puppet_id": false,
-		"user_auth": true
+		"user_auth": false
 	},
 
 	"describe_access": {
