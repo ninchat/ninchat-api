@@ -37,6 +37,7 @@ Copyright &copy; 2012-2017 Somia Reality Oy.  All rights reserved.
     - [ninchat.com/metadata](#ninchatcommetadata)
     - [ninchat.com/notice](#ninchatcomnotice)
     - [ninchat.com/text](#ninchatcomtext)
+    - [ninchat.com/ui/*](#ninchatcomui)
   - [Audience metadata](#audience-metadata)
 - [Streaming Transports](#streaming-transports)
   - [WebSocket](#websocket)
@@ -2828,6 +2829,56 @@ consists of a single part with a JSON object containing a `text` property
 (string):
 
 	{"text":"This is the content of the message."}
+
+
+### `ninchat.com/ui/*`
+
+UI messages add user interaction to conversation.  The payload consists of a
+single part.
+
+
+#### `ninchat.com/ui/action`
+
+The payload is a JSON object with the following properties:
+
+- `action` : string
+
+	Currently only "click" is supported.
+
+- `target` : object
+
+	`ninchat.com/ui/compose` object which triggered the interaction
+
+
+#### `ninchat.com/ui/compose`
+
+The payload is a JSON array with at least one object; its properties:
+
+- `class` : string (optional)
+
+	Behaves like its HTML counterpart, but the number of classes is limited to
+	5.
+
+- `element` : string
+
+	Currently only "button" is supported.
+
+- `id` : string (optional)
+
+	Behaves exactly as its HTML counterpart.
+
+- `label` : string (optional)
+
+	A label or a descriptive text depending on the element.  In other words
+	label is text in the button etc.
+
+- `name` : string (optional)
+
+	Behaves exactly as its HTML counterpart.
+
+It is highly encouraged to set some of `class`, `id` and `name`, in order to
+determine which UI element was interacted with when `ninchat.com/ui/action` is
+received.
 
 
 Audience metadata
