@@ -19,6 +19,7 @@
 		"access_type": true,
 		"action_id": true,
 		"channel_id": false,
+		"channel_unsilence": false,
 		"puppet_id": false,
 		"realm_member": false,
 		"user_id": false

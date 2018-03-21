@@ -875,6 +875,7 @@ latest message to be discarded.
 - `action_id` : integer
 - `access_type` : string
 - `channel_id` : string (optional)
+- `channel_unsilence` : boolean (optional)
 - `realm_member` : boolean (optional)
 - `user_id` : string (optional)
 
@@ -887,10 +888,11 @@ Access types:
 
 - "session" keys may be used in `create_session` actions.
 - "channel" keys may be used in a single `join_channel` action.  If
-  `realm_member` is true, the invited user will also join the realm of the
-  channel (if any).  If `user_id` is specified, the invite can only be used by
-  that user, and an info message is sent to that user (see
-  [Message types](#message-types)).
+  `channel_unsilence` is true, the invited user will not be silenced even if
+  the channel has the `autosilence` attribute set.  If `realm_member` is true,
+  the invited user will also join the realm of the channel (if any).  If
+  `user_id` is specified, the invite can only be used by that user, and an info
+  message is sent to that user (see [Message types](#message-types)).
 
 
 ### `send_access`
