@@ -90,7 +90,7 @@
 	},
 
 	"create_user": {
-		"action_id": false,
+		"action_id": true,
 		"puppet_attrs": false,
 		"puppet_id": false,
 		"user_attrs": false,
