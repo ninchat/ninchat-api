@@ -210,7 +210,8 @@
 		"puppet_id": false,
 		"queue_ids": false,
 		"realm_id": true,
-		"track_metadata": false
+		"track_metadata": false,
+		"track_stage": false
 	},
 
 	"describe_tag": {
