@@ -182,7 +182,8 @@
 
 	"describe_master_keys": {
 		"action_id": true,
-		"puppet_id": false
+		"puppet_id": false,
+		"realm_id": false
 	},
 
 	"describe_queue": {

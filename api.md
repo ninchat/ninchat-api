@@ -934,6 +934,7 @@ Reply event: [`access_found`](#access_found)
 ### `describe_master_keys`
 
 - `action_id` : integer
+- `realm_id` : string (optional)
 
 Reply event: [`master_keys_found`](#master_keys_found)
 
