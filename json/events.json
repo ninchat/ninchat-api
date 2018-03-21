@@ -142,13 +142,15 @@
 		"action_id": false,
 		"identity_attrs": true,
 		"identity_name": true,
-		"identity_type": true
+		"identity_type": true,
+		"user_id": true
 	},
 
 	"identity_deleted": {
 		"action_id": false,
 		"identity_name": true,
-		"identity_type": true
+		"identity_type": true,
+		"user_id": true
 	},
 
 	"identity_found": {
@@ -163,7 +165,8 @@
 		"action_id": false,
 		"identity_attrs": true,
 		"identity_name": true,
-		"identity_type": true
+		"identity_type": true,
+		"user_id": true
 	},
 
 	"master_key_created": {

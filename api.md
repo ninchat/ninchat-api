@@ -1452,6 +1452,7 @@ users.
 ### `identity_created`
 
 - `action_id` : integer (if applicable)
+- `user_id` : string
 - `identity_type` : string
 - `identity_name` : string
 - `identity_attrs` : object
@@ -1460,6 +1461,7 @@ users.
 ### `identity_updated`
 
 - `action_id` : integer (if applicable)
+- `user_id` : string
 - `identity_type` : string
 - `identity_name` : string
 - `identity_attrs` : object
@@ -1468,6 +1470,7 @@ users.
 ### `identity_deleted`
 
 - `action_id` : integer (if applicable)
+- `user_id` : string
 - `identity_type` : string
 - `identity_name` : string
 
