@@ -612,7 +612,8 @@ Describe some or all audience queues of a realm.
 
 - `action_id` : integer
 - `realm_id` : string
-- `realm_attrs` : object
+- `realm_attrs` : object (optional)
+- `realm_settings` : object (optional)
 
 Reply event: [`realm_updated`](#realm_updated)
 

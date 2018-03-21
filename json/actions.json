@@ -425,8 +425,9 @@
 	"update_realm": {
 		"action_id": true,
 		"puppet_id": false,
-		"realm_attrs": true,
-		"realm_id": true
+		"realm_attrs": false,
+		"realm_id": true,
+		"realm_settings": false
 	},
 
 	"update_session": {
