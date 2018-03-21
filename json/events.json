@@ -110,6 +110,7 @@
 		"message_type": false,
 		"queue_id": false,
 		"realm_id": false,
+		"tag_id": false,
 		"user_id": false
 	},
 
