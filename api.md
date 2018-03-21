@@ -609,6 +609,11 @@ Reply event: [`realm_queues_found`](#realm_queues_found)
 
 Describe some or all audience queues of a realm.
 
+If specified, `queue_ids` indicates a subset of the realm's queues which the
+user is interested in.  Unknown queue ids are silently ignored.  (The user may
+still receive spurious `queue_updated` events concerning the realm's other
+queues.)
+
 
 ### `update_realm`
 
