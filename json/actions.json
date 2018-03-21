@@ -262,6 +262,8 @@
 		"action_id": true,
 		"channel_id": false,
 		"dialogue_id": false,
+		"interval_begin": false,
+		"interval_end": false,
 		"message_id": false,
 		"puppet_id": false
 	},

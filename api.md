@@ -1017,6 +1017,8 @@ Reply event: [`file_found`](#file_found)
 - `action_id` : integer
 - `channel_id` : string (optional)
 - `dialogue_id` : string array (optional)
+- `interval_begin` : float (optional)
+- `interval_end` : float (optional)
 - `message_id` : string (optional)
 
 Reply event: [`transcript_contents`](#transcript_contents)
@@ -1024,8 +1026,12 @@ Reply event: [`transcript_contents`](#transcript_contents)
 Dump the "ninchat.com/*" messages sent on a channel or in a dialogue.
 `dialogue_id` holds a pair of user ids (the order doesn't matter).
 
-`message_id` may be used to get more contents if an earlier call didn't return
-everything.
+Specifying a time interval may make sense when targetting a long-lived channel.
+By default the interval is the whole history.
+
+There is an unspecified technical limit on the number of messages returned at
+once.  `message_id` may be used to get more messages if an earlier call didn't
+return everything.
 
 
 ### `delete_transcript`
