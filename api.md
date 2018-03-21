@@ -1782,6 +1782,7 @@ The `message_id` is set to the last message's id if `history_length` > 0.  The
 - `identity_name` : string (if applicable)
 - `channel_id` : string (if applicable)
 - `channel_attrs` : object (if applicable)
+- `channel_unsilence` : boolean (if applicable)
 - `realm_id` : string (if applicable)
 - `realm_attrs` : object (if applicable)
 - `realm_member` : boolean (if applicable)

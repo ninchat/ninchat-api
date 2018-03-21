@@ -10,6 +10,7 @@
 		"action_id": false,
 		"channel_attrs": false,
 		"channel_id": false,
+		"channel_unsilence": false,
 		"identity_name": false,
 		"identity_type": false,
 		"realm_attrs": false,
