@@ -1633,7 +1633,7 @@ The `event_cause` is "member_remove" if the event was caused by a
 
 ### `queue_found`
 
-- `action_id` : integer
+- `action_id` : integer (if applicable)
 - `queue_id` : string
 - `queue_attrs` : object
 - `queue_members` : object (if applicable)

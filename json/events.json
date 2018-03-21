@@ -213,7 +213,7 @@
 	},
 
 	"queue_found": {
-		"action_id": true,
+		"action_id": false,
 		"queue_attrs": true,
 		"queue_id": true,
 		"queue_members": false,
