@@ -62,17 +62,15 @@
 
 	"channel_member_parted": {
 		"action_id": false,
-		"channel_id": false,
+		"channel_id": true,
 		"event_cause": false,
-		"realm_id": false,
 		"user_id": true
 	},
 
 	"channel_member_updated": {
 		"action_id": false,
-		"channel_id": false,
+		"channel_id": true,
 		"member_attrs": true,
-		"realm_id": false,
 		"user_id": true
 	},
 
