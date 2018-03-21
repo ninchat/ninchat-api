@@ -2350,6 +2350,52 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	"5/20" means 5 messages per 20 seconds.
 
+- `schedule` : object (writable by operators)
+
+	Automates channel opening hours (updates the `closed` attribute).  Its
+	contents look like this:
+
+		"timezone": "Europe/Helsinki",
+		"week": [
+			["9:00", "17:00"],
+			["9:00", "17:00"],
+			["9:00", "12:00", "13:30", "17:00"],
+			["9:00", "17:00"],
+			["10:00", "15:30"],
+			null,
+			null
+		],
+		"annual": {
+			"12/24": ["9:00", "12:00"],
+			"12/25": null
+		},
+		"exceptions": {
+			"2015-06-19": null
+		}
+
+	The "timezone" and "week" properties are mandatory.  (Nulls at the end of
+	the week may be omitted.)  Month and day numbers in "annual" and
+	"exceptions" must be zero-padded.
+
+	Time zone may be anything found in the
+	[IANA time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+	The first day of the week is Monday.  Ranges of opening hours are specified
+	for each weekday; the first entry is an opening time, the second a closing
+	time, the third an opening time, and so on.  (Trailing nulls have no
+	effect.)  Midnight opening hours may be specified like this:
+
+		"timezone": "EET",
+		"week": [
+			[   null,  "0:30"],
+			["18:00",    null,    null,    null],
+			[   null,  "4:00", "18:00"],
+			[   null,  "4:00", "18:00",    null],
+			[   null,  "4:00"],
+			[],
+			["23:30"]
+		]
+
 - `suspended` : boolean (writable by owner)
 
 	Similar to `closed`, but the channel doesn't count towards the owner's
@@ -2453,6 +2499,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 - `name` : string (writable by realm operators)
 
 	Queue name.
+
+- `schedule` : object (writable by queue members)
+
+	See the channel `schedule` attribute.
 
 - `suspended` : boolean (writable by realm operators)
 
