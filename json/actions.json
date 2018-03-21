@@ -165,6 +165,12 @@
 		"puppet_id": false
 	},
 
+	"describe_file": {
+		"action_id": true,
+		"file_id": true,
+		"puppet_id": false
+	},
+
 	"describe_identity": {
 		"action_id": true,
 		"identity_name": true,
@@ -339,6 +345,14 @@
 		"action_id": true,
 		"identity_name": false,
 		"identity_type": false,
+		"puppet_id": false,
+		"user_id": false
+	},
+
+	"send_file": {
+		"action_id": true,
+		"channel_id": false,
+		"file_attrs": true,
 		"puppet_id": false,
 		"user_id": false
 	},

@@ -109,6 +109,15 @@
 		"user_id": false
 	},
 
+	"file_found": {
+		"action_id": false,
+		"file_attrs": true,
+		"file_id": true,
+		"file_url": true,
+		"thumbnail_url": false,
+		"url_expiry": true
+	},
+
 	"history_discarded": {
 		"action_id": true,
 		"channel_id": false,
