@@ -4,7 +4,7 @@ Ninchat Master Keys
 This document describes the signing and encryption which may be used with some
 [Ninchat API](api.md) actions.
 
-Copyright &copy; 2015-2017 Somia Reality Oy.  All rights reserved.
+Copyright &copy; 2015-2018 Somia Reality Oy.  All rights reserved.
 
 
 ### Contents

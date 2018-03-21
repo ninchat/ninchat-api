@@ -1,7 +1,7 @@
 Ninchat Puppets
 ===============
 
-Copyright &copy; 2017 Somia Reality Oy.  All rights reserved.
+Copyright &copy; 2017-2018 Somia Reality Oy.  All rights reserved.
 
 
 ### Contents
