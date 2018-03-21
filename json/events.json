@@ -220,6 +220,7 @@
 		"action_id": false,
 		"queue_attrs": true,
 		"queue_id": true,
+		"queue_settings": true,
 		"realm_id": false
 	},
 
@@ -235,12 +236,14 @@
 		"queue_id": true,
 		"queue_members": false,
 		"queue_position": false,
+		"queue_settings": false,
 		"realm_id": false
 	},
 
 	"queue_joined": {
 		"queue_attrs": true,
 		"queue_id": true,
+		"queue_settings": true,
 		"realm_id": false
 	},
 
@@ -289,6 +292,7 @@
 		"queue_attrs": true,
 		"queue_id": true,
 		"queue_position": false,
+		"queue_settings": false,
 		"realm_id": false
 	},
 
