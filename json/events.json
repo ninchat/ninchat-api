@@ -305,14 +305,16 @@
 		"action_id": false,
 		"realm_attrs": true,
 		"realm_id": true,
-		"realm_members": false
+		"realm_members": false,
+		"realm_settings": false
 	},
 
 	"realm_joined": {
 		"action_id": false,
 		"realm_attrs": true,
 		"realm_id": true,
-		"realm_members": true
+		"realm_members": true,
+		"realm_settings": true
 	},
 
 	"realm_member_joined": {
@@ -353,7 +355,8 @@
 	"realm_updated": {
 		"action_id": false,
 		"realm_attrs": true,
-		"realm_id": true
+		"realm_id": true,
+		"realm_settings": false
 	},
 
 	"search_results": {

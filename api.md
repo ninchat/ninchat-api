@@ -1587,6 +1587,7 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `action_id` : integer (if applicable)
 - `realm_id` : string
 - `realm_attrs` : object
+- `realm_settings` : object
 - `realm_members` : object (if the session user is a member)
 
 `realm_members` is analogous to [`channel_members`](#channel_found) described
@@ -1619,6 +1620,7 @@ containing `queue_attrs` (object) and optionally `queue_position` (integer):
 - `action_id` : integer (if applicable)
 - `realm_id` : string
 - `realm_attrs` : object
+- `realm_settings` : object
 - `realm_members` : object
 
 The session user created a new or joined an existing realm.
@@ -1638,6 +1640,7 @@ The session user left or was removed from a realm.
 - `action_id` : integer (if applicable)
 - `realm_id` : string
 - `realm_attrs` : object
+- `realm_settings` : object
 
 
 ### `realm_deleted`
