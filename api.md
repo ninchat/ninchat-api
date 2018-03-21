@@ -1404,6 +1404,7 @@ the specified message.
 - `dialogue_members` : object (if the session user has a dialogue with the user)
 - `dialogue_status` : string (if the session user has a dialogue with the user
                               and there are unread messages)
+- `message_time` : float (if the session user has a dialogue with the user)
 - `audience_metadata` : object (if the session user has accepted an audience from the user)
 - `puppet_masters` : object (optional)
 
@@ -1418,7 +1419,9 @@ dialogue membership attributes:
 The dialogue membership attributes objects will be empty unless the user is the
 session user.
 
-If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden".
+If set, the value of `dialogue_status` will be "highlight", "unread" or
+"hidden".  The `message_time` is the time of the latest message between the
+users.
 
 
 ### `user_updated`
@@ -1475,6 +1478,7 @@ If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden"
 - `user_id` : string
 - `dialogue_members` : object
 - `dialogue_status` : string (if applicable)
+- `message_time` : float (if applicable)
 - `audience_metadata` : object (if the session user has accepted an audience from the user)
 
 
@@ -1486,6 +1490,7 @@ If set, the value of `dialogue_status` will be "highlight", "unread" or "hidden"
 - `channel_members` : object (if the session user is a member)
 - `channel_status` : string (if the session user is a member and there are
                              unread messages)
+- `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 
 The `channel_members` object consists of user identifiers mapped to objects
@@ -1502,7 +1507,8 @@ channel-specific attributes of the user) and the optional `puppet_attrs` object
 		...
 	}
 
-If set, the value of `channel_status` will be "unread" or "highlight".
+If set, the value of `channel_status` will be "unread" or "highlight".  The
+`message_time` is the time of the latest message.
 
 
 ### `channel_joined`
@@ -1511,6 +1517,7 @@ If set, the value of `channel_status` will be "unread" or "highlight".
 - `channel_id` : string
 - `channel_attrs` : object
 - `channel_members` : object
+- `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 
 The session user created a new or joined an existing channel.

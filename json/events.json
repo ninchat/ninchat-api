@@ -42,6 +42,7 @@
 		"channel_id": true,
 		"channel_members": false,
 		"channel_status": false,
+		"message_time": false,
 		"realm_id": false
 	},
 
@@ -50,6 +51,7 @@
 		"channel_attrs": true,
 		"channel_id": true,
 		"channel_members": true,
+		"message_time": false,
 		"realm_id": false
 	},
 
@@ -94,6 +96,7 @@
 		"audience_metadata": false,
 		"dialogue_members": true,
 		"dialogue_status": false,
+		"message_time": false,
 		"user_id": true
 	},
 
@@ -442,6 +445,7 @@
 		"audience_metadata": false,
 		"dialogue_members": false,
 		"dialogue_status": false,
+		"message_time": false,
 		"puppet_masters": false,
 		"user_account": false,
 		"user_attrs": true,
