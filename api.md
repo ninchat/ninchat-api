@@ -1152,6 +1152,28 @@ Reply events: [`search_results`](#search_results) multiple times
 Searches users and channels by name or realname prefixes.
 
 
+### `search_users`
+
+- `action_id` : integer
+- `realm_id` : string (optional)
+- `search_term` : string
+
+Reply events: [`search_results`](#search_results) multiple times
+
+Searches users by name or realname prefixes.
+
+
+### `search_channels`
+
+- `action_id` : integer
+- `realm_id` : string (optional)
+- `search_term` : string
+
+Reply events: [`search_results`](#search_results) multiple times
+
+Searches channels by name prefixes.
+
+
 ### `track`
 
 - `action_id` : integer

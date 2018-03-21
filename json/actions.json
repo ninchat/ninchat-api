@@ -348,6 +348,20 @@
 		"search_term": true
 	},
 
+	"search_channels": {
+		"action_id": true,
+		"puppet_id": false,
+		"realm_id": false,
+		"search_term": true
+	},
+
+	"search_users": {
+		"action_id": true,
+		"puppet_id": false,
+		"realm_id": false,
+		"search_term": true
+	},
+
 	"send_access": {
 		"access_key": false,
 		"action_id": true,
