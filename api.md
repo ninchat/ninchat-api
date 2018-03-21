@@ -640,11 +640,13 @@ Create a new audience queue.  Caller must be a realm operator.
 
 - `action_id` : integer
 - `queue_id` : string
-- `queue_attrs` : object
+- `queue_attrs` : object (optional)
+- `queue_settings` : object (optional)
 
 Reply event: [`queue_updated`](#queue_updated)
 
-Update audience queue attributes.  Caller must be a realm operator.
+Update audience queue attributes and/or settings.  Caller must be a realm
+operator.
 
 
 ### `delete_queue`

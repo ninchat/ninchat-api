@@ -417,8 +417,9 @@
 	"update_queue": {
 		"action_id": true,
 		"puppet_id": false,
-		"queue_attrs": true,
-		"queue_id": true
+		"queue_attrs": false,
+		"queue_id": true,
+		"queue_settings": false
 	},
 
 	"update_realm": {
