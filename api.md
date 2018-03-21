@@ -820,6 +820,7 @@ channel.  `interval_end` may be used instead of `message_id` to specify the
 - `user_id` : string (optional)
 - `message_types` : string array (optional)
 - `message_id` : string (optional)
+- `message_fold` : boolean (optional)
 - `history_length` : integer (optional)
 - `history_order` : integer (optional)
 - `filter_property` : string
@@ -838,6 +839,8 @@ specifies a private conversation party.
 some.  It specifies the exclusive first or last message identifier (depending
 on the `history_order` parameter).  The latest messages are returned by
 default.  Empty string indicates the beginning of history.
+
+If `message_fold` is set, only folded messages are returned.
 
 The meaning of `history_length` is as follows:
 

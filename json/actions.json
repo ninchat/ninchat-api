@@ -286,6 +286,7 @@
 		"filter_substring": false,
 		"history_length": false,
 		"history_order": false,
+		"message_fold": false,
 		"message_id": false,
 		"message_types": false,
 		"puppet_id": false,
