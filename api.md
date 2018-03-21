@@ -28,6 +28,7 @@ Copyright &copy; 2012-2017 Somia Reality Oy.  All rights reserved.
     - [Tag](#tag)
     - [User](#user)
   - [User settings](#user-settings)
+  - [Event causes](#event-causes)
   - [Error types](#error-types)
   - [Message types](#message-types)
     - [ninchat.com/file](#ninchatcomfile)
@@ -2606,6 +2607,52 @@ User settings
 
 	The user has received messages (via email), but has not activated the user
 	account.
+
+
+Event causes
+------------
+
+- `audience_accept_peer` (queue)
+
+	Queue length changed because somebody else accepted an audience.
+
+- `audience_accept_self` (queue)
+
+	Queue length changed because you accepted an audience.
+
+- `audience_drop` (queue)
+
+	Queue length changed because a user who had requested an audience went away.
+
+- `audience_request` (queue)
+
+	Queue length changed because a user requested an audience.
+
+- `channel_schedule` (channel)
+
+	Channel was opened or closed according to its `schedule` attribute.
+
+- `channel_update` (channel)
+
+	Channel was updated via the [`update_channel`](#update_channel) action.
+
+- `member_remove` (channel, realm and queue membership)
+
+	You or your peer parted the channel, realm or queue because an operator
+    removed you/them.
+
+- `payment_subscription_expire` (channel; queue)
+
+	Channel or queue was suspended because the owner no longer has enough
+    quota.
+
+- `queue_schedule` (queue)
+
+	Queue was opened or closed according to its `schedule` attribute.
+
+- `queue_update` (queue)
+
+	Queue was updated via the [`update_queue`](#update_queue) action.
 
 
 Error types
