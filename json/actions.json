@@ -195,6 +195,7 @@
 		"action_id": true,
 		"interval_begin": true,
 		"interval_end": false,
+		"interval_ongoing": false,
 		"puppet_id": false,
 		"queue_id": true
 	},

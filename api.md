@@ -1042,11 +1042,15 @@ Reply event: [`transcript_deleted`](#transcript_deleted)
 - `queue_id` : string
 - `interval_begin` : float
 - `interval_end` : float (optional)
+- `interval_ongoing` : boolean (optional)
 
 Reply event: [`queue_transcripts_found`](#queue_transcripts_found)
 
 List all dialogues which have started from the specified audience queue and
-completed during the specified interval.  The interval may be open-ended.
+completed during the specified interval.  The interval may be open-ended, but
+by default it will only return time slots which have already ended.  The
+`interval_ongoing` parameter can be used to include unfinished transcripts of
+the ongoing time slot.
 
 
 ### `delete_queue_transcripts`
