@@ -305,9 +305,8 @@
 
 	"realm_member_parted": {
 		"action_id": false,
-		"channel_id": false,
 		"event_cause": false,
-		"realm_id": false,
+		"realm_id": true,
 		"user_id": true
 	},
 
