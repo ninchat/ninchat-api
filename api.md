@@ -721,11 +721,16 @@ realm opereator.
 - `realm_id` : string (optional)
 - `user_id` : string
 - `member_attrs` : object
+- `interval_end` : float (optional)
 
 Reply event: [`channel_member_updated`](#channel_member_updated) or
              [`realm_member_updated`](#realm_member_updated)
 
 Sets or clears a channel or realm membership attributes for a user.
+
+If `interval_end` is specified with a channel membership attribute, the set
+attribute will be automatically unset at that time.  (An `update_member` call
+with an interval can set only one attribute at a time.)
 
 
 ### `remove_member`

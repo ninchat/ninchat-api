@@ -421,6 +421,7 @@
 	"update_member": {
 		"action_id": true,
 		"channel_id": false,
+		"interval_end": false,
 		"member_attrs": true,
 		"puppet_id": false,
 		"realm_id": false,
