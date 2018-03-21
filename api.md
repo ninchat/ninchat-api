@@ -1144,6 +1144,7 @@ requested at a time (does NOT need to be aligned to start or end of month).
 ### `search`
 
 - `action_id` : integer
+- `realm_id` : string (optional)
 - `search_term` : string
 
 Reply events: [`search_results`](#search_results) multiple times

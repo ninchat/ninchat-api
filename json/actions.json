@@ -344,6 +344,7 @@
 	"search": {
 		"action_id": true,
 		"puppet_id": false,
+		"realm_id": false,
 		"search_term": true
 	},
 
