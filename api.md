@@ -1483,6 +1483,7 @@ users.
 - `dialogue_status` : string (if applicable)
 - `message_time` : float (if applicable)
 - `audience_metadata` : object (if the session user has accepted an audience from the user)
+- `dialogue_metadata` : object (if the session user has accepted an audience from the user)
 
 
 ### `channel_found`

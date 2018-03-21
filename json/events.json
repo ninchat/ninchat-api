@@ -95,6 +95,7 @@
 		"action_id": false,
 		"audience_metadata": false,
 		"dialogue_members": true,
+		"dialogue_metadata": false,
 		"dialogue_status": false,
 		"message_time": false,
 		"user_id": true
