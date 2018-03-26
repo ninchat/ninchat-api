@@ -66,6 +66,8 @@
 		"params": {
 			"accept_time":   { "type": "float"        },
 			"agent_id":      { "type": "string"       },
+			"audience_id":   { "type": "string"       },
+			"channel_id":    { "type": "string"       },
 			"complete_time": { "type": "float"        },
 			"dialogue_id":   { "type": "string array" },
 			"finish_time":   { "type": "float"        },

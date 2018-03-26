@@ -1047,14 +1047,16 @@ Reply event: [`file_found`](#file_found)
 - `action_id` : integer
 - `channel_id` : string (optional)
 - `dialogue_id` : string array (optional)
+- `audience_id` : string (optional)
 - `interval_begin` : float (optional)
 - `interval_end` : float (optional)
 - `message_id` : string (optional)
 
 Reply event: [`transcript_contents`](#transcript_contents)
 
-Dump the "ninchat.com/*" messages sent on a channel or in a dialogue.
-`dialogue_id` holds a pair of user ids (the order doesn't matter).
+Dump the "ninchat.com/*" messages sent on a channel, in a dialogue, or during
+an audience.  `dialogue_id` holds a pair of user ids (the order doesn't
+matter).
 
 Specifying a time interval may make sense when targetting a long-lived channel.
 By default the interval is the whole history.
@@ -1067,7 +1069,9 @@ return everything.
 ### `delete_transcript`
 
 - `action_id` : integer
-- `dialogue_id` : string array
+- `channel_id` : string (optional)
+- `dialogue_id` : string array (optional)
+- `audience_id` : string (optional)
 
 Reply event: [`transcript_deleted`](#transcript_deleted)
 
@@ -1962,7 +1966,10 @@ specifies the time when `file_url` and `thumbnail_url` stop working.
 ### `transcript_contents`
 
 - `action_id` : integer
+- `channel_id` : string (if applicable)
+- `dialogue_id` : string array (if applicable)
 - `dialogue_members` : object (if applicable)
+- `audience_id` : string (if applicable)
 - `audience_metadata` : object (optional)
 - `transcript_messages` : object array
 - `message_id` : string (optional)
@@ -1997,7 +2004,9 @@ The messages are sorted from oldest to newest.
 ### `transcript_deleted`
 
 - `action_id` : integer (optional)
+- `channel_id` : string (if applicable)
 - `dialogue_id` : string array (if applicable)
+- `audience_id` : string (if applicable)
 
 
 ### `queue_transcripts_found`
@@ -2006,8 +2015,9 @@ The messages are sorted from oldest to newest.
 - `queue_id` : string
 - `queue_transcripts` : object array
 
-The `queue_transcripts` array looks like this (the `rating` property is
-optional):
+The `queue_transcripts` array looks like this (all properties except
+`request_time` and `accept_time` are optional; only one of `channel_id` and
+`dialogue_id` will be present):
 
 	"queue_transcripts": [
 		{
@@ -2016,6 +2026,7 @@ optional):
 			"finish_time":   1445592952.232474,
 			"complete_time": 1445592955.341256,
 			"dialogue_id":   ["05kq2htc", "38hj5ip5000eg"],
+			"audience_id":   "38hj5ip6789ge",
 			"agent_id":      "05kq2htc",
 			"rating":        -1
 		},

@@ -151,7 +151,9 @@
 
 	"delete_transcript": {
 		"action_id": true,
-		"dialogue_id": true,
+		"audience_id": false,
+		"channel_id": false,
+		"dialogue_id": false,
 		"puppet_id": false
 	},
 
@@ -267,6 +269,7 @@
 
 	"get_transcript": {
 		"action_id": true,
+		"audience_id": false,
 		"channel_id": false,
 		"dialogue_id": false,
 		"interval_begin": false,

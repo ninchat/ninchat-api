@@ -428,7 +428,10 @@
 
 	"transcript_contents": {
 		"action_id": true,
+		"audience_id": false,
 		"audience_metadata": false,
+		"channel_id": false,
+		"dialogue_id": false,
 		"dialogue_members": false,
 		"message_id": false,
 		"transcript_messages": true
@@ -436,6 +439,8 @@
 
 	"transcript_deleted": {
 		"action_id": false,
+		"audience_id": false,
+		"channel_id": false,
 		"dialogue_id": false
 	},
 
