@@ -434,7 +434,7 @@
 		"dialogue_id": false,
 		"dialogue_members": false,
 		"message_id": false,
-		"transcript_messages": true
+		"transcript_messages": false
 	},
 
 	"transcript_deleted": {

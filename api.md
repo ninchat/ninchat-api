@@ -1971,11 +1971,15 @@ specifies the time when `file_url` and `thumbnail_url` stop working.
 - `dialogue_members` : object (if applicable)
 - `audience_id` : string (if applicable)
 - `audience_metadata` : object (optional)
-- `transcript_messages` : object array
+- `transcript_messages` : object array (if applicable)
 - `message_id` : string (optional)
 
 To identify the user who requested the audience, see which dialogue member has
 the `queue_id` attribute.
+
+The `transcript_messages` parameter always exists for channel and dialogue
+transcripts.  It might not exist if the transcript was requested via
+`audience_id`, as some audiences are not backed by channels or dialogues.
 
 `message_id` is set if `transcript_messages` doesn't contain everything.  It
 may be used in a subsequent `get_transcript` call to get successive messages.
