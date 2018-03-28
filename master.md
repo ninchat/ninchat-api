@@ -67,7 +67,7 @@ Ninchat.
 
 ### Ninchat website
 
-An existing puppet user can be logged in at the Ninchat website by forming an
+An existing puppet user can be logged in at the Ninchat website by forming a
 URL:
 
 	https://ninchat.com/app/#/x/login-sign/USER_ID/MASTER_KEY_TYPE/MASTER_SIGN
