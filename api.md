@@ -6,7 +6,7 @@ API.  It will be extended over time, without causing regressions to conforming
 client applications.  If a new, backward-incompatible API version is released,
 it will be accessible using new network endpoints.
 
-Copyright &copy; 2012-2018 Somia Reality Oy.  All rights reserved.
+Copyright &copy; 2012 Somia Reality Oy.  All rights reserved.
 
 
 ### Contents
@@ -50,8 +50,6 @@ Copyright &copy; 2012-2018 Somia Reality Oy.  All rights reserved.
 ### Associated documents
 
 - [Ninchat Master Keys](master.md)
-  - [Action Signatures](master.md#action-signatures)
-  - [Secure Metadata](master.md#secure-metadata)
 - [Ninchat Puppets](puppet.md)
 
 

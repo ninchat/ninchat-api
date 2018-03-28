@@ -1,7 +1,7 @@
 Ninchat Puppets
 ===============
 
-Copyright &copy; 2017-2018 Somia Reality Oy.  All rights reserved.
+Copyright &copy; 2017 Somia Reality Oy.  All rights reserved.
 
 
 ### Contents
@@ -16,13 +16,11 @@ Copyright &copy; 2017-2018 Somia Reality Oy.  All rights reserved.
 ### Associated documents
 
 - [Ninchat Master Keys](master.md)
-  - [Action Signatures](master.md#action-signatures)
-  - [Secure Metadata](master.md#secure-metadata)
 - [Ninchat API Reference](api.md)
 
 
 Introduction
-============
+------------
 
 A Ninchat user account may optionally be:
 
@@ -44,7 +42,7 @@ normal user.
 
 
 Creating Puppets
-================
+----------------
 
 Currently the only way to create a master-puppet relationship is for the master
 user to create a puppet user.  There are two mechanisms:
@@ -58,7 +56,7 @@ user to create a puppet user.  There are two mechanisms:
 
 
 Puppet Login
-============
+------------
 
 When an end user needs to be logged in for an interactive session, an [action
 signature](master.md#action-signatures) is created for
@@ -67,7 +65,7 @@ users), and passed to the client which invokes the API action.
 
 
 Puppet Control
-==============
+--------------
 
 Most API actions support the `puppet_id` parameter.  It allows a master to
 impersonate one of its puppets while invoking an action.  (This is somewhat
@@ -80,7 +78,7 @@ signature](master.md#action-signatures).
 
 
 Puppet Attributes
-=================
+-----------------
 
 Puppet users may control themselves like any normal user, including modifying
 user attributes.  A master may enforce [separate attributes](api.md#puppet) on
