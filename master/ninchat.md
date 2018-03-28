@@ -17,6 +17,7 @@ Copyright &copy; 2015 Somia Reality Oy.  All rights reserved.
 ### Associated documents
 
 - [Ninchat Master Keys](../master.md)
+- [Using JWT with Ninchat Master Keys](jwt.md)
 - [Ninchat Puppets](../puppet.md)
 - [Ninchat API Reference](../api.md)
 

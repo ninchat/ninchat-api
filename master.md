@@ -15,6 +15,7 @@ Copyright &copy; 2015 Somia Reality Oy.  All rights reserved.
 ### Associated documents
 
 - [Ninchat Signing and Secure Metadata](master/ninchat.md)
+- [Using JWT with Ninchat Master Keys](master/jwt.md)
 - [Ninchat Puppets](puppet.md)
 - [Ninchat API Reference](api.md)
 
@@ -28,7 +29,8 @@ key is used, that *master user* exerts control over other users or resources.
 Ninchat supports two types of master keys: "ninchat"-type keys are used with
 the algorithms described in
 [Ninchat Signing and Secure Metadata](master/ninchat.md), and "jwt"-type keys
-are used for creating JWT tokens.
+are used for creating JWT tokens; see
+[Using JWT with Ninchat Master Keys](master/jwt.md).
 
 
 Creating Keys
