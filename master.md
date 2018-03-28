@@ -11,6 +11,7 @@ Copyright &copy; 2015 Somia Reality Oy.  All rights reserved.
 - [Key Types](#key-types)
 - [Creating Keys](#creating-keys)
 - [Single Sign-On](#single-sign-on)
+- [Secure Metadata](#secure-metadata)
 
 
 ### Associated documents
@@ -89,4 +90,22 @@ parameter needs to be specified.  A single JWT token containing authentication
 and authorization claims can be used as both the user and the channel
 signature.  But if the key type is "ninchat", a separate channel action
 signature needs to be generated.
+
+
+Secure Metadata
+---------------
+
+When Ninchat is integrated to a third-party service, secure metadata can be
+used to communicate arbitrary end user related information to the customer care
+agent.  It typically contains identification of an authenticated user, plus
+other information that is helpful for the agent during the chat.
+
+Secure metadata is encrypted by the third-party server, using the
+[original encoding](master/ninchat.md#secure-metadata) or encapsulated in a
+[JWT token](master/jwt.md#secure-metadata).  The encrypted string is then
+passed to the web browser on the page which embeds Ninchat.
+
+Non-secure metadata is specified via the embedded Ninchat client's
+`audienceMetadata` parameter, and secure metadata is included in the "secure"
+property.
 
