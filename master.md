@@ -10,6 +10,7 @@ Copyright &copy; 2015 Somia Reality Oy.  All rights reserved.
 
 - [Key Types](#key-types)
 - [Creating Keys](#creating-keys)
+- [Single Sign-On](#single-sign-on)
 
 
 ### Associated documents
@@ -52,4 +53,40 @@ keys differ from the non-specific ones in the following ways:
 - They may not be used with puppets.
 - They authorize access only to the specific realm's resources.
 - Also the realm's operators may create and delete the keys.
+
+
+Single Sign-On
+--------------
+
+Single sign-on can be implemented by generating
+[session action signatures](master/ninchat.md#action-signatures) or
+[JWT authentication tokens](master/jwt.md#authentication), and passing them to
+Ninchat.
+
+
+### Ninchat website
+
+An existing puppet user can be logged in at the Ninchat website by forming an
+URL:
+
+	https://ninchat.com/app/#/x/login-sign/USER_ID/MASTER_KEY_TYPE/MASTER_SIGN
+
+- `USER_ID` is the Ninchat user id to log in.
+- `MASTER_KEY_TYPE` is "ninchat" (JWT is not supported yet).
+- `MASTER_SIGN` is the generated signature.
+
+
+### Embedded Ninchat
+
+A third-party service's user can be logged in via the embedded Ninchat client
+by specifying the `masterKeyType` and `masterUserSign` parameters.  If the key
+type is "ninchat" and an existing user is to be logged in, the `userId`
+parameter must also be specified.  Ninchat user id is never needed if the key
+type is "jwt".
+
+If the user needs to be added to a channel, also the `masterChannelSign`
+parameter needs to be specified.  A single JWT token containing authentication
+and authorization claims can be used as both the user and the channel
+signature.  But if the key type is "ninchat", a separate channel action
+signature needs to be generated.
 
