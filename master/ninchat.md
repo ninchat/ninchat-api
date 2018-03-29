@@ -36,10 +36,33 @@ The following standard algorithms are used:
 
 - JSON serialization
 - HMAC digest using SHA-512 hash function
-- Base64 encoding
+- Base64 encoding or unpadded base64url encoding
 
 
 ### Signature format
+
+There are two supported serialization formats.  They use different delimiter
+characters and base64 variants, and have different requirements for the nonce.
+
+
+#### URL-safe version
+
+The signature is an ASCII string formed of (exactly) five tokens, delimited by
+dots ("."):
+
+1. Master key id
+2. Expiration time as a decimal string
+3. ASCII nonce (can contain only alphanumeric characters, dash and underscore)
+4. [Unpadded base64url](https://tools.ietf.org/html/rfc7515#appendix-C)-encoded HMAC-SHA512 digest
+5. Mode flags: literal string "" or "1"
+
+An example signature:
+
+	22nlihvg.1444077534.EGk2DnQT.sVcP4GBueJKRe-hLq7619MjhKZA_t5NIpm_6MgQLnmTm9O2A3WWV
+	YtpDn99rgq7iALqnGnGY_wihFFiO75ddmA.
+
+
+#### Deprecated version
 
 The signature is an ASCII string formed of four or five tokens, delimited by
 dashes ("-"):
@@ -72,7 +95,7 @@ literals).
 
 An example JSON array:
 
-	[["action","create_session"],["expire",1444077534],["nonce","ak/7LQ2uS0s="]]
+	[["action","create_session"],["expire",1444077534],["nonce","ak_7LQ2u"]]
 
 
 ### Action parameters
@@ -115,10 +138,33 @@ The following standard algorithms are used:
 - JSON serialization
 - SHA-512 hash function
 - AES-256 encryption in CBC mode
-- Base64 encoding
+- Base64 encoding or unpadded base64url encoding
 
 
 ### Encrypted format
+
+There are two supported serialization formats.  They use different delimiter
+characters and base64 variants.
+
+
+#### URL-safe version
+
+The result is an ASCII string formed of two tokens, delimited by a dot ("."):
+
+1. Master key id
+2. [Unpadded base64url](https://tools.ietf.org/html/rfc7515#appendix-C)-encoded concatenation of the following:
+   1. IV used during encryption
+   2. AES-256-CBC ciphertext
+
+An example:
+
+	22nlihvg.mONwgi61ZoInzc3E2l2WdFtZ8L0dy9PVaNjshFvw8KeZQDEqYbrTYrnEECG9kApqWKefcwUM
+	0zDfUno99xWl6Tas6tP7g2lx654uMhg0qRODDSfeX3f2a5p0mgTYLHd9b8RUPgVO0L9QBC4Y2gKC49xtV
+	fmAyN76X1q28byGJW7c8xoRI7DnwBDU_hW8w73IYBIh2ww8uF5lxSivhdNag3grIqsDFDmvixOCuCV6Ff
+	-ZVLxgIAt7p3dNFF9QwH7cH1F3FLWUqeBotuiYVa6Znw
+
+
+#### Deprecated version
 
 The result is an ASCII string formed of two tokens, delimited by a dash ("-"):
 
