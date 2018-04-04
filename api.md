@@ -1805,6 +1805,7 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `queue_id` : string
 - `queue_attrs` : object
 - `queue_position` : integer
+- `audience_id` : string
 
 
 ### `message_received`
@@ -2313,14 +2314,17 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	Indicates that the member has ended the dialogue which started via an
     audience queue.
 
+- `audience_id` : string
+
+	The dialogue was started as a response to this audience request.
+
 - `queue_id` : string
 
-	The dialogue was initiated by requesting an audience.
+	The dialogue was started as a response to a request in this audience queue.
 
 - `rating` : integer (writable by self)
 
-	An optional rating given to your peer, in range [-1, 1].  (Set by
-    audience-requesting users.)
+	A rating given to the peer user, in range [-1, 1].
 
 - `writing` : bool (writable by self)
 

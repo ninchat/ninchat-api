@@ -26,6 +26,7 @@
 
 	"audience_enqueued": {
 		"action_id": false,
+		"audience_id": true,
 		"queue_attrs": true,
 		"queue_id": true,
 		"queue_position": true
