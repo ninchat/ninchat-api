@@ -710,16 +710,24 @@ of the property.  Other value types for "secure" property are rejected.  A
 `permission_expired` error type is returned if the encrypted metadata has
 expired.  See [Secure metadata](master.md#secure-metadata).
 
+When the audience is accepted, the user will automatically join a channel or a
+dialogue will start, depending on queue configuration.  `audience_id` and
+`queue_id` will be set either as channel attributes, or as dialogue member
+attributes for the session user.
+
 
 ### `accept_audience`
 
 - `action_id` : integer
 - `queue_id` : string
 
-Reply event: [`dialogue_updated`](#dialogue_updated)
+Reply event: [`channel_joined`](#channel_joined) or [`dialogue_updated`](#dialogue_updated)
 
-Take the first user from the queue.  Caller must be a queue member.  The
-`queue_id` dialogue member attribute will be set for the accepted user.
+Take the next user from the queue.  Caller must be a queue member.
+
+Either a channel or a dialogue will be created, depending on queue
+configuration.  The channel attributes or the accepted user's dialogue
+membership attributes will contain `audience_id` and `queue_id`.
 
 
 ### `add_member`
@@ -1554,7 +1562,8 @@ If set, the value of `channel_status` will be "unread" or "highlight".  The
 - `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 
-The session user created a new or joined an existing channel.
+The session user created a new channel or joined an existing channel, or an
+audience request was accepted.
 
 
 ### `channel_parted`
@@ -2561,7 +2570,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 - `upload` : string (writable by realm operators)
 
-	Enables `send_file` action in audience dialogues:
+	Enables `send_file` action in audience channels and audience dialogues:
 
 	- "member" enables it for both members.
 	- "agent" enables it for the member who accepted the audience.
@@ -2934,9 +2943,9 @@ Audience metadata
 -----------------
 
 Custom key-value pairs may be set via the `audience_metadata` action parameter,
-or by sending a [`ninchat.com/metadata`](#ninchatcommetadata) message to a
-audience dialogue.  Some metadata keys have predefined meanings, and are used
-by Ninchat if set in a specific way:
+or by sending a [`ninchat.com/metadata`](#ninchatcommetadata) message to an
+audience channel or dialogue.  Some metadata keys have predefined meanings, and
+are used by Ninchat if set in a specific way:
 
 
 ### `secure`
