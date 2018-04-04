@@ -607,7 +607,10 @@ Reply event: [`realm_found`](#realm_found)
 
 Reply event: [`realm_queues_found`](#realm_queues_found)
 
-Describe some or all audience queues of a realm.
+Describe some or all audience queues of a realm.  The session will continue to
+receive additional [`queue_updated`](#queue_updated) events if there are
+changes to the queues.  The updates will cease after an audience is requested
+through one of the queues.
 
 If specified, `queue_ids` indicates a subset of the realm's queues which the
 user is interested in.  Unknown queue ids are silently ignored.  (The user may
