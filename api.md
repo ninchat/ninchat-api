@@ -513,6 +513,16 @@ Reply event: [`channel_found`](#channel_found)
 Reply event: [`channel_updated`](#channel_updated)
 
 
+### `delete_channel`
+
+- `action_id` : integer
+- `channel_id` : string
+
+Reply event: [`channel_deleted`](#channel_deleted)
+
+The channel must be suspended before it can be deleted.
+
+
 ### `follow_channel`
 
 - `action_id` : integer
