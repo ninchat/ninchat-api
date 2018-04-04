@@ -587,6 +587,14 @@ only be used to disable the "silenced" member attribute, when the channel has
 
 Reply event: [`channel_parted`](#channel_parted)
 
+If the parting user was the last member and the channel is not associated with
+an audience queue, the channel will be deleted immediately.
+
+If the parting user was the last member of an audience channel, the channel
+will be suspened.  The channel will persit without members until
+`delete_channel` is called, or it is deleted automatically according to a
+schedule.
+
 
 ### `create_realm`
 
