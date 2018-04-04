@@ -145,6 +145,12 @@
 		"user_id": false
 	},
 
+	"ice_begun": {
+		"action_id": true,
+		"stun_servers": true,
+		"turn_servers": true
+	},
+
 	"identity_created": {
 		"action_id": false,
 		"identity_attrs": true,

@@ -13,6 +13,10 @@
 		"user_id": true
 	},
 
+	"begin_ice": {
+		"action_id": true
+	},
+
 	"close_session": {},
 
 	"create_access": {

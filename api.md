@@ -1185,6 +1185,15 @@ specifies the number of hours to load.  No more than one month of data may be
 requested at a time (does NOT need to be aligned to start or end of month).
 
 
+### `begin_ice`
+
+- `action_id` : integer
+
+Reply event: [`ice_begun`](#ice_begun)
+
+Request temporary STUN and TURN servers and credentials for WebRTC.
+
+
 ### `search`
 
 - `action_id` : integer
@@ -2201,6 +2210,54 @@ The "audiences" array contains groups of statistics.  Each group is identified
 by "agent_id", optional "tag_ids" and optional "vars".  See
 [Audience metadata](#audience-metadata) for information about setting tag
 identifiers and custom variables.
+
+
+### `ice_begun`
+
+- `action_id` : integer
+- `stun_servers` : object array
+- `turn_servers` : object array
+
+The STUN and TURN server objects contain the `urls` property (string array).
+The TURN server objects contain also the `username` and `credential` properties
+(string).
+
+Example:
+
+	"stun_servers": [
+		{
+			"urls": [
+				"stun:192.0.43.10:3478"
+			]
+		},
+		{
+			"urls": [
+				"stun:192.0.43.11:3478"
+			]
+		},
+		...
+	],
+	"turn_servers": [
+		{
+			"urls": [
+				"turn:192.0.43.11:3478",
+				"turn:192.0.43.11:3478?transport=tcp",
+				"turns:192-0-43-11.ninchat.com:5349"
+			],
+			"username":   "a1b2c3d456",
+			"credential": "If/dd+SqXmmaiXIv"
+		},
+		{
+			"urls": [
+				"turn:192.0.43.12:3478",
+				"turn:192.0.43.12:3478?transport=tcp",
+				"turns:192-0-43-12.ninchat.com:5349"
+			],
+			"username":   "a1b2c3d468",
+			"credential": "B2UurvypiZ2DF0Nr"
+		},
+		...
+	]
 
 
 ### `search_results`
