@@ -36,6 +36,7 @@ Copyright &copy; 2012 Somia Reality Oy.  All rights reserved.
     - [ninchat.com/link](#ninchatcomlink)
     - [ninchat.com/metadata](#ninchatcommetadata)
     - [ninchat.com/notice](#ninchatcomnotice)
+    - [ninchat.com/rtc/*](#ninchatcomrtc)
     - [ninchat.com/text](#ninchatcomtext)
     - [ninchat.com/ui/*](#ninchatcomui)
   - [Audience metadata](#audience-metadata)
@@ -2947,6 +2948,50 @@ happened some time before messaging was initiated.)
 
 Similar to `ninchat.com/text` (described below), but may only be sent to
 channels, and only by channel operators.
+
+
+### `ninchat.com/rtc/*`
+
+WebRTC signaling messages.  The payload consists of a single part with a JSON
+object.
+
+
+#### `ninchat.com/rtc/answer`
+
+Contains a JSON object:
+
+	{ sdp: RTCSessionDescription }
+
+
+#### `ninchat.com/rtc/call`
+
+Contains an empty JSON object.
+
+
+#### `ninchat.com/rtc/ice-candidate`
+
+Contains a JSON object:
+
+	{ candidate: RTCIceCandidate }
+
+
+#### `ninchat.com/rtc/hang-up`
+
+Contains an empty JSON object.
+
+
+#### `ninchat.com/rtc/offer`
+
+Contains a JSON object:
+
+	{ sdp: RTCSessionDescription }
+
+
+#### `ninchat.com/rtc/pick-up`
+
+Contains a JSON object (the `unsupported` property is optional):
+
+	{ answer: false, unsupported: true }
 
 	
 ### `ninchat.com/text`
