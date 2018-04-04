@@ -2335,6 +2335,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 ### Channel
 
+- `audience_id` : string
+
+	The channel was created as a response to an audience request.
+
 - `autohide` : boolean (writable by operators)
 
 	Set the `autohide` channel member attribute for users who join the channel.
@@ -2382,6 +2386,10 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 - `public` : boolean
 
 	Channel is open for everyone despite being in a realm.
+
+- `queue_id` : string
+
+	The channel was created as a response to a request in this audience queue.
 
 - `ratelimit` : string (writable by operators)
 

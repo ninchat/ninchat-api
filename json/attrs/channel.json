@@ -1,4 +1,5 @@
 {
+	"audience_id":          { "type": "string" },
 	"autohide":             { "type": "bool",         "writable":   true },
 	"autosilence":          { "type": "bool",         "writable":   true },
 	"blacklisted_message_types":
@@ -10,6 +11,7 @@
 	"owner_id":             { "type": "string" },
 	"private":              { "type": "bool",         "writable":   true },
 	"public":               { "type": "bool",         "writable":   true },
+	"queue_id":             { "type": "string" },
 	"ratelimit":            { "type": "string",       "writable":   true },
 	"suspended":            { "type": "bool",         "writable":   true },
 	"topic":                { "type": "string",       "writable":   true },
