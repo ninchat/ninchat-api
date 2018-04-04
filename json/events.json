@@ -39,10 +39,12 @@
 
 	"channel_found": {
 		"action_id": false,
+		"audience_metadata": false,
 		"channel_attrs": true,
 		"channel_id": true,
 		"channel_member_count": false,
 		"channel_members": false,
+		"channel_metadata": false,
 		"channel_status": false,
 		"message_time": false,
 		"realm_id": false
@@ -50,9 +52,11 @@
 
 	"channel_joined": {
 		"action_id": false,
+		"audience_metadata": false,
 		"channel_attrs": true,
 		"channel_id": true,
 		"channel_members": true,
+		"channel_metadata": false,
 		"message_time": false,
 		"realm_id": false
 	},
