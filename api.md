@@ -1313,8 +1313,8 @@ containing identity names mapped to identity attributes:
 
 The `user_dialogues` object consists of user identifiers (of users with whom
 there are ongoing private conversations) mapped to objects containing the
-optional `dialogue_members` object, `dialogue_status` string and
-`audience_metadata` object:
+optional `dialogue_members` object, `dialogue_status` string,
+`audience_metadata` object, and `dialogue_metadata` object:
 
 	"user_dialogues": {
 		"12345": {
@@ -1323,7 +1323,8 @@ optional `dialogue_members` object, `dialogue_status` string and
 				"65432": { "attr": "value", ... }
 			},
 			"dialogue_status": "highlight",
-			"audience_metadata": { "attr": "value", ... }
+			"audience_metadata": { "attr": "value", ... },
+			"dialogue_metadata": { "attr": "value", ... }
 		},
 		...
 	}

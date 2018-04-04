@@ -192,6 +192,7 @@
 		"params": {
 			"audience_metadata": { "type": "object",           "optional": true },
 			"dialogue_members":  { "type": "dialogue_members", "optional": true },
+			"dialogue_metadata": { "type": "object",           "optional": true },
 			"dialogue_status":   { "type": "string",           "optional": true }
 		}
 	},
