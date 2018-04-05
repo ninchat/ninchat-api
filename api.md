@@ -2534,6 +2534,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	Enables `send_file` action:
 
 	- "member" enables it for all members.
+	- "moderator" enables it for members with the `moderator` or `operator` attribute.
 	- "operator" enables it for members with the `operator` attribute.
 
 - `verified_join` : boolean (writable by operators)
@@ -2642,9 +2643,13 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	Enables `send_file` action in audience channels and audience dialogues:
 
-	- "member" enables it for both members.
-	- "agent" enables it for the member who accepted the audience.
-	- "customer" enables it for the member who requested the audience.
+	- "member" enables it for all members.
+	- "moderator" enables it for members with the `moderator` or `operator` attribute (channel), or the member who accepted the audience (dialogue).
+
+	Deprecated values:
+
+	- "agent" is an alias for "moderator".
+	- "customer" enables it for the member who requested the audience (dialogue only).
 
 
 ### File
