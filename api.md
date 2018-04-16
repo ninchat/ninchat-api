@@ -3067,6 +3067,12 @@ audience channel or dialogue.  Some metadata keys have predefined meanings, and
 are used by Ninchat if set in a specific way:
 
 
+### `rating`
+
+An integer between -1 and 1.  Set by the requester of the audience by sending a
+[`ninchat.com/metadata`](#ninchatcommetadata) message.
+
+
 ### `secure`
 
 See the [`request_audience`](#request_audience) action for details.
