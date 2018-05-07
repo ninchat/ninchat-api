@@ -709,6 +709,23 @@ Take the first user from the queue.  Caller must be a queue member.  The
 `queue_id` dialogue member attribute will be set for the accepted user.
 
 
+### `transfer_audience`
+
+- `action_id` : integer
+- `user_id` : string
+- `queue_id` : string
+
+Reply event: [`dialogue_updated`](#dialogue_updated)
+
+End the current audience with a user, and request another audience on behalf of
+that user.  The caller must be the acceptor of an ongoing audience with the
+target user, and the target queue must be whitelisted as a transfer target for
+the current audience's queue.
+
+The current audience's metadata and message history will be included in the new
+audience dialogue.
+
+
 ### `add_member`
 
 - `action_id` : integer
