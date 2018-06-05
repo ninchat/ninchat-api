@@ -3,6 +3,7 @@
 	"closed":               { "type": "bool",         "writable":   true },
 	"length":               { "type": "int" },
 	"name":                 { "type": "string",       "writable":   true },
+	"schedule":             { "type": "object",       "writable":   true },
 	"suspended":            { "type": "bool",         "writable":   true },
 	"upload":               { "type": "string",       "writable":   true }
 }
