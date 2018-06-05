@@ -2518,6 +2518,11 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	See the channel `schedule` attribute.
 
+- `secure_metadata` : boolean (writable by realm operators)
+
+	Requires the "secure" property to be present in `audience_metadata` when
+    the `request_audience` action is called.
+
 - `suspended` : boolean (writable by realm operators)
 
 	The queue is in read-only state.  (This is similar to the `closed`

@@ -4,6 +4,7 @@
 	"length":               { "type": "int" },
 	"name":                 { "type": "string",       "writable":   true },
 	"schedule":             { "type": "object",       "writable":   true },
+	"secure_metadata":      { "type": "bool",         "writable":   true },
 	"suspended":            { "type": "bool",         "writable":   true },
 	"upload":               { "type": "string",       "writable":   true }
 }
