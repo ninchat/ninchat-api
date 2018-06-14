@@ -72,8 +72,8 @@ URL:
 
 	https://ninchat.com/app/#/x/login-sign/USER_ID/MASTER_KEY_TYPE/MASTER_SIGN
 
-- `USER_ID` is the Ninchat user id to log in.
-- `MASTER_KEY_TYPE` is "ninchat" (JWT is not supported yet).
+- `USER_ID` is the Ninchat user id to log in (specify as `-` when using JWT).
+- `MASTER_KEY_TYPE` is "ninchat" or "jwt".
 - `MASTER_SIGN` is the generated signature.
 
 
