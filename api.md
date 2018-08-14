@@ -1514,6 +1514,7 @@ users.
 - `channel_id` : string
 - `channel_attrs` : object
 - `channel_members` : object (if the session user is a member)
+- `channel_member_count` : integer (if the session user is owner or realm operator)
 - `channel_status` : string (if the session user is a member and there are
                              unread messages)
 - `message_time` : float (if applicable)
