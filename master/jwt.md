@@ -97,3 +97,4 @@ The `ninchat.com/metadata` claim is an object containing the secure metadata.
 
 The token must be encrypted; the JWT must be a JWE, not a JWS.
 
+See [Python example code](../examples/jwt_secure_metadata.py).
