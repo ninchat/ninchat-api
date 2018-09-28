@@ -306,6 +306,9 @@ Second frame:
 	\x00\x00\x00%\xdbV\xca\x00\x00\x00\x03PLTE\x93c+\xbaC\xfaW\x00\x00\x00\nIDA
 	T\x08\xd7c`\x00\x00\x00\x02\x00\x01\xe2!\xbc3\x00\x00\x00\x00IEND\xaeB`\x82
 
+If the uploaded image data cannot be converted to an icon, the
+`file_not_supported` error is returned.
+
 
 ### `delete_user`
 
@@ -2688,6 +2691,7 @@ Error types
 - `connection_superseded`
 - `deprecated`
 - `file_not_found`
+- `file_not_supported`
 - `identity_already_exists`
 - `identity_not_found`
 - `internal`
