@@ -2546,7 +2546,8 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 - `type` : string
 
-	Mime type of an image file.  Detected automatically.
+	MIME type of the contents.  Detected automatically (may not be
+    comprehensive).
 
 - `size` : integer
 
@@ -2554,8 +2555,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 - `thumbnail` : object
 
-	Image file thumbnail dimensions in pixels
-	(only exists if mime type is image file):
+	Image file thumbnail dimensions in pixels:
 
 		"thumbnail": {
 			"width": 128,
