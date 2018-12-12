@@ -18,6 +18,7 @@ Copyright &copy; 2018 Somia Reality Oy.  All rights reserved.
 - [Authentication](#authentication)
 - [Authorization](#authorization)
 - [Secure Metadata](#secure-metadata)
+- [Notes](#notes)
 
 
 ### Associated documents
