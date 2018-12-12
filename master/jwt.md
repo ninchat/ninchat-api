@@ -98,3 +98,16 @@ The `ninchat.com/metadata` claim is an object containing the secure metadata.
 The token must be encrypted; the JWT must be a JWE, not a JWS.
 
 See [Python example code](../examples/jwt_secure_metadata.py).
+
+
+Notes
+-----
+
+JWT libraries have different feature sets and APIs.  Many libraries don't
+support encryption, so they cannot be used for secure metadata.
+
+Ninchat master key is provided in base64-encoded form.  JWT libraries differ in
+the way they expect the key material to be specified: some expect a
+base64-encoded key, others expect a raw binary key.  If a library doesn't
+expect a base64-encoded key, the secret key must be decoded first.
+
