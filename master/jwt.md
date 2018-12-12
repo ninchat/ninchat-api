@@ -9,7 +9,7 @@ as information about programming language support) can be found at
 [jwt.io](https://jwt.io).  This document explains how JWT fits into the Ninchat
 API.
 
-Copyright &copy; 2018 Somia Reality Oy.  All rights reserved.
+Copyright &copy; Somia Reality Oy.  All rights reserved.
 
 
 ### Contents

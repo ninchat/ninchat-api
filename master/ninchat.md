@@ -4,7 +4,7 @@ Ninchat Signing and Secure Metadata
 This document describes the signing and encryption mechanisms which may be used
 with some [Ninchat API](../api.md) actions.
 
-Copyright &copy; 2015 Somia Reality Oy.  All rights reserved.
+Copyright &copy; Somia Reality Oy.  All rights reserved.
 
 
 ### Contents

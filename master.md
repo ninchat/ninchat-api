@@ -3,7 +3,7 @@ Ninchat Master Keys
 
 This document describes Ninchat master keys (API keys).
 
-Copyright &copy; 2015 Somia Reality Oy.  All rights reserved.
+Copyright &copy; Somia Reality Oy.  All rights reserved.
 
 
 ### Contents
