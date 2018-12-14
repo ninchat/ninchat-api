@@ -440,6 +440,7 @@
 	"transcript_contents": {
 		"action_id": true,
 		"audience_id": false,
+		"audience_members": false,
 		"audience_metadata": false,
 		"channel_id": false,
 		"dialogue_id": false,

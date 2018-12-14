@@ -2002,6 +2002,7 @@ specifies the time when `file_url` and `thumbnail_url` stop working.
 - `dialogue_id` : string array (if applicable)
 - `dialogue_members` : object (if applicable)
 - `audience_id` : string (if applicable)
+- `audience_members` : object (if applicable)
 - `audience_metadata` : object (optional)
 - `transcript_messages` : object array (if applicable)
 - `message_id` : string (optional)
@@ -2035,6 +2036,17 @@ The `transcript_messages` array looks like this (the `message_user_id`,
 	]
 
 The messages are sorted from oldest to newest.
+
+The `audience_members` parameter looks like this:
+
+	"audience_members": {
+		"12345": {
+			"agent": true
+		},
+		"23456": {
+			"customer": true
+		}
+	}
 
 
 ### `transcript_deleted`
