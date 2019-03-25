@@ -3050,7 +3050,11 @@ The payload is a JSON array with at least one object; its properties:
 
 - `element` : string
 
-	Currently only "button" is supported.
+	Currently "button" and "a" are supported.
+
+- `href` : string (optional)
+
+	Behaves like its HTML counterpart when `element` is set as "a"
 
 - `id` : string (optional)
 
@@ -3068,6 +3072,10 @@ The payload is a JSON array with at least one object; its properties:
 It is highly encouraged to set some of `class`, `id` and `name`, in order to
 determine which UI element was interacted with when `ninchat.com/ui/action` is
 received.
+
+Note that Ninchat web client prefixes `id`, `name` and each `class` with
+"nui-ext-".  E.g. if "button ok" `class` string is set, it will be rendered as
+class="nui-ext-button nui-ext-ok" in Ninchat web client.
 
 
 Audience metadata
