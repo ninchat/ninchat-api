@@ -415,6 +415,13 @@
 		"track_stage": true
 	},
 
+	"transfer_audience": {
+		"action_id": true,
+		"audience_id": true,
+		"puppet_id": false,
+		"queue_id": true
+	},
+
 	"update_channel": {
 		"action_id": true,
 		"channel_attrs": true,

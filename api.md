@@ -739,6 +739,17 @@ configuration.  The channel attributes or the accepted user's dialogue
 membership attributes will contain `audience_id` and `queue_id`.
 
 
+### `transfer_audience`
+
+- `action_id` : integer
+- `audience_id` : string
+- `queue_id` : string
+
+Reply event: [`channel_parted`](#channel_parted)
+
+End a previously accepted audience, and enqueue the customer to another queue.
+
+
 ### `add_member`
 
 - `action_id` : integer
