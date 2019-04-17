@@ -3017,9 +3017,9 @@ Contains a JSON object:
 
 #### `ninchat.com/rtc/pick-up`
 
-Contains a JSON object (the `unsupported` property is optional):
+Contains a JSON object (the `busy` and `unsupported` properties are optional):
 
-	{ answer: false, unsupported: true }
+	{ answer: false, busy: false, unsupported: true }
 
 	
 ### `ninchat.com/text`
