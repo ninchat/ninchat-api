@@ -2502,6 +2502,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	Automates channel opening hours (updates the `closed` attribute).  Its
 	contents look like this:
 
+		"disabled": true,
 		"timezone": "Europe/Helsinki",
 		"week": [
 			["9:00", "17:00"],
@@ -2520,9 +2521,9 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 			"2015-06-19": null
 		}
 
-	The "timezone" and "week" properties are mandatory.  (Nulls at the end of
-	the week may be omitted.)  Month and day numbers in "annual" and
-	"exceptions" must be zero-padded.
+	It's enabled by default.  The "timezone" and "week" properties are
+	mandatory.  (Nulls at the end of the week may be omitted.)  Month and day
+	numbers in "annual" and "exceptions" must be zero-padded.
 
 	Time zone may be anything found in the
 	[IANA time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
