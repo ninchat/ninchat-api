@@ -1,7 +1,7 @@
-This document describes the **deprecated** version 1 of the open
+This document describes the **decommissioned** version 1 of the
 [Ninchat](https://ninchat.com) API.
 
-Copyright &copy; 2012-2013 Somia Reality Oy.  All rights reserved.
+Copyright &copy; Somia Reality Oy.  All rights reserved.
 
 
 Model
