@@ -3048,7 +3048,10 @@ The payload is a JSON object with the following properties:
 
 - `target` : object
 
-	`ninchat.com/ui/compose` object which triggered the interaction
+	`ninchat.com/ui/compose` object which triggered the interaction.
+
+	If the `element` was "select" in the compose message, the selected option
+    will have an additional `selected` property with value true.
 
 
 #### `ninchat.com/ui/compose`
@@ -3062,7 +3065,7 @@ The payload is a JSON array with at least one object; its properties:
 
 - `element` : string
 
-	Currently "button" and "a" are supported.
+	Currently "a", "button" and "select" are supported.
 
 - `href` : string (optional)
 
@@ -3076,6 +3079,11 @@ The payload is a JSON array with at least one object; its properties:
 
 	A label or a descriptive text depending on the element.  In other words
 	label is text in the button etc.
+
+- `options` : object array (optional)
+
+	Enumerates the options of a "select" element.  Each object must have the
+	`label` and `value` properties (strings).
 
 - `name` : string (optional)
 
