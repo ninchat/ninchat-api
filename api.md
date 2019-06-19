@@ -3050,8 +3050,8 @@ The payload is a JSON object with the following properties:
 
 	`ninchat.com/ui/compose` object which triggered the interaction.
 
-	If the `element` was "select" in the compose message, the selected option
-    will have an additional `selected` property with value true.
+	If the `element` was "select" in the compose message, the selected options
+	will have an additional `selected` property with value true.
 
 
 #### `ninchat.com/ui/compose`
