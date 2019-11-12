@@ -2838,6 +2838,8 @@ Error types
 - `message_too_long`
 - `message_type_too_long`
 - `message_types_too_long`
+- `payload_has_too_many_parts`
+- `payload_part_too_long`
 - `permission_already_spent`
 - `permission_denied`
 - `permission_expired`
