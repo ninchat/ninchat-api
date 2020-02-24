@@ -3446,19 +3446,19 @@ an error, the "error" event is always the first one.
 
 ### application/json
 
-The response body contains a list of event headers.  (Note that a payload is
-not supported.)
+The response body contains a single event header.  (Note that a payload is not
+supported.)
 
 Example:
 
 	HTTP/1.1 200 OK
 	Content-Type: application/json
 
-	[{
+	{
 	  "event":      "channel_joined",
 	  "channel_id": "04jqf8db",
 	  ...
-	}]
+	}
 
 
 ### application/x-protobuf
