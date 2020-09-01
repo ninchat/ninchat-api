@@ -1413,15 +1413,20 @@ objects containing the session user's realm membership attributes (if any):
 	}
 
 The `user_queues` object consists of queue identifiers mapped to objects
-containing the `queue_attrs` object and the `realm_id` string.
+containing the `queue_attrs` object, the `queue_position` integer (optional)
+and the `realm_id` string.
 
 	"user_queues": {
 		"12345": {
-			"queue_attrs": { "attr": "value", ... },
-			"realm_id":    "67890"
+			"queue_attrs":    { "attr": "value", ... },
+			"queue_position": 1,
+			"realm_id":       "67890"
 		},
 		...
 	}
+
+If the `queue_position` property is present, it means that the user is
+currently queuing.  Otherwise the user is a member of the queue.
 
 The `puppet_masters` object consists of master user identifiers mapped to
 objects containing the `puppet_attrs` object:
