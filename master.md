@@ -109,3 +109,7 @@ Non-secure metadata is specified via the embedded Ninchat client's
 `audienceMetadata` parameter, and secure metadata is included in the "secure"
 property.
 
+You can use a [validation tool](examples/validate_secure_metadata.py) to check
+that your code is generating valid secure metadata strings.  The script
+requires [Python](https://www.python.org/downloads/).
+

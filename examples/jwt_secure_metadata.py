@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
+#
+# Copyright (c) 2018, Somia Reality Oy
+# All rights reserved.
 
+from base64 import b64decode, urlsafe_b64encode
 from time import time
 
 from jwcrypto.jwk import JWK
@@ -18,7 +22,7 @@ def create_secure_metadata(key_id, key_secret, expires, metadata):
         "ninchat.com/metadata": metadata,
     }
 
-    key = JWK(kty="oct", k=key_secret)
+    key = JWK(kty="oct", k=urlsafe_b64encode(key_secret).rstrip(b"=").decode())
     token = JWT(header=header, claims=claims)
     token.make_encrypted_token(key)
     return token.serialize()
@@ -26,7 +30,7 @@ def create_secure_metadata(key_id, key_secret, expires, metadata):
 
 if __name__ == "__main__":
     key_id = "50s7kbi8"
-    key_secret = "VREhJeA-rubaab1ZuMzBdIg9BFPCcZcHL9w6zaY8yBg"
+    key_secret = b64decode("VREhJeA+rubaab1ZuMzBdIg9BFPCcZcHL9w6zaY8yBg=")
     expires = time() + 60
     name = "Bob"
     metadata = {
