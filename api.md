@@ -2911,8 +2911,12 @@ peer was deleted.
 
 - `channel_attrs_old` : object
 - `channel_attrs_new` : object
+- `cause` : string (optional)
 
 Channel attributes changed.
+
+The `cause` is "audience_transfer" if the message was caused by a
+`transfer_audience` action.
 
 #### `ninchat.com/info/join`
 
@@ -2931,7 +2935,8 @@ A user joined the channel.
 A user left the channel.
 
 The `cause` is "member_remove" if the message was caused by a `remove_member`
-action.
+action, or "audience_transfer" if the message was caused by a
+`transfer_audience` action.
 
 #### `ninchat.com/info/member`
 
