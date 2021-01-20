@@ -2946,6 +2946,23 @@ action, or "audience_transfer" if the message was caused by a
 
 A channel member's `silenced` attribute changed.
 
+#### `ninchat.com/info/transfer/source`
+
+- `queue_id` : string
+- `audience_id` : string
+- `channel_id` : string
+- `user_id` : string
+
+The user (agent of another queue) initiated this channel via transfer from
+another audience channel (and queue).
+
+#### `ninchat.com/info/transfer/target`
+
+- `queue_id` : string
+- `user_id` : string
+
+A member of this channel was transferred to another queue.
+
 #### `ninchat.com/info/access`
 
 - `user_id` : string
