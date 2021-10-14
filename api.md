@@ -29,6 +29,7 @@ Copyright &copy; Somia Reality Oy.  All rights reserved.
     - [User attributes](#user-attributes)
   - [Settings](#settings)
     - [User settings](#user-settings)
+    - [Queue settings](#queue-settings)
   - [Event causes](#event-causes)
   - [Error types](#error-types)
   - [Message types](#message-types)
@@ -2782,6 +2783,18 @@ Users can update their own settings.
 
 	The user has received messages (via email), but has not activated the user
 	account.
+
+
+### Queue settings
+
+Realm operators can manipulate queue settings.
+
+- `transcript_delete_delay` : integer
+
+	If set, audience transcripts will be deleted automatically.  This setting
+	indicates the number of seconds from audience completion to its deletion.
+	When set, the setting will only apply to future audiences; it will not be
+	applied to already completed audiences.
 
 
 Event causes
