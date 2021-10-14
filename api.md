@@ -29,6 +29,7 @@ Copyright &copy; Somia Reality Oy.  All rights reserved.
     - [User attributes](#user-attributes)
   - [Settings](#settings)
     - [User settings](#user-settings)
+    - [Realm settings](#realm-settings)
     - [Queue settings](#queue-settings)
   - [Event causes](#event-causes)
   - [Error types](#error-types)
@@ -2783,6 +2784,16 @@ Users can update their own settings.
 
 	The user has received messages (via email), but has not activated the user
 	account.
+
+
+### Realm settings
+
+Realm operators can manipulate realm settings.
+
+- `default_queue_settings` : object
+
+	Specifies defaults for some queue settings.  Currently only the
+	`transcript_delete_delay` setting is supported.
 
 
 ### Queue settings
