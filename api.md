@@ -2090,6 +2090,7 @@ The `queue_transcripts` array looks like this (all properties except
 			"accept_time":   1445592877.183851,
 			"finish_time":   1445592952.232474,
 			"complete_time": 1445592955.341256,
+			"delete_time":   1456703066.452367,
 			"dialogue_id":   ["05kq2htc", "38hj5ip5000eg"],
 			"audience_id":   "38hj5ip6789ge",
 			"agent_id":      "05kq2htc",
@@ -2100,6 +2101,9 @@ The `queue_transcripts` array looks like this (all properties except
 
 The transcripts are sorted by `complete_time`; if the latest transcripts are
 requested multiple times, new transcripts appear at the end.
+
+If `delete_time` is present, the transcript is scheduled to be deleted at (or
+shortly after) the indicated time.
 
 
 ### `queue_transcripts_deleted`
