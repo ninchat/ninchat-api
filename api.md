@@ -16,18 +16,19 @@ Copyright &copy; Somia Reality Oy.  All rights reserved.
   - [Actions](#actions)
   - [Events](#events)
   - [Attributes](#attributes)
-    - [Channel](#channel)
-    - [Channel membership](#channel-membership)
-    - [Dialogue membership](#dialogue-membership)
-    - [File](#file)
-    - [Identity](#identity)
-    - [Puppet](#puppet)
-    - [Queue](#queue)
-    - [Realm](#realm)
-    - [Realm membership](#realm-membership)
-    - [Tag](#tag)
-    - [User](#user)
-  - [User settings](#user-settings)
+    - [Channel attributes](#channel-attributes)
+    - [Channel membership attributes](#channel-membership-attributes)
+    - [Dialogue membership attributes](#dialogue-membership-attributes)
+    - [File attributes](#file-attributes)
+    - [Identity attributes](#identity-attributes)
+    - [Puppet attributes](#puppet-attributes)
+    - [Queue attributes](#queue-attributes)
+    - [Realm attributes](#realm-attributes)
+    - [Realm membership attributes](#realm-membership-attributes)
+    - [Tag attributes](#tag-attributes)
+    - [User attributes](#user-attributes)
+  - [Settings](#settings)
+    - [User settings](#user-settings)
   - [Event causes](#event-causes)
   - [Error types](#error-types)
   - [Message types](#message-types)
@@ -2337,7 +2338,7 @@ boolean attribute is `false`.  Values with "time" type are represented as
 non-negative integers, counting seconds since 1970-01-01 UTC.
 
 
-### User
+### User attributes
 
 - `admin` : boolean
 
@@ -2384,7 +2385,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	Longer name.
 
 
-### Identity
+### Identity attributes
 
 - `auth` : boolean
 
@@ -2414,7 +2415,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	identity may not be used for authentication.)
 
 
-### Dialogue membership
+### Dialogue membership attributes
 
 - `audience_ended` : bool (writable by self)
 
@@ -2440,7 +2441,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	it chooses to implement it.)
 
 
-### Channel
+### Channel attributes
 
 - `audience_id` : string
 
@@ -2571,7 +2572,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	The channel may not be joined without a verified identity.
 
 
-### Channel membership
+### Channel membership attributes
 
 - `autohide` : boolean (writable by operators and moderators)
 
@@ -2600,7 +2601,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	it chooses to implement it.)
 
 
-### Realm
+### Realm attributes
 
 - `name` : string
 
@@ -2629,14 +2630,14 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 		}
 
 
-### Realm membership
+### Realm membership attributes
 
 - `operator` : boolean
 
 	The user is a realm operator.
 
 
-### Queue
+### Queue attributes
 
 - `capacity` : integer (writable by queue members)
 
@@ -2681,7 +2682,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	- "customer" enables it for the member who requested the audience (dialogue only).
 
 
-### File
+### File attributes
 
 - `name` : string (writable by owner)
 
@@ -2706,7 +2707,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 		}
 
 
-### Tag
+### Tag attributes
 
 - `name` : string (writable by realm operators)
 
@@ -2725,15 +2726,23 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 		}
 
 
-### Puppet
+### Puppet attributes
 
 - `name` : string (writable by master)
 
 	User name.
 
 
-User settings
--------------
+Settings
+--------
+
+Clients can set any settings for their purposes, but the ones listed here will
+also enable specific server-side functionality.
+
+
+### User settings
+
+Users can update their own settings.
 
 - `highlight` : string array
 
