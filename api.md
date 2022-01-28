@@ -3016,7 +3016,7 @@ You were invited to a channel and optionally to its realm.  `user_id` is the
 invitor.
 
 
-### `ninchat.com/link`
+### `ninchat.com/link` (deprecated)
 
 Link messages are used to send file share links.  The payload consists of a
 single part with a JSON object containing properties described below.
@@ -3026,6 +3026,9 @@ single part with a JSON object containing properties described below.
 - `icon` : string
 - `url` : string
 - `thumbnail` : string (optional)
+
+This message type is no longer supported by official Ninchat client
+implementations; any link messages will be ignored by them.
 
 
 ### `ninchat.com/metadata`
