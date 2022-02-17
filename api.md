@@ -732,10 +732,12 @@ attributes for the session user.
 
 - `action_id` : integer
 - `queue_id` : string
+- `audience_id` : string (optional)
 
 Reply event: [`channel_joined`](#channel_joined) or [`dialogue_updated`](#dialogue_updated)
 
-Take the next user from the queue.  Caller must be a queue member.
+Take the next user or the specific audience (if `audience_id` is specified)
+from the queue.  Caller must be a queue member.
 
 Either a channel or a dialogue will be created, depending on queue
 configuration.  The channel attributes or the accepted user's dialogue
