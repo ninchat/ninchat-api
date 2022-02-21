@@ -2843,6 +2843,11 @@ Realm operators can manipulate queue settings.
 	applied to already completed audiences.
 
 
+- `transfer_queue_ids` : string array
+
+	Enables transferring customers to the specified queues.
+
+
 Event causes
 ------------
 
