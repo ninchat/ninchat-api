@@ -2802,6 +2802,10 @@ Realm operators can manipulate realm settings.
 
 Realm operators can manipulate queue settings.
 
+- `audience_registration` : boolean
+
+	Enables audience registration.
+
 - `transcript_delete_delay` : integer
 
 	If set, audience transcripts will be deleted automatically.  This setting
