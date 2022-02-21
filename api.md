@@ -2345,6 +2345,8 @@ attribute to `null` unsets the attribute.  The implicit value of an unset
 boolean attribute is `false`.  Values with "time" type are represented as
 non-negative integers, counting seconds since 1970-01-01 UTC.
 
+Some attributes are only visible with sufficient privileges.
+
 
 ### User attributes
 
@@ -2647,6 +2649,9 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 ### Queue attributes
 
+Privileged attributes are only visible to queue members and realm operators.
+Other attributes are visible to everyone.
+
 - `capacity` : integer (writable by queue members)
 
 	Maximum number of allowed users in queue at a given time.
@@ -2655,7 +2660,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	New users may not join the queue at this time.
 
-- `ignore_secure_metadata` : boolean (writable by queue members)
+- `ignore_secure_metadata` : boolean (privileged; writable by queue members)
 
 	Secure metadata is not decrypted for this queue, even if supplied.
 
@@ -2667,7 +2672,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	Queue name.
 
-- `ninchat_metadata` : string array (writable by queue members)
+- `ninchat_metadata` : string array (privileged; writable by queue members)
 
 	Cause additional metadata to be added automatically.  The array enumerates
 	the types of metadata to be added:
