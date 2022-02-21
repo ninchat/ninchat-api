@@ -2655,19 +2655,38 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	New users may not join the queue at this time.
 
+- `ignore_secure_metadata` : boolean (writable by queue members)
+
+	Secure metadata is not decrypted for this queue, even if supplied.
+
 - `length` : integer
 
 	Number of users currently in the queue.
 
-- `name` : string (writable by realm operators)
+- `name` : string (writable by queue members)
 
 	Queue name.
+
+- `ninchat_metadata` : string array (writable by queue members)
+
+	Cause additional metadata to be added automatically.  The array enumerates
+	the types of metadata to be added:
+
+	- "geoip" adds IP address and geolocation information.
 
 - `schedule` : object (writable by queue members)
 
 	See the channel `schedule` attribute.
 
-- `secure_metadata` : boolean (writable by realm operators)
+- `screensharing` : string (writable by queue members)
+
+	Enables screen sharing:
+
+	- "agent" enables screen sharing for the agent.
+	- "customer" enables screen sharing for the customer.
+	- "member" enables screen sharing for the agent and the customer.
+
+- `secure_metadata` : boolean (writable by queue members)
 
 	Requires the "secure" property to be present in `audience_metadata` when
     the `request_audience` action is called.
@@ -2677,7 +2696,7 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 	The queue is in read-only state.  (This is similar to the `closed`
 	attribute, but is not controlled by non-operator members.)
 
-- `upload` : string (writable by realm operators)
+- `upload` : string (writable by queue members)
 
 	Enables `send_file` action in audience channels and audience dialogues:
 
@@ -2688,6 +2707,16 @@ non-negative integers, counting seconds since 1970-01-01 UTC.
 
 	- "agent" is an alias for "moderator".
 	- "customer" enables it for the member who requested the audience (dialogue only).
+
+- `video` : string (writable by queue members)
+
+	Enables video conferencing:
+
+	- "agent" enables legacy video mode so that it can be initiated only by the agent.
+	- "agent_first" enables legacy video mode so that it can be initiated by the agent, or by the customer if the agent has initiated it previously.
+	- "customer" enables legacy video mode so that it can be initiated only by the customer.
+	- "group" enables group video mode.
+	- "member" enables legacy video mode so that it can be initiated by either member.
 
 
 ### File attributes
