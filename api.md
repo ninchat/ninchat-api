@@ -184,8 +184,8 @@ There are five modes of operation:
    session is created for the existing Ninchat user with the associated
    Facebook identity.
 
-3. If `access_key` is specified, a new session for an existing user is created.
-   The access key configuration determines the user.
+3. If `access_key` is specified, a new session is created for the user
+   determined by the access key.
 
 4. If `user_id` and `master_sign` are specified, a new session for an existing
    user is created.  `master_key_type` specifies the signature type (defaults
@@ -705,6 +705,22 @@ Reply event: [`queue_found`](#queue_found)
 Describe an audience queue.
 
 
+### `create_audience`
+
+- `action_id` : integer
+- `queue_id` : string
+- `user_id` : string
+- `channel_attrs` : object (optional)
+
+Reply event: [`channel_created`](#channel_created)
+
+Create an audience channel.  Initial agent user must be specified via the
+`user_id` parameter.
+
+Attributes `disclosed_since` and `private` are set, and `upload` and `video`
+are inherited from the queue, unless overridden.
+
+
 ### `request_audience`
 
 - `action_id` : integer
@@ -760,12 +776,18 @@ End a previously accepted audience, and enqueue the customer to another queue.
 - `action_id` : integer
 - `realm_id` : string (optional)
 - `queue_id` : string (optional)
+- `channel_id` : string (optional)
 - `user_id` : string
+- `member_attrs` : object (optional)
 
-Reply event: [`realm_member_joined`](#realm_member_joined) or [`queue_member_joined`](#queue_member_joined)
+Reply event: [`realm_member_joined`](#realm_member_joined), [`queue_member_joined`](#queue_member_joined) or [`channel_member_joined`](#channel_member_joined)
 
-Causes a specific user to join a realm or an audience queue.  Caller must be a
-realm opereator.
+Causes a specific user to join a realm, an audience queue, or an audience
+channel.  Caller must be a realm operator.
+
+Members can't be added to arbitrary channels, only audience channels.  Only
+agent users can be added: the `operator` and/or `moderator` membership
+attribute must be set.
 
 
 ### `update_member`
@@ -957,6 +979,12 @@ Access types:
   the invited user will also join the realm of the channel (if any).  If
   `user_id` is specified, the invite can only be used by that user, and an info
   message is sent to that user (see [Message types](#message-types)).
+- "audience" keys may be used in `create_session` actions.  An audience channel
+  must be specified via the `channel_id` parameter.  The access key may be used
+  multiple times: a user is created during first session creation, and the user
+  is logged in on subsequent session creations.  The user will be a customer in
+  the audience.  The lifetime of the access key and the user account depend on
+  the audience.
 
 
 ### `send_access`
@@ -1562,6 +1590,14 @@ users.
 - `dialogue_metadata` : object (if the session user has accepted an audience from the user)
 
 
+### `channel_created`
+
+- `action_id` : integer (if applicable)
+- `channel_id` : string
+- `channel_attrs` : object
+- `realm_id` : string
+
+
 ### `channel_found`
 
 - `action_id` : integer (if applicable)
@@ -1918,6 +1954,7 @@ The `message_id` is set to the last message's id if `history_length` > 0.  The
 
 - `action_id` : integer (if applicable)
 - `access_type` : string
+- `access_time` : time (if applicable)
 - `user_id` : string (if applicable)
 - `user_attrs` : object (if applicable)
 - `identity_type` : string (if applicable)
@@ -1925,30 +1962,37 @@ The `message_id` is set to the last message's id if `history_length` > 0.  The
 - `channel_id` : string (if applicable)
 - `channel_attrs` : object (if applicable)
 - `channel_unsilence` : boolean (if applicable)
+- `queue_id` : string (if applicable)
+- `queue_attrs` : object (if applicable)
 - `realm_id` : string (if applicable)
 - `realm_attrs` : object (if applicable)
 - `realm_member` : boolean (if applicable)
 
-The value of `access_type` is "session", "channel", "identity\_verify" or
-"identity\_auth\_reset".  The relevant user, identity, channel and/or realm
-properties are set:
+The value of `access_type` is "session", "channel", "audience",
+"identity\_verify" or "identity\_auth\_reset".  The relevant user, identity,
+channel and/or realm properties are set:
 
 - "session" access: `user_id` and `user_attrs` (the session user)
 - "channel" access: `user_id`, `user_attrs` (the invitor), `channel_id`,
   `channel_attrs` (the target channel), `realm_id`, `realm_attrs` (if the
   target channel is in a realm) and `realm_member` (if the access key grants
   membership to the target channel's realm).
+- "audience" access: `channel_id`, `channel_attrs`, `queue_id`, `queue_attrs`,
+  `realm_id` and `realm_attrs`; and `user_id` if the access key has already
+  been used successfully.
 - "identity\_verify" and "identity\_auth\_reset" access: `user_id`,
   `user_attrs` (the identified user), `identity_type` and `identity_name` (the
   target identity)
 
-(Generally speaking, the user properties describe the access key creator.)
+The `access_time` (if present) indicates the earliest time when the access key
+can be used.
 
 
 ### `access_created`
 
 - `action_id` : integer (if applicable)
 - `access_type` : string
+- `access_time` : time (if applicable)
 - `access_key` : string (if applicable)
 
 
@@ -2453,9 +2497,29 @@ Some attributes are only visible with sufficient privileges.
 
 ### Channel attributes
 
+- `audience` : object (writable during creation)
+
+	The channel was created using the `create_audience` action.  The `audience`
+	object can't be modified after channel creation.  It may contain the
+	following properties:
+
+	- `begin_timestamp` : string
+	- `end_timestamp` : string
+	- `timezone` : string
+
+	The timestamps are in ISO 8601 format.  Maximum supported precision is one
+	minute.  The actual end time of the audience is determined interactively
+	during the audience, so the one specified here is merely the intended one.
+
+	If the timestamps don't include time zone information, a time zone may
+	specified via the `timezone` property.  It can be anything found in the
+	[IANA time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+	(defaults to UTC).
+
 - `audience_id` : string
 
-	The channel was created as a response to an audience request.
+	The channel was created using the `create_audience` action, or as a
+	response to an audience request.
 
 - `autohide` : boolean (writable by operators)
 
@@ -2580,6 +2644,12 @@ Some attributes are only visible with sufficient privileges.
 - `verified_join` : boolean (writable by operators)
 
 	The channel may not be joined without a verified identity.
+
+- `video` : string (writable by operators)
+
+	Enables video conferencing:
+
+	- "group" enables group video mode.
 
 
 ### Channel membership attributes
