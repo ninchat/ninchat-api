@@ -714,8 +714,10 @@ Describe an audience queue.
 
 Reply event: [`channel_created`](#channel_created)
 
-Create an audience channel.  Initial agent user must be specified via the
-`user_id` parameter.
+Create an audience channel.  Caller must be a member of the queue.
+
+Initial agent user must be specified via the `user_id` parameter.  The target
+user must be a member of the queue's realm.
 
 Attributes `disclosed_since` and `private` are set, and `upload` and `video`
 are inherited from the queue, unless overridden.
@@ -787,7 +789,8 @@ channel.  Caller must be a realm operator.
 
 Members can't be added to arbitrary channels, only audience channels.  Only
 agent users can be added: the `operator` and/or `moderator` membership
-attribute must be set.
+attribute must be set.  The target user must be a member of the channel's
+realm.
 
 
 ### `update_member`
@@ -1978,8 +1981,8 @@ channel and/or realm properties are set:
   target channel is in a realm) and `realm_member` (if the access key grants
   membership to the target channel's realm).
 - "audience" access: `channel_id`, `channel_attrs`, `queue_id`, `queue_attrs`,
-  `realm_id` and `realm_attrs`; and `user_id` if the access key has already
-  been used successfully.
+  `realm_id` and `realm_attrs`; `user_id` and `user_attrs` if the access key
+  has already been used successfully.
 - "identity\_verify" and "identity\_auth\_reset" access: `user_id`,
   `user_attrs` (the identified user), `identity_type` and `identity_name` (the
   target identity)
@@ -2976,6 +2979,7 @@ Error types
 - `access_blocked`
 - `access_denied`
 - `access_expired`
+- `access_too_early`
 - `action_not_supported`
 - `audience_not_found`
 - `channel_not_found`
