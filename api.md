@@ -2510,14 +2510,14 @@ Some attributes are only visible with sufficient privileges.
 	- `end_timestamp` : string
 	- `timezone` : string
 
-	The timestamps are in ISO 8601 format.  Maximum supported precision is one
-	minute.  The actual end time of the audience is determined interactively
-	during the audience, so the one specified here is merely the intended one.
+	The timestamps are in `YYYY-MM-DD'T'HH:MM:SS` format (subset of ISO 8601).
+	Maximum supported precision is one minute (the seconds are ignored).  The
+	actual end time of the audience is determined interactively during the
+	audience, so the one specified here is merely the intended one.
 
-	If the timestamps don't include time zone information, a time zone may
-	specified via the `timezone` property.  It can be anything found in the
-	[IANA time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-	(defaults to UTC).
+	Time zone may specified via the `timezone` property.  It can be anything
+	found in the [IANA time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+	Time zone defaults to UTC.
 
 - `audience_id` : string
 
