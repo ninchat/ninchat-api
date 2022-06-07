@@ -1782,10 +1782,18 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `queue_settings` : object
 - `queue_members` : object (if applicable)
 - `queue_position` : integer (if applicable)
+- `queue_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 
 `queue_members` is analogous to `channel_members` (see the `channel_found`
 event).
+
+`queue_position` is defined if the viewer (a customer) is currently in the
+queue.  It is 1-based.
+
+`queue_time` is defined if the viewer is a queue member and the queue is not
+empty.  It indicates the number of seconds the next customer (at position 1)
+has been waiting.
 
 
 ### `queue_updated`
@@ -1796,9 +1804,10 @@ event).
 - `queue_attrs` : object
 - `queue_settings` : object
 - `queue_position` : integer (if applicable)
+- `queue_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 
-`queue_position` is defined if you are currently in the queue.
+See [`queue_found`](#queue_found) for details.
 
 
 ### `queue_deleted`
