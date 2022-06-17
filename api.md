@@ -967,6 +967,9 @@ latest message to be discarded.
 - `channel_unsilence` : boolean (optional)
 - `realm_member` : boolean (optional)
 - `user_id` : string (optional)
+- `user_attrs` : object (optional)
+- `user_settings` : object (optional)
+- `member_metadata` : object (optional)
 
 Reply event: [`access_created`](#access_created)
 
@@ -983,11 +986,21 @@ Access types:
   `user_id` is specified, the invite can only be used by that user, and an info
   message is sent to that user (see [Message types](#message-types)).
 - "audience" keys may be used in `create_session` actions.  An audience channel
-  must be specified via the `channel_id` parameter.  The access key may be used
-  multiple times: a user is created during first session creation, and the user
-  is logged in on subsequent session creations.  The user will be a customer in
-  the audience.  The lifetime of the access key and the user account depend on
-  the audience.
+  must be specified via the `channel_id` parameter.  A customer user account is
+  created; `user_attrs`, `user_settings` and `member_metadata` are supported.
+  The access key may be used multiple times, each time logging in the same
+  user.  The lifetime of the access key and the user account depend on the
+  audience's lifetime.
+
+The `member_metadata` object can be used to supply audience channel membership
+metadata.  The trustworthiness of the metadata can be indicated via its
+placement: placing it at the top-level means that it is user-supplied
+information; placing it inside the "secure" object means that the information
+can be relied on by the agent users.  For this action, the "secure" property
+must not be encrypted.  (The placement convention is intended to be analoguous
+with metadata supplied via `request_audience` action: top-level metadata may
+originate from the customer's browser, but "secure" metadata can't be
+fabricated by the customer.)
 
 
 ### `send_access`
@@ -1990,8 +2003,7 @@ channel and/or realm properties are set:
   target channel is in a realm) and `realm_member` (if the access key grants
   membership to the target channel's realm).
 - "audience" access: `channel_id`, `channel_attrs`, `queue_id`, `queue_attrs`,
-  `realm_id` and `realm_attrs`; `user_id` and `user_attrs` if the access key
-  has already been used successfully.
+  `realm_id`, `realm_attrs`, `user_id` and `user_attrs`.
 - "identity\_verify" and "identity\_auth\_reset" access: `user_id`,
   `user_attrs` (the identified user), `identity_type` and `identity_name` (the
   target identity)
