@@ -1620,6 +1620,7 @@ users.
 - `channel_id` : string
 - `channel_attrs` : object
 - `channel_members` : object (if the session user is a member)
+- `channel_members_metadata` : object (if applicable)
 - `channel_member_count` : integer (if the session user is owner or realm operator)
 - `channel_status` : string (if the session user is a member and there are
                              unread messages)
@@ -1642,6 +1643,10 @@ channel-specific attributes of the user) and the optional `puppet_attrs` object
 		...
 	}
 
+The `channel_members_metadata` object consists of user identifiers mapped to
+objects containing metadata.  It may include metadata for some, but not
+necessary all current and past members of the channel.
+
 If set, the value of `channel_status` will be "unread" or "highlight".  The
 `message_time` is the time of the latest message.
 
@@ -1652,6 +1657,7 @@ If set, the value of `channel_status` will be "unread" or "highlight".  The
 - `channel_id` : string
 - `channel_attrs` : object
 - `channel_members` : object
+- `channel_members_metadata` : object (if applicable)
 - `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 - `audience_metadata` : object (if applicable)
