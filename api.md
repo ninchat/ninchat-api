@@ -2673,6 +2673,11 @@ Some attributes are only visible with sufficient privileges.
 
 	Set the `message_hidden` parameter for messages sent to the channel.
 
+- `invitee` : boolean (writable by self)
+
+	The user has not yet started participating in a scheduled audience.  The
+    client should remove this when the user intends to start becoming active.
+
 - `moderator` : boolean (writable by operators)
 
 	The user is a channel moderator.
@@ -3090,6 +3095,7 @@ The `cause` is "audience_transfer" if the message was caused by a
 
 - `user_id` : string
 - `user_name` : string (optional)
+- `member_invitee` : boolean (optional)
 - `member_silenced` : boolean (optional)
 
 A user joined the channel.
@@ -3110,9 +3116,10 @@ action, or "audience_transfer" if the message was caused by a
 
 - `user_id` : string
 - `user_name` : string (optional)
+- `member_invitee` : boolean (optional)
 - `member_silenced` : boolean (optional)
 
-A channel member's `silenced` attribute changed.
+A channel member's `invitee` or `silenced` attribute changed.
 
 #### `ninchat.com/info/transfer/source`
 
