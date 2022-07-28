@@ -1697,6 +1697,7 @@ The session user left or was removed from a channel.
 - `user_id` : string
 - `user_attrs` : object
 - `member_attrs` : object
+- `member_metadata` : object (optional)
 - `puppet_attrs` : object (optional)
 
 Someone else joined a channel.
