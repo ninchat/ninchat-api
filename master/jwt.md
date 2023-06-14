@@ -85,7 +85,7 @@ action's `channel_id` parameter even if there is only one scope listed in the
 JWT token.)
 
 
-Secure Metadata
+Secure metadata
 ---------------
 
 The [`request_audience`](../api.md#request_audience) API action supports
@@ -99,6 +99,14 @@ The `ninchat.com/metadata` claim is an object containing the secure metadata.
 The token must be encrypted; the JWT must be a JWE, not a JWS.
 
 See [Python example code](../examples/jwt_secure_metadata.py).
+
+
+User name
+---------
+
+Additionally, the secure metadata JWT token also supports setting (or overriding) the visitor user name.
+
+The `preferred_username` claim is a string which will be used as the Ninchat user's name attribute.
 
 
 Notes
