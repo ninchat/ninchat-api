@@ -10,7 +10,7 @@ from jwcrypto.jwk import JWK
 from jwcrypto.jwt import JWT
 
 
-def create_secure_metadata(key_id, key_secret, expires, metadata):
+def create_secure_metadata(key_id, key_secret, expires, metadata, name=None):
     header = {
         "alg": "dir",
         "enc": "A256GCM",
@@ -21,6 +21,9 @@ def create_secure_metadata(key_id, key_secret, expires, metadata):
         "exp": int(expires),
         "ninchat.com/metadata": metadata,
     }
+
+    if name:
+        claims["preferred_username"] = name
 
     key = JWK(kty="oct", k=urlsafe_b64encode(key_secret).rstrip(b"=").decode())
     token = JWT(header=header, claims=claims)
@@ -39,5 +42,5 @@ if __name__ == "__main__":
         "Lotto Numbers": [2, 3, 5, 7, 11, 13, 17],
     }
 
-    output = create_secure_metadata(key_id, key_secret, expires, metadata)
+    output = create_secure_metadata(key_id, key_secret, expires, metadata, name)
     print(output)
