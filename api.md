@@ -143,6 +143,98 @@ degradation.)
 Actions
 -------
 
+### Action types
+
+- Sessions
+  - [`create_session`](#create_session)
+  - [`resume_session`](#resume_session)
+  - [`update_session`](#update_session)
+  - [`close_session`](#close_session)
+- Users
+  - [`create_user`](#create_user)
+  - [`describe_user`](#describe_user)
+  - [`update_user`](#update_user)
+  - [`delete_user`](#delete_user)
+- Identities
+  - [`create_identity`](#create_identity)
+  - [`create_identity_with_auth_reset_access`](#create_identity_with_auth_reset_access)
+  - [`request_identity_verify_access`](#request_identity_verify_access)
+  - [`verify_identity`](#verify_identity)
+  - [`describe_identity`](#describe_identity)
+  - [`update_identity`](#update_identity)
+  - [`update_identity_auth`](#update_identity_auth)
+  - [`request_identity_auth_reset_access`](#request_identity_auth_reset_access)
+  - [`reset_identity_auth`](#reset_identity_auth)
+  - [`delete_identity`](#delete_identity)
+- Dialogues
+  - [`update_dialogue`](#update_dialogue)
+- Channels
+  - [`create_channel`](#create_channel)
+  - [`describe_channel`](#describe_channel)
+  - [`update_channel`](#update_channel)
+  - [`delete_channel`](#delete_channel)
+  - [`follow_channel`](#follow_channel)
+  - [`join_channel`](#join_channel)
+  - [`part_channel`](#part_channel)
+- Realms
+  - [`create_realm`](#create_realm)
+  - [`describe_realm`](#describe_realm)
+  - [`describe_realm_queues`](#describe_realm_queues)
+  - [`update_realm`](#update_realm)
+  - [`delete_realm`](#delete_realm)
+- Queues
+  - [`create_queue`](#create_queue)
+  - [`update_queue`](#update_queue)
+  - [`delete_queue`](#delete_queue)
+  - [`describe_queue`](#describe_queue)
+  - [`get_queue_stats`](#get_queue_stats)
+- Audiences
+  - [`create_audience`](#create_audience)
+  - [`request_audience`](#request_audience)
+  - [`accept_audience`](#accept_audience)
+  - [`transfer_audience`](#transfer_audience)
+- Members
+  - [`add_member`](#add_member)
+  - [`update_member`](#update_member)
+  - [`remove_member`](#remove_member)
+  - [`send_message`](#send_message)
+- Messages
+  - [`update_message`](#update_message)
+  - [`update_user_messages`](#update_user_messages)
+  - [`load_history`](#load_history)
+  - [`discard_history`](#discard_history)
+- Access
+  - [`create_access`](#create_access)
+  - [`send_access`](#send_access)
+  - [`describe_access`](#describe_access)
+  - [`describe_master_keys`](#describe_master_keys)
+  - [`describe_master` (deprecated)](#describe_master-deprecated)
+  - [`create_master_key`](#create_master_key)
+  - [`delete_master_key`](#delete_master_key)
+- Files
+  - [`send_file`](#send_file)
+  - [`describe_file`](#describe_file)
+- Transcripts
+  - [`get_transcript`](#get_transcript)
+  - [`delete_transcript`](#delete_transcript)
+  - [`describe_queue_transcripts`](#describe_queue_transcripts)
+  - [`delete_queue_transcripts`](#delete_queue_transcripts)
+- Tags
+  - [`create_tag`](#create_tag)
+  - [`describe_tag`](#describe_tag)
+  - [`describe_tags`](#describe_tags)
+  - [`update_tag`](#update_tag)
+  - [`delete_tag`](#delete_tag)
+- WebRTC
+  - [`begin_ice`](#begin_ice)
+- Search
+  - [`search`](#search)
+  - [`search_users`](#search_users)
+  - [`search_channels`](#search_channels)
+- Other
+  - [`track`](#track)
+  - [`ping`](#ping)
+
 ### `create_session`
 
 - `user_id` : string (optional)
@@ -695,6 +787,21 @@ Reply event: [`queue_deleted`](#queue_deleted)
 Delete an audience queue.  Caller must be a realm operator.
 
 
+### `get_queue_stats`
+
+- `action_id` : integer
+- `queue_id` : string
+- `stats_hour` : string (optional)
+- `stats_length` : integer
+
+Reply events: [`queue_stats_contents`](#queue_stats_contents)
+
+`stats_hour` specifies the start of the time range as "YYYYMMDDHH"; if omitted,
+the range ends at the latest occurrence of available data.  `stats_length`
+specifies the number of hours to load.  No more than one month of data may be
+requested at a time (does NOT need to be aligned to start or end of month).
+
+
 ### `describe_queue`
 
 - `action_id` : integer
@@ -1231,21 +1338,6 @@ Reply event: [`tag_updated`](#tag_updated)
 Reply event: [`tag_deleted`](#tag_deleted)
 
 
-### `get_queue_stats`
-
-- `action_id` : integer
-- `queue_id` : string
-- `stats_hour` : string (optional)
-- `stats_length` : integer
-
-Reply events: [`queue_stats_contents`](#queue_stats_contents)
-
-`stats_hour` specifies the start of the time range as "YYYYMMDDHH"; if omitted,
-the range ends at the latest occurrence of available data.  `stats_length`
-specifies the number of hours to load.  No more than one month of data may be
-requested at a time (does NOT need to be aligned to start or end of month).
-
-
 ### `begin_ice`
 
 - `action_id` : integer
@@ -1308,6 +1400,90 @@ Reply events: [`pong`](#pong)
 
 Events
 ------
+
+### Event types
+
+- Error
+  - [`error`](#error)
+- Sessions
+  - [`session_created`](#session_created)
+  - [`session_status_updated`](#session_status_updated)
+- Users
+  - [`user_created`](#user_created)
+  - [`user_found`](#user_found)
+  - [`user_updated`](#user_updated)
+  - [`user_deleted`](#user_deleted)
+- Identities
+  - [`identity_found`](#identity_found)
+  - [`identity_created`](#identity_created)
+  - [`identity_updated`](#identity_updated)
+  - [`identity_deleted`](#identity_deleted)
+- Dialogues
+  - [`dialogue_updated`](#dialogue_updated)
+- Channels
+  - [`channel_created`](#channel_created)
+  - [`channel_found`](#channel_found)
+  - [`channel_joined`](#channel_joined)
+  - [`channel_parted`](#channel_parted)
+  - [`channel_updated`](#channel_updated)
+  - [`channel_deleted`](#channel_deleted)
+  - [`channel_member_joined`](#channel_member_joined)
+  - [`channel_member_parted`](#channel_member_parted)
+  - [`channel_member_updated`](#channel_member_updated)
+- Realms
+  - [`realm_found`](#realm_found)
+  - [`realm_queues_found`](#realm_queues_found)
+  - [`realm_joined`](#realm_joined)
+  - [`realm_parted`](#realm_parted)
+  - [`realm_updated`](#realm_updated)
+  - [`realm_deleted`](#realm_deleted)
+  - [`realm_member_joined`](#realm_member_joined)
+  - [`realm_member_parted`](#realm_member_parted)
+  - [`realm_member_updated`](#realm_member_updated)
+- Queues
+  - [`queue_created`](#queue_created)
+  - [`queue_found`](#queue_found)
+  - [`queue_updated`](#queue_updated)
+  - [`queue_deleted`](#queue_deleted)
+  - [`queue_joined`](#queue_joined)
+  - [`queue_parted`](#queue_parted)
+  - [`queue_member_joined`](#queue_member_joined)
+  - [`queue_member_parted`](#queue_member_parted)
+  - [`audience_enqueued`](#audience_enqueued)
+  - [`queue_stats_contents`](#queue_stats_contents)
+- Messages
+  - [`message_received`](#message_received)
+  - [`message_updated`](#message_updated)
+  - [`history_results`](#history_results)
+  - [`history_discarded`](#history_discarded)
+- Access
+  - [`access_found`](#access_found)
+  - [`access_created`](#access_created)
+  - [`master_keys_found`](#master_keys_found)
+  - [`master_found` (deprecated)](#master_found-deprecated)
+  - [`master_key_created`](#master_key_created)
+  - [`master_key_deleted`](#master_key_deleted)
+- Files
+  - [`file_found`](#file_found)
+- Transcripts
+  - [`transcript_contents`](#transcript_contents)
+  - [`transcript_deleted`](#transcript_deleted)
+  - [`queue_transcripts_found`](#queue_transcripts_found)
+  - [`queue_transcripts_deleted`](#queue_transcripts_deleted)
+- Tags
+  - [`tag_created`](#tag_created)
+  - [`tag_found`](#tag_found)
+  - [`tags_found`](#tags_found)
+  - [`tag_updated`](#tag_updated)
+  - [`tag_deleted`](#tag_deleted)
+- WebRTC
+  - [`ice_begun`](#ice_begun)
+- Search
+  - [`search_results`](#search_results)
+- Other
+  - [`pong`](#pong)
+  - [`ack`](#ack)
+
 
 ### `error`
 
@@ -1928,6 +2104,62 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `audience_id` : string
 
 
+### `queue_stats_contents`
+
+- `action_id` : integer
+- `queue_stats` : object
+
+Example queue stats:
+
+	"queue_stats": {
+		"2013091812": {
+			"describe_count": 67,
+			"request_count": 10,
+			"audiences": [
+				{
+					"agent_id": "12345",
+					"accept_count": 3,
+					"finish_count": 2,
+					"finish_duration_avg": 257.3,
+					"ratings": {
+						"-1": 1,
+						"1": 1
+					}
+				},
+				{
+					"agent_id": "23456",
+					"tag_ids": [
+						"76543"
+					],
+					"vars": {
+						"xyz": "100",
+						"abcdef": "ghijkl"
+					},
+					"accept_count": 1,
+					"finish_count": 2,
+					"finish_duration_avg": 130.01,
+					"ratings": {
+						"0": 2
+					}
+				},
+				...
+			],
+			"accept_delay_avg": 41.7,
+			"drop_count": 6,
+			"drop_delay_avg": 237.13
+		},
+		...
+	}
+
+The timestamp keys of the `queue_stats` object are composed of year, month, day
+and hour (UTC).
+
+The "audiences" array contains groups of statistics.  Each group is identified
+by "agent_id", optional "tag_ids" and optional "vars".  See
+[Audience metadata](#audience-metadata) for information about setting tag
+identifiers and custom variables.
+
+
 ### `message_received`
 
 - `action_id` : integer (if applicable)
@@ -2267,62 +2499,6 @@ attributes and child tags (unless limited by the `tag_depth` specified in
 - `tag_attrs` : object
 
 `tag_attrs` contains the `parent_id` attribute, if the tag has one.
-
-
-### `queue_stats_contents`
-
-- `action_id` : integer
-- `queue_stats` : object
-
-Example queue stats:
-
-	"queue_stats": {
-		"2013091812": {
-			"describe_count": 67,
-			"request_count": 10,
-			"audiences": [
-				{
-					"agent_id": "12345",
-					"accept_count": 3,
-					"finish_count": 2,
-					"finish_duration_avg": 257.3,
-					"ratings": {
-						"-1": 1,
-						"1": 1
-					}
-				},
-				{
-					"agent_id": "23456",
-					"tag_ids": [
-						"76543"
-					],
-					"vars": {
-						"xyz": "100",
-						"abcdef": "ghijkl"
-					},
-					"accept_count": 1,
-					"finish_count": 2,
-					"finish_duration_avg": 130.01,
-					"ratings": {
-						"0": 2
-					}
-				},
-				...
-			],
-			"accept_delay_avg": 41.7,
-			"drop_count": 6,
-			"drop_delay_avg": 237.13
-		},
-		...
-	}
-
-The timestamp keys of the `queue_stats` object are composed of year, month, day
-and hour (UTC).
-
-The "audiences" array contains groups of statistics.  Each group is identified
-by "agent_id", optional "tag_ids" and optional "vars".  See
-[Audience metadata](#audience-metadata) for information about setting tag
-identifiers and custom variables.
 
 
 ### `ice_begun`
