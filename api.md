@@ -199,8 +199,8 @@ Actions
   - [`add_member`](#add_member)
   - [`update_member`](#update_member)
   - [`remove_member`](#remove_member)
-  - [`send_message`](#send_message)
 - Messages
+  - [`send_message`](#send_message)
   - [`update_message`](#update_message)
   - [`update_user_messages`](#update_user_messages)
   - [`load_history`](#load_history)
