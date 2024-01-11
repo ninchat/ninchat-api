@@ -2016,7 +2016,7 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `action_id` : integer (if applicable)
 - `queue_id` : string
 - `queue_attrs` : object
-- `queue_settings` : object
+- `queue_settings` : object (if applicable)
 - `queue_members` : object (if applicable)
 - `queue_position` : integer (if applicable)
 - `queue_time` : float (if applicable)
