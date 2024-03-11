@@ -1805,7 +1805,6 @@ users.
 - `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 - `audience_metadata` : object (if applicable)
-- `channel_metadata` : object (if applicable)
 
 The `channel_members` object consists of user identifiers mapped to objects
 containing the `user_attrs` object, the `member_attrs` object (the
@@ -1839,7 +1838,6 @@ If set, the value of `channel_status` will be "unread" or "highlight".  The
 - `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 - `audience_metadata` : object (if applicable)
-- `channel_metadata` : object (if applicable)
 
 The session user created a new channel or joined an existing channel, or an
 audience request was accepted.
