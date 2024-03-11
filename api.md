@@ -1805,6 +1805,7 @@ users.
 - `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 - `audience_metadata` : object (if applicable)
+- `member_message_metadata` : object (if applicable)
 
 The `channel_members` object consists of user identifiers mapped to objects
 containing the `user_attrs` object, the `member_attrs` object (the
@@ -1820,9 +1821,21 @@ channel-specific attributes of the user) and the optional `puppet_attrs` object
 		...
 	}
 
+The `audience_metadata` object contains metadata that was supplied at the time
+of audience request.  It doesn't change after that (it doesn't include message
+metadata).
+
 The `channel_members_metadata` object consists of user identifiers mapped to
 objects containing metadata.  It may include metadata for some, but not
-necessary all current and past members of the channel.
+necessary all current and past members of the channel.  The per-member metadata
+doesn't change after it appears (it doesn't include message metadata).
+
+The `member_message_metadata` object consists of user identifiers mapped to
+objects containing metadata.  It may include metadata for some, but not
+necessary all current and past members of the channel.  It is summary of the
+latest metadata keys sent via `ninchat.com/metadata` messages (it doesn't
+include `audience_metadata` or `channel_members_metadata`).  It doesn't get
+updated in real time as messages are received.
 
 If set, the value of `channel_status` will be "unread" or "highlight".  The
 `message_time` is the time of the latest message.
@@ -1838,6 +1851,7 @@ If set, the value of `channel_status` will be "unread" or "highlight".  The
 - `message_time` : float (if applicable)
 - `realm_id` : string (if applicable)
 - `audience_metadata` : object (if applicable)
+- `member_message_metadata` : object (if applicable)
 
 The session user created a new channel or joined an existing channel, or an
 audience request was accepted.
