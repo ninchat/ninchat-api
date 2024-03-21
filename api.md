@@ -2020,7 +2020,11 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `queue_id` : string
 - `queue_attrs` : object
 - `queue_settings` : object
+- `queue_members` : object
 - `realm_id` : string (if applicable)
+
+`queue_members` is analogous to `channel_members` (see the `channel_found`
+event).
 
 
 ### `queue_found`
@@ -2033,9 +2037,6 @@ The `event_cause` is "member_remove" if the event was caused by a
 - `queue_position` : integer (if applicable)
 - `queue_time` : float (if applicable)
 - `realm_id` : string (if applicable)
-
-`queue_members` is analogous to `channel_members` (see the `channel_found`
-event).
 
 `queue_position` is defined if the viewer (a customer) is currently in the
 queue.  It is 1-based.
