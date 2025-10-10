@@ -47,7 +47,6 @@ Copyright &copy; Somia Reality Oy.  All rights reserved.
   - [Audience metadata](#audience-metadata)
 - [Streaming Transports](#streaming-transports)
   - [WebSocket](#websocket)
-  - [HTTP long polling](#http-long-polling)
 - [Sessionless HTTP Calling](#sessionless-http-calling)
   - [Requests](#requests)
   - [Responses](#responses)
@@ -3549,17 +3548,14 @@ statistics.
 Streaming Transports
 ====================
 
-Both supported transport types support an initial service discovery step:
-
-Before making a WebSocket connection or initiating HTTP long polling, the
-client may discover a direct address by making a HTTP GET request to
-`https://api.ninchat.com/v2/endpoint`.  The response contains a JSON object, or
-a JavaScript statement (JSONP) if the `callback` query parameter is specified.
-The object contains the `hosts` property (string array).  The client should try
-the hosts in order until a transport connection succeeds.  The hosts array
-shouldn't be used permanently; a fresh array must be requested when a new
-session is to be created, or after looping through the array unsuccessfully for
-a time.
+Before making a WebSocket connection, the client may discover a direct address
+by making a HTTP GET request to `https://api.ninchat.com/v2/endpoint`.  The
+response contains a JSON object, or a JavaScript statement (JSONP) if the
+`callback` query parameter is specified.  The object contains the `hosts`
+property (string array).  The client should try the hosts in order until a
+transport connection succeeds.  The hosts array shouldn't be used permanently;
+a fresh array must be requested when a new session is to be created, or after
+looping through the array unsuccessfully for a time.
 
 A client implementation may choose to omit the service discovery step (e.g. for
 simplicity) and use the `api.ninchat.com` hostname for transport connections.
@@ -3645,103 +3641,14 @@ Received WebSocket frame:
 	{"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
 
 
-HTTP long polling
------------------
-
-The URL format is `https://HOST/v2/poll` (excluding query parameters), where
-`HOST` is an address aquired during the service discovery step.
-
-Actions and events consist of a single object containing an `action` or `event`
-property (string), the optional `payload` property and the parameter properties
-(see [Interface](#interface)).  Actions must also contain the `session_id`
-property (string) when documentation doesn't state otherwise.  The
-`resume_session` action should also contain the latest received `event_id`
-(integer) to acknowledge events.
-
-If `payload` is specified, its value represents a single-part payload.
-Multi-part and JSON-incompatible payloads are not supported.  (Long poll
-clients should accept only known JSON-based message types.)
-
-The action object is provided in the `data` query parameter of a GET request
-and the name of a JavaScript function is provided in the `callback` query
-parameter.  The response body contains JavaScript code which invokes the
-callback function with an array of event objects as a parameter.
-
-`create_session` requests are responded to with an event specific to it
-(providing the `session_id` needed for the other actions).  `resume_session`
-requests block until there are asynchronous events to return or a timeout
-occurs.  Other (well-formed) action requests get an empty response immediately;
-any reply events are delivered by way of `resume_session`.
-
-
-### Examples
-
-Service discovery:
-
-	GET /v2/endpoint?callback=connect HTTP/1.1
-	Host: api.ninchat.com
-
-	HTTP/1.1 200 OK
-	Content-Type: application/javascript; charset=utf-8
-
-	connect({
-	  "hosts": ["192-0-43-10.ninchat.com", "192-0-43-11.ninchat.com"]
-	});
-
-Action:
-
-	GET /v2/poll?data=%7B%22action%22%3A%22create_session%22%2C%22message_types%22%3A
-	%5B%22ninchat.com%2Ftext%22%5D%7D&callback=func HTTP/1.1
-	Host: 192-0-43-10.ninchat.com
-
-	HTTP/1.1 200 OK
-	Content-Type: application/javascript; charset=utf-8
-
-	func([{
-	  "event":           "session_created",
-	  "session_id":      "4pfi0asg4pt56_0",
-	  "user_id":         "0ebbjg1g",
-	  "user_auth":       "2634d03q1tkt0",
-	  "user_attrs":      { "name": "Elite" },
-	  "user_settings":   {},
-	  "user_identities": { "email": { "elite@example.com": { "pending": true } } },
-	  "user_dialogues":  {},
-	  "user_channels":   { "04jqf8db": { "channel_attrs": { "name": "Fibre" } } },
-	  "user_realms":     {},
-	  "event_id":        1
-	}]);
-
-Polling:
-
-	GET /v2/poll?data=%7B%22action%22%3A%22resume_session%22%2C%22session_id%22%3A%22
-	4pfi0asg4pt56_0%22%2C%22event_id%22%3A1%7D&callback=func HTTP/1.1
-	Host: 192-0-43-10.ninchat.com
-
-	HTTP/1.1 200 OK
-	Content-Type: application/javascript; charset=utf-8
-
-	func([{
-	  "event":             "message_received",
-	  "channel_id":        "04jqf8db",
-	  "message_id":        "0fb74jl5",
-	  "message_time":      1320846070,
-	  "message_type":      "ninchat.com/text",
-	  "message_user_id":   "05kq2htc",
-	  "message_user_name": "Vance",
-	  "event_id":          2,
-	  "payload":           {"text":"Gold Five to Red Leader; lost Tiree, lost Dutch."}
-	}]);
-
-
 Sessionless HTTP Calling
 ========================
 
 The call API supports a subset of the [Interface](#interface): the actions
 which are practical without a connection-oriented transport may be invoked with
-a HTTP request (without setting up long polling).  The
-`https://api.ninchat.com/v2/call` URL may be accessed using GET and POST
-methods, with `application/json`, `application/x-protobuf` and
-`application/octet-stream` content types.
+a HTTP request.  The `https://api.ninchat.com/v2/call` URL may be accessed
+using GET and POST methods, with `application/json`, `application/x-protobuf`
+and `application/octet-stream` content types.
 
 Actions and events use a JSON-encoded header (object) containing at least an
 `action` or `event` property (string) and the parameter properties (see
