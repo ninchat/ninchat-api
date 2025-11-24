@@ -1,5 +1,0 @@
-{
-	"name":                 { "type": "string",       "writable":   true },
-	"parent_id":            { "type": "string",       "initable":   true },
-	"theme":                { "type": "object",       "writable":   true }
-}
